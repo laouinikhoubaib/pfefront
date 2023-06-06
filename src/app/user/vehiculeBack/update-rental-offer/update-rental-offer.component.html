@@ -1,0 +1,103 @@
+<section>
+    <div class="page-header min-vh-100 bg-diamond-blue" >
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="d-flex justify-content-center align-items-center">
+                    <div class="col-lg-6 col-md-12 " style="backdrop-filter: blur(15px);" >
+                        <div class="card-body">
+
+                    <form role="form" #f="ngForm" (ngSubmit)="f.form.valid && UpdateVehicule()">
+
+                        <div class="d-flex justify-content-center align-items-center">
+                            <p class="text-center font-weight-bold">
+                                Modifier une véhicule
+                            </p>
+                        </div>
+                        <div class="row justify-space-between text-center py-2">
+
+
+                            <div class="input-group input-group-outline mb-3">
+                                <label class="form-label" style="color: black;">Agence</label>
+                                <input type="text" id="agence" class="form-control" name="agence" [(ngModel)]="nomAgence" #agence="ngModel" class="form-control" required>
+                            </div>
+
+                            <p class="card card-body border-0 shadow-lg rounded-lg bg-transparent animate__animated animate__fadeInRight login-form" style="color: white;">
+                                Caractéristiques du véhicule
+                            </p>
+
+                            <div class="input-group input-group-outline mb-3">
+                                <label class="form-label" style="color: black;">Alimentation</label>
+                                <input type="text" class="form-control" id="alimentation" name="alimentation" [(ngModel)]="vehicule.alimentation" #alimentation="ngModel" class="form-control" required>
+                            </div>
+
+                            <div class="input-group input-group-outline mb-3">
+                                <label class="form-label" style="color: white;">Jours location</label>
+                                <input type="number" class="form-control" id="jourslocation" name="jourslocation" [(ngModel)]="vehicule.jourslocation" #jourslocation="ngModel" class="form-control" required>
+                            </div>
+
+                            <!--                            <div class="input-group input-group-outline mb-3">-->
+                            <!--                                <label class="form-label" style="color: black;">Date d'ajout</label>-->
+                            <!--                                <input type="date" class="form-control" id="dateajout" name="dateajout" [(ngModel)]="vehicule.dateajout" #dateajout="ngModel" class="form-control" required>-->
+                            <!--                            </div>-->
+
+                            <div class="input-group input-group-outline mb-3">
+                                <label class="form-label" style="color: black;">Couleur</label>
+                                <input class="form-control" id="couleur"  name="couleur" [(ngModel)]="vehicule.couleur" #couleur="ngModel" class="form-control" required>
+                            </div>
+
+
+                            <div class="input-group input-group-outline mb-3">
+                                <label class="form-label" style="color: black;">Nombre de places</label>
+                                <input class="form-control" id="nbrplaces"  name="nbrplaces" [(ngModel)]="vehicule.nbrplaces" #nbrplaces="ngModel" class="form-control" required>
+                            </div>
+
+                            <div class="input-group input-group-outline mb-3">
+                                <label class="form-label" style="color: black;">Matricule</label>
+                                <input class="form-control" id="matricule"  name="matricule" [(ngModel)]="vehicule.matricule" #matricule="ngModel" class="form-control" required>
+                            </div>
+
+                            <div class="input-group input-group-outline mb-3">
+                                <label class="form-label" style="color: black;">Longueur</label>
+                                <input class="form-control" id="longueur"  name="longueur" [(ngModel)]="vehicule.longueur" #longueur="ngModel" class="form-control" required>
+                            </div>
+
+                            <div class="input-group input-group-outline mb-3">
+                                <label class="form-label" style="color: black;">Largeur</label>
+                                <input class="form-control" id="largeur"   name="largeur" [(ngModel)]="vehicule.largeur" #largeur="ngModel" class="form-control" required>
+                            </div>
+
+
+                            <div class="input-group input-group-outline mb-3">
+                                <label class="form-label" style="color: black;">Charge utile</label>
+                                <input class="form-control" id="chargeutile"   name="chargeutile" [(ngModel)]="vehicule.chargeutile" #chargeutile="ngModel" class="form-control" required>
+                            </div>
+
+                            <div class="input-group input-group-outline mb-3">
+                                <label class="form-label" style="color: black;">Puissance</label>
+                                <input class="form-control" id="puissance"   name="puissance" [(ngModel)]="vehicule.puissance" #chargeutile="ngModel" class="form-control" required>
+                            </div>
+
+                            <div class="input-group input-group-outline mb-3">
+                                <label class="form-label" style="color:black;">Description</label>
+                                <input class="form-control" id="description"  name="description" [(ngModel)]="vehicule.description" #description="ngModel" class="form-control" required>
+                            </div>
+                            <div style="margin: 20px;">
+                                <input type="file" class="form-control" id="speaker" (change)="onFileSelcted($event)" name="speaker">
+                            </div>
+
+                        </div >
+                        <div class="text-center" >
+                            <button type="submit" class="btn btn-primary btn-lg w-100 mb-3 animate__animated animate__fadeInUp">Modifier </button>
+                        </div>
+
+                    </form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

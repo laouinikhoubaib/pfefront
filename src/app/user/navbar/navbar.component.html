@@ -1,0 +1,183 @@
+
+<div class="container-fluid  position-sticky z-index-sticky top-0" >
+    <div class="row" >
+        <div class="col-12" >
+            <nav class="navbar navbar-expand-lg  blur border-radius-xl top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4 " >
+                <div class="container-fluid px-0">
+                    <a class="navbar-brand ps-2 d-flex justify-content-between cursor-pointer align-items-center " routerLink="" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom">
+                        <i class="material-icons opacity-6 me-1 text-md">home</i>
+                        Home
+                    </a>
+                    <a class="navbar-brand ps-2 d-flex justify-content-between cursor-pointer align-items-center " routerLink="/admin" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" *ngIf="currentUser?.role == 'ADMIN'">
+                        <i class="material-icons opacity-6 me-1 text-md">dashboard</i>
+                        Admin Dashboard
+                    </a>
+                    <a class="navbar-brand ps-2 d-flex justify-content-between cursor-pointer align-items-center " routerLink="/adminfranchise" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" *ngIf="currentUser?.role == 'ADMIN_FRANCHISE'">
+                        <i class="material-icons opacity-6 me-1 text-md">dashboard</i>
+                        Dashboard
+                    </a>
+
+                    <a class="navbar-brand ps-2 d-flex justify-content-between cursor-pointer align-items-center " routerLink="/superadmin" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" *ngIf="currentUser?.role == 'SUPERADMIN'">
+                        <i class="material-icons opacity-6 me-1 text-md">dashboard</i>
+                        Super Admin Dashboard
+                    </a>
+
+                    <a href="https://www.creative-tim.com/product/material-kit-pro#pricingCard" class="btn btn-sm  bg-gradient-primary  mb-0 ms-auto d-lg-none d-block">Buy Now</a>
+                    <button class="navbar-toggler shadow-none ms-md-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon mt-2">
+<span class="navbar-toggler-bar bar1"></span>
+<span class="navbar-toggler-bar bar2"></span>
+<span class="navbar-toggler-bar bar3"></span>
+</span>
+                    </button>
+                    <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" id="navigation">
+                        <ul class="navbar-nav navbar-nav-hover ms-auto">
+                            <li class="nav-item dropdown dropdown-hover mx-2">
+                                <a role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuBlocks" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="material-icons opacity-6 me-2 text-md">view_day</i>
+                                    <a class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0" routerLink="/forum">Forum</a>
+                                    <img src="assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 d-lg-none d-block ms-auto">
+                                </a>
+                            </li>
+
+                            <li class="nav-item dropdown dropdown-hover mx-2">
+                                <a role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuBlocks" data-bs-toggle="dropdown" aria-expanded="false"routerLink="/listVehicules">
+                                    <i class="material-icons opacity-6 me-2 text-md">view_day</i>
+                                   Location utilitaire
+                                    <img src="assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-2 d-lg-block d-none">
+                                    <img src="assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 d-lg-none d-block ms-auto">
+                                </a>
+                            </li>
+
+                            <li class="nav-item dropdown dropdown-hover mx-2">
+                                <a role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuBlocks" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="material-icons opacity-6 me-2 text-md">view_day</i>
+                                    Locations voiture
+                                    <img src="assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-2 d-lg-block d-none">
+                                    <img src="assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 d-lg-none d-block ms-auto">
+                                </a>
+                            </li>
+
+                            <li class="nav-item dropdown dropdown-hover mx-2">
+                                <a role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuBlocks" data-bs-toggle="dropdown" aria-expanded="false" >
+                                    Agences
+                                </a>
+                            </li>
+
+                            <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="!currentUser?.userId">
+                                <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
+                                   (click)="redirectTo()" routerLinkActive="active" >
+                                    <i class="material-icons opacity-6 me-2 text-md">login</i>
+                                    Sign in
+                                </a>
+                            </li>
+
+
+                            <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="currentUser?.userId">
+                                <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
+                                   routerLink="profil" >
+                                    <img alt="Profil Picture" src="assets/img/{{profilPicture}}" class="avatar avatar-xs rounded-circle mx-2">
+                                    {{currentUser.username}}
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="currentUser?.userId">
+                                <a role="button" class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuDocs" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="material-icons opacity-6">notifications</i>
+                                    <span class="badge rounded-pill bg-dark" *ngIf="notificationList.length != 0">{{notificationList.length}}</span>
+                                    <img src="assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 d-lg-none d-block ms-auto">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animation dropdown-md mt-0 mt-lg-3 p-3 border-radius-lg" aria-labelledby="dropdownMenuDocs" *ngIf="notificationList.length != 0">
+
+                                    <!--Big Screen Notifications-->
+                                    <div class="d-none d-lg-block">
+                                        <ul class="list-group">
+                                            <li class="nav-item list-group-item border-0 p-0" *ngFor="let notif of notificationList">
+      <span class="dropdown-item py-2 ps-3 border-radius-md">
+        <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-center align-items-center p-0">
+          <i class="fa fa-circle fa-xs me-3 mt-3" style="color: #1770e6" *ngIf="!notif.read"></i>{{notif.message}}
+        </h6>
+        <span class="text-sm ms-4">
+          {{notif.createdAt}} <i class="fa fa-clock ms-1"></i>
+          <a (click)="markAsRead(notif.notificationId)" *ngIf="!notif.read"><i class="fa fa-eye ms-5 me-2"></i>Mark as read</a>
+          <a (click)="markAsUnRead(notif.notificationId)" *ngIf="notif.read"><i class="fa fa-eye-slash ms-5 me-2"></i>Mark as Unread</a>
+          <button type="button" class="btn btn-link ms-5 me-2" (click)="onDeleteNotification(notif.notificationId)"><i class="fa fa-times-circle text-danger"></i></button>
+        </span>
+      </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="currentUser?.userId">
+                                <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
+                                   (click)="logOut()" >
+                                    <i class="material-icons opacity-6 me-2 text-md">logout</i>
+                                    Déconnexion
+                                </a>
+                            </li>
+
+
+
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModal" aria-hidden="true">
+    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <div class="card card-plain">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1 text-center py-4">
+                            <h4 class="font-weight-bolder text-white mt-1">Modifier mon profil</h4>
+                            <p class="mb-1 text-white text-sm">Modifier les renseignements sur votre compte</p>
+                        </div>
+                    </div>
+
+
+                    <div class="card-body">
+                        <form role="form" #f="ngForm" (ngSubmit)="f.form.valid && editProfile()">
+                            <div class="row justify-space-between text-center py-2">
+                                <p class="text-sm font-weight-bold text-secondary text-border d-inline z-index-2 bg-white px-3">
+                                    Informations personnelles
+                                </p>
+                            </div>
+
+                            <div class="input-group input-group-static">
+                                <label>Username</label>
+                                <input type="Username" class="form-control" id="Username" name="Username" placeholder="Username" [(ngModel)]="currentUser.username" #name="ngModel" >
+                            </div>
+                            <div class="input-group input-group-static">
+                                <label>Email</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" [(ngModel)]="currentUser.email" #name="ngModel" >
+                            </div>
+
+
+                            <div class="input-group input-group-static">
+                                <label>Picture</label>
+                                <input class="form-control" type="file" id="formFile">
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Confirmer</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

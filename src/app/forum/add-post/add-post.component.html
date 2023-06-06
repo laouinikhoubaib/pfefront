@@ -1,0 +1,105 @@
+<div class="col-md-4">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessageTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New Post</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="alert alert-primary text-white font-weight-bold" role="alert" *ngIf=" errorMessage != 'valide' && errorMessage != 'null'">
+                            {{errorMessage}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="alert alert-success text-white font-weight-bold" role="alert" *ngIf="errorMessage == 'valide'">
+                            {{errorMessage}}
+                        </div>
+                    </div>
+                    <form>
+                        <div class="input-group input-group-outline my-3">
+
+                            <label class="form-label">Post Title</label>
+
+                            <input type="text" [(ngModel)]= "post.postTitle" name="az" class="form-control">
+                        </div>
+                        <div class="input-group input-group-outline my-3">
+                            <label class="form-label">Post Body</label>
+                            <textarea  type="text" [(ngModel)]= "post.body"  name="aab" class="form-control"></textarea>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" (click)="addnewpost()" class="btn bg-gradient-primary btn-block mb-3" *ngIf="errorMessage != 'valide'" >verifier</button>
+                    <button type="button" (click)="addnewpost()" class="btn bg-gradient-primary btn-block mb-3" *ngIf="errorMessage == 'valide'" data-bs-toggle="modal" data-bs-target="#exampleModalMessage1">Next</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="col-md-4">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalMessage1" tabindex="-1" role="dialog" aria-labelledby="exampleModalMessageTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel1">New Post</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="alert alert-primary text-white font-weight-bold" role="alert" *ngIf=" errorMessage != 'valide' && errorMessage != 'null'">
+                            {{errorMessage}}
+                        </div>
+                    </div>
+                    <form>
+
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="imagen" #imagenInputFile
+                                   (change)="onFileSelcted($event)" accept="image/png, image/jpeg, image/gif">
+                            <label class="custom-file-label" for="imagen">Select pucture</label>
+                        </div>
+                        <div *ngIf="fileToUpload" class="mt-5">
+                            <h5>Pucture</h5>
+                            <div>
+                                <img class="image-thumbnail" style="max-width: 300px" [src]="imagenMin">
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" (click)="onSaveFile()" class="btn bg-gradient-primary">Save Post</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

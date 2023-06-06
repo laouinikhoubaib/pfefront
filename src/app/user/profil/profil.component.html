@@ -1,0 +1,251 @@
+
+
+<header>
+    <div class="page-header min-height-400" style="background-image: url('../assets/img/automotive/amg-gt.png');" loading="lazy">
+        <span class="mask bg-gradient-dark opacity-8"></span>
+    </div>
+</header>
+<div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6 mb-4">
+    <section class="py-sm-7 py-5 position-relative">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mx-auto">
+                    <div class="mt-n8 mt-md-n9 text-center">
+                        <img class="avatar avatar-xxl shadow-xl position-relative z-index-2" src="assets/img/{{profilPicture}}" alt="bruce" loading="lazy">
+                    </div>
+                    <div class="row py-5">
+                        <div class="col-lg-7 col-md-7 z-index-2 position-relative px-md-2 px-sm-5 mx-auto">
+                            <div class="d-flex justify-content-center">
+                                <h3 class="mb-0">{{currentUser.username}}</h3>
+                            </div>
+
+                            <div div class="col-lg-7 col-md-7 z-index-2 position-relative px-md-2 px-sm-5 mx-auto" *ngIf="currentUser?.userId">
+                                <a class="d-flex justify-content-center"
+                                   data-bs-toggle="modal" data-bs-target="#editProfileModal" >
+                                    <button class="material-icons opacity-6 me-2 text-md">edit</button>
+                                    Modifier mon profile
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-sm-0 mt-2">
+                <div class="col-lg-3 col-md-4 position-relative ms-lg-auto">
+                    <div class="p-3 text-center border-right-after">
+                        <i class="material-icons text-gradient text-primary text-5xl mb-3">email</i>
+                        <h6 class="mb-0">Email</h6>
+                        <p class="text-dark font-weight-normal">
+                            <a href="https://demos.creative-tim.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3159545d5d5e7152435450455847541c45585c1f525e5c">{{currentUser.email}}</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 position-relative">
+                    <div class="p-3 text-center border-right-after">
+                        <i class="material-icons text-gradient text-primary text-5xl mb-3">date_range</i>
+                        <h6 class="mb-0">Date d'enregistrement</h6>
+                        <p class="text-dark font-weight-normal">
+                            <a href="https://demos.creative-tim.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3159545d5d5e7152435450455847541c45585c1f525e5c">{{currentUser.birthDate}}</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 me-lg-auto">
+                    <div class="p-3 text-center">
+                        <i class="material-icons text-gradient text-primary text-5xl mb-3">contacts</i>
+                        <h6 class="mb-0">Poste</h6>
+                        <p class="text-dark font-weight-normal">{{currentUser.role}}</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 me-lg-auto">
+                    <div class="p-3 text-center">
+                        <i class="material-icons text-gradient text-primary text-5xl mb-3">add_location</i>
+                        <h6 class="mb-0">Agence</h6>
+                        <p class="text-dark font-weight-normal">{{ nomAgence || 'Pas d\'agence définie' }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-3">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-4 col-md-6 d-flex flex-column">
+                    <div class="card h-100 card-background align-items-start">
+                        <div class="full-background" style="background-image: url(&#39;https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/indian.jpg&#39;)"></div>
+                        <div class="card-body z-index-3">
+                            <i class="material-icons text-white text-3xl">forum</i>
+                        </div>
+
+                        <span class="mask bg-gradient-dark border-radius-xl z-index-2 opacity-6"></span>
+                    </div>
+                    <div class="card h-100 card-background mt-4 align-items-start">
+                        <div class="full-background" style="background-image: url(&#39;https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/greece.jpg&#39;)"></div>
+                        <div class="card-body z-index-3">
+                            <i class="material-icons text-white text-3xl">volunteer_activism</i>
+                        </div>
+
+                        <span class="mask bg-gradient-dark border-radius-xl z-index-2 opacity-6"></span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 d-flex flex-column">
+                    <div class="card card-background align-items-start">
+                        <div class="full-background" style="background-image: url(&#39;https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/city.jpg&#39;)"></div>
+                        <div class="card-body z-index-3">
+                            <i class="material-icons text-white text-3xl">work</i>
+                        </div>
+                        <div class="card-footer pb-3 pt-5 z-index-3">
+                            <a class="text-white mb-1 cursor-pointer" routerLink="/chatP">Start Chat</a>
+                            <p class="text-white text-xs font-weight-bolder text-uppercase opacity-7">117 offers</p>
+                        </div>
+                        <span class="mask bg-gradient-dark border-radius-xl z-index-2 opacity-6"></span>
+                    </div>
+                    <div class="card card-background mt-4 align-items-start">
+                        <div class="full-background" style="background-image: url(&#39;https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/laught.jpg&#39;)"></div>
+                        <div class="card-body z-index-3">
+                            <i class="material-icons text-white text-3xl">cast_for_education</i>
+                        </div>
+
+                        <span class="mask bg-gradient-dark border-radius-xl z-index-2 opacity-6"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+
+
+<section class="py-lg-5">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card box-shadow-xl overflow-hidden mb-5">
+                    <div class="row">
+                        <div class="col-lg-5 position-relative bg-cover px-0" style="background-image: url('../assets/img/temp.png')" loading="lazy">
+                            <div class="z-index-2 text-center d-flex h-100 w-100 d-flex m-auto justify-content-center">
+                                <div class="mask bg-gradient-dark opacity-8"></div>
+                                <div class="p-5 ps-sm-8 position-relative text-start my-auto z-index-2">
+                                    <h3 class="text-white">MASTERCLASS</h3>
+                                    <p class="text-white opacity-8 mb-4">Veuillez poster votre réclamation</p>
+                                    <div class="d-flex p-2 text-white">
+                                        <div>
+                                            <i class="fas fa-phone text-sm"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <span class="text-sm opacity-8">(+216) 54 487 021</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex p-2 text-white">
+                                        <div>
+                                            <i class="fas fa-envelope text-sm"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <span class="text-sm opacity-8">khoubaib.laouini@esprit.tn</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex p-2 text-white">
+                                        <div>
+                                            <i class="fas fa-map-marker-alt text-sm"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <span class="text-sm opacity-8">1124 Manouba Tunisie</span>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <button type="button" class="btn btn-icon-only btn-link text-white btn-lg mb-0" data-toggle="tooltip" data-placement="bottom" data-original-title="Log in with Facebook">
+                                            <i class="fab fa-facebook"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-icon-only btn-link text-white btn-lg mb-0" data-toggle="tooltip" data-placement="bottom" data-original-title="Log in with Twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-icon-only btn-link text-white btn-lg mb-0" data-toggle="tooltip" data-placement="bottom" data-original-title="Log in with Dribbble">
+                                            <i class="fab fa-dribbble"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-icon-only btn-link text-white btn-lg mb-0" data-toggle="tooltip" data-placement="bottom" data-original-title="Log in with Instagram">
+                                            <i class="fab fa-instagram"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <form class="p-3" id="contact-form" method="post">
+                                <div class="card-header px-4 py-sm-5 py-3">
+                                    <h2>Gestion des réclamations</h2>
+                                    <p class="lead"> Réclamer si il y'a quelque chose </p>
+                                </div>
+                                <form class="card-body pt-1" (ngSubmit)="addComplaint()">
+                                    <div class="row">
+                                        <div class="col-md-12 pe-2 mb-3" ngModelGroup="complaint">
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Date de réclamation</label>
+                                                <input type="date" [(ngModel)]="complaint.complaintDate" name="complaintDate" class="form-control" required>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 pe-2 mb-3" ngModelGroup="complaint">
+                                            <div class="input-group input-group-static mb-4">
+                                                <label >Description</label>
+                                                <input  placeholder="Veuillez mettre la description de votre réclamation" [(ngModel)]="complaint.description" name="description" class="form-control" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 pe-2 mb-3" ngModelGroup="complaint">
+                                            <div class="input-group input-group-static mb-4">
+                                                <label >Type de réclamation</label>
+                                                <select [(ngModel)]="complaint.complaintType" name="complaintType" class="form-control">
+                                                    <option value="" disabled selected>Choisissez le type de votre réclamation</option>
+                                                    <option value="technical">Problème technique</option>
+                                                    <option value="service">Problème de service</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 text-end ms-auto">
+                                            <button type="addComplaint" class="btn btn-primary">Envoyer!</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<div class="modal fade" id="commonFriendsModal" tabindex="-1" aria-labelledby="commonFriendsModal" aria-hidden="true">
+    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="friendsModalLabel">Friends in common</h5>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="allUsers" tabindex="-1" aria-labelledby="commonFriendsModal" aria-hidden="true">
+    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="allUsersLabel">Get in touch with others users</h5>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+

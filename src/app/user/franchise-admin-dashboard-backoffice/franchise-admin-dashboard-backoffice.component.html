@@ -1,0 +1,147 @@
+<div class="layout-dashboard">
+    <div class="p-grid">
+
+        <div class="p-col-12 p-md-6 p-xl-3">
+            <div class="card no-gutter widget-overview-box widget-overview-box-3">
+                            <span class="overview-icon">
+                                <i class="pi pi-users"></i>
+                            </span>
+                <span class="overview-title">Utilisateurs</span>
+                <div class="p-grid overview-detail">
+                    <div class="p-col-6">
+                        <div class="overview-number">{{userss.length}}</div>
+                        <div class="overview-subtext">Registered</div>
+                    </div>
+
+                    </div>
+            </div>
+        </div>
+
+        <div class="p-col-12 p-lg-4">
+            <div class="card">
+                <h4>Escouade administrative</h4>
+                <p>Les administrateurs les plus actifs qui travaillent au sein de notre équipe</p>
+                <ul class="widget-image-list">
+                    <li *ngFor="let admin of admins">
+        <span>
+           <img src="assets/img/{{admin.profilPic}}" alt="diamond-layout"/>
+          <span>{{admin.username}}</span>
+        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="p-grid table-demo">
+            <div class="p-col-12">
+                <div class="card">
+                    <p-table #dt [value]="userss" [(selection)]="selectedCustomers1" dataKey="id"
+                             styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
+                             [filterDelay]="0" [globalFilterFields]="['username', 'email', 'birthDate','locked']">
+                        <ng-template pTemplate="caption">
+                            <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                                <div>
+                                    <button  pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="redirectTo()" ></button>
+                                </div>
+                                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                           placeholder="Global Search"/>
+                </span>
+                            </div>
+                        </ng-template>
+                        <ng-template pTemplate="header">
+                            <tr>
+<!--                                <th style="width: 3rem">-->
+<!--                                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>-->
+<!--                                </th>-->
+                                <th pSortableColumn="name" style="width: 18rem">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        Username
+                                        <p-sortIcon field="name"></p-sortIcon>
+                                        <p-columnFilter type="text" field="name" display="menu" class="p-ml-auto"></p-columnFilter>
+                                    </div>
+                                </th>
+
+                                <th pSortableColumn="email" style="width: 20rem">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        Email
+                                        <p-sortIcon field="email"></p-sortIcon>
+                                        <p-columnFilter type="text" field="email" display="menu" class="p-ml-auto"></p-columnFilter>
+                                    </div>
+                                </th>
+
+                                <th pSortableColumn="birthDate">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        Date d'enregistrement
+                                        <p-sortIcon field="birthDate"></p-sortIcon>
+                                        <p-columnFilter type="date" field="birthDate" display="menu" class="p-ml-auto"></p-columnFilter>
+                                    </div>
+                                </th>
+                                <th pSortableColumn="nomAgence">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        Agence
+                                        <p-sortIcon field="nomAgence"></p-sortIcon>
+                                        <p-columnFilter type="text" field="nomAgence" display="menu" class="p-ml-auto"></p-columnFilter>
+                                    </div>
+                                </th>
+                                <th pSortableColumn="locked">
+                                    <div class="p-d-flex p-jc-between p-ai-center">
+                                        Status
+                                        <p-sortIcon field="locked"></p-sortIcon>
+                                        <p-columnFilter type="text" field="locked" display="menu" class="p-ml-auto"></p-columnFilter>
+                                    </div>
+                                </th>
+                                <th style="width: 8rem"></th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-customer>
+                            <tr class="p-selectable-row">
+<!--                                <td>-->
+<!--                                    <p-tableCheckbox [value]="customer"></p-tableCheckbox>-->
+<!--                                </td>-->
+                                <td>
+                                    <img src="assets/img/{{customer.profilPic}}" width="40" height="40"
+                                         style="vertical-align: middle" class="profil-pic-round"/>
+                                    <span class="p-column-title">Userame</span>
+                                    {{customer.username}}
+                                </td>
+                                <td>
+                                    <span class="p-column-title">Email</span>
+                                    <span class="image-text" style="margin-left: .5em;vertical-align: middle">{{customer.email}}</span>
+                                </td>
+                                <td>
+                                    <span class="p-column-title">Date d'enregistrement</span>
+                                    <div >{{customer.birthDate | date: 'MM/dd/yyyy'}}</div>
+                                </td>
+                                <td>
+                                    <span class="p-column-title">Agence</span>
+                                    <div >{{nomAgence}}</div>
+                                </td>
+                                <td>
+                                    <span class="p-column-title">Status</span>
+                                    <span *ngIf="customer.locked" [class]="'customer-badge status-unqualified'">Locked</span>
+                                    <span *ngIf="!customer.locked" [class]="'customer-badge status-proposal'">Active</span>
+                                </td>
+                                <td style="text-align: center">
+                                    <button *ngIf="!customer.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock" (click)="lockUser(customer.username)"></button>
+                                    <button *ngIf="customer.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock-open" (click)="unlockUser(customer.username)"></button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="emptymessage">
+                            <tr>
+                                <td colspan="8">Aucun utilisateur trouvé.</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+</div>

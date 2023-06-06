@@ -1,0 +1,303 @@
+<!-- Modal -->
+<body style="background-color: #9ed6d3">
+<div style="margin-top: 200px; background-color: #bccce1">
+<div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
+    <div class="section my-5">
+        <div class="container">
+            <div class="row flex-row">
+
+                <div class="col-lg-8 " >
+                    <div class="card " >
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+                            <div class="bg-gradient-primary shadow-primary border-radius-lg p-3">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <div class="d-flex align-items-center">
+                                            <img alt="Image" src="assets/img/{{post1.user.profilPic}}" class="avatar">
+                                            <div class="ms-3">
+                                                <h6 class="mb-0 d-block text-white">{{post1.user.username}}</h6>
+                                                <span class="text-sm text-white opacity-8"><i class="far fa-clock"></i> {{post1.createdAt}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 my-auto">
+                                        <button class="btn btn-icon-only text-white mb-0 me-3 me-sm-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Video call">
+
+                                        </button>
+                                    </div>
+
+
+                                    <ng-container>
+
+                                    <div class="col-1 my-auto">
+                                        <div class="dropdown dropdown-hover">
+                                            <button class="btn btn-icon-only text-white mb-0" type="button" data-bs-toggle="dropdown">
+                                                <i class="material-icons">settings</i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end me-sm-n2 p-2" aria-labelledby="chatmsg">
+                                                <li>
+                                                    <a class="dropdown-item border-radius-md text-danger" class="" data-bs-toggle="modal" data-bs-target="#exampleModalNotification" href="javascript:; " style="color: red;">
+                                                        Supprimer la publication
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item border-radius-md" data-bs-toggle="modal" data-bs-target="#exampleModal231" href="javascript:;">
+                                                        Modifier
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <hr class="dropdown-divider">
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 style="text-align: center; margin-top: 10px">{{post1.postTitle}}</h4>
+                        <h5 style="margin-left: 30px">{{post1.body}}</h5>
+                        <div class="container">
+                            <hr style="color: red">
+                            <div class="row " style="margin-bottom: 20px; ">
+                                <ng-container *ngFor="let m of post1.medias">
+                                    <div class="col-lg-4 col-sm-6" style="margin-top: 20px; position: center;" *ngIf="post1.medias.length != 0">
+                                        <div class="card card-plain">
+                                            <div class="">
+                                                <a class="d-block blur-shadow-image">
+                                                    <img src="{{m.imagenUrl}}" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg" loading="lazy">
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div><div class="col-lg-4 col-sm-6" style="margin-top: 20px; position: center;" *ngIf="post1.medias.length == 0">
+                                                <h1>Pas de photos pour cet article</h1>
+                                </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <ng-container *ngFor="let l of post1.postLikes">
+                            <ng-container *ngIf="l.user.userId == currentUser.userId">
+                                <button class="btn bg-gradient-primary btn-icon btn-" type="button" *ngIf="l.isLiked==true" style="margin-top: 20px">
+                                    <div class="d-flex align-items-center">
+                                        J'aime
+                                    </div>
+                                </button>
+                                <button class="btn bg-gradient-faded-dark btn-icon btn- text-white" type="button" *ngIf="l.isLiked==false" >
+                                    <div class="d-flex align-items-center">
+                                        J'aime pas
+                                    </div>
+                                </button>
+                            </ng-container>
+                        </ng-container>
+                        <div class="card-body " style="margin-left: 31%">
+                            <div class="  ">
+                                <button type="button"  (click)="addLikePost(post1.postId.toString())" class="btn li zob btn-primary  btn-icon-only rounded-circle" style= "margin-right: 10px" >
+                                    <span class="btn-inner--icon">  <i class="fa fa-thumbs-up"></i>  </span>
+                                </button>
+
+                                <button type="button" (click)="addDisLikePost(post1.postId.toString())" class="btn zob btn-secondary btn-icon-only rounded-circle" style="margin-left: 20px; margin-right: 10px">
+                                    <span class="btn-inner--icon"><i class="fa fa-thumbs-down"></i></span>
+                                </button>
+                                <button type="button" class="btn zob btn-dark btn-icon-only rounded-circle" style="margin-left: 20px; margin-right: 10px">
+                                    <span class="btn-inner--icon"><i class="fa fa-skull-crossbones"></i></span>
+                                </button>
+                                <button type="button" class="btn zob  bg-success btn-icon-only rounded-circle" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"  style="margin-left: 20px; ">
+                                    <span class="btn-inner--icon"><i class="fa fa-comment" style="color: whitesmoke"></i></span>
+                                </button>
+                                <style>
+                                    .zob:hover {
+                                        transform: scale(1.2);
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card  overflow-auto overflow-x-hidden mb-5 mb-lg-0"style="height: 500px; text-align: center">
+                        <form class="card-header">
+                        </form>
+                        <h5 style="margin-left: px">Liste des commentaires</h5>
+                        <div class="card-body p-2">
+                            <ng-container *ngFor="let c of post1.postComments">
+                            <a  class="d-block p-2">
+                                <div class="d-flex p-2">
+                                    <img alt="Image" src="assets/img/{{c.user.profilPic}}" class="avatar shadow">
+                                    <div class="ms-3 " >
+                                        <small class="mb-0">{{c.user.username}}</small><a  class=" dropdown-toggle  " data-bs-toggle="dropdown" id="" style="float: right;"></a>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" aria-labelledby="navbarDropdownMenuLink222">
+                                            <li><a class="dropdown-item "  type="button" (click)="deleteCom(c.postCommentId.toString())" style="color: darkred">Supprimer</a></li>
+                                            <li><a class="dropdown-item" type="button"  (click)="openCom(c)"  data-bs-toggle="modal" data-bs-target="#exampleModal1" style="color: darkgreen">Modifier</a></li>
+                                        </ul>
+                                        <p class="text-muted text-xs mb-2">{{c.commentedAt}}</p>
+                                        <h10>{{c.commentBody}}</h10>
+                                        <div><a class="txtsm"  type="button" data-bs-toggle="collapse" data-bs-target="#twoa" aria-expanded="true" aria-controls="twoa" style="margin-right: 30px; margin-left: 20px; font-size: 4mm"> Répondre</a> <a *ngIf="c.user.userId == currentUser.userId" class="txtsm"  type="button"   (click)="openCom(c)"  data-bs-toggle="modal" data-bs-target="#exampleModal1" style="color: green;margin-right: 30px; margin-left: 20px; font-size: 4mm"> Modifier</a>  <a *ngIf="c.user.userId == currentUser.userId" class="txtsm" (click)="deleteCom(c.postCommentId.toString())" type="button" style="color: red; font-size: 4mm">Supprimer</a></div>
+                                        <style>
+                                            .txtsm:hover{color: #0298b8; }
+                                            .txtsm{text-decoration: underline;
+                                                font-size: 3mm;}
+                                        </style>
+                                    </div>
+                                </div>
+                            </a>
+                                    <div id="twoa" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionRental" style="width: 380px; height: 30px ">
+                                    <div class="card card-body" >
+
+                                        <ng-container *ngFor="let cc of c.postComments">
+
+                                            <div class="" >
+                                                <div class=" info-horizontal">
+                                                    <div class="icon icon-shape  shadow-primary text-center" style="height: 20px;width: 20px; margin-top: 12px;">
+                                                        <a href="javascript:;" class="avatar avatar-xs rounded-circle">
+                                                            <img alt="Image placeholder" src="assets/img/{{cc.user.profilPic}}">
+                                                        </a>                                    </div>
+                                                    <div class="description ps-3">
+                                                        <small class="mb-0" style="font-size: 3mm">{{cc.user.username}}</small><a  class=" dropdown-toggle " data-bs-toggle="dropdown" id="navbarDropdownMenuLink222" style="float: right;"></a>
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" aria-labelledby="navbarDropdownMenuLink222">
+                                                            <li><a class="dropdown-item "  type="button" (click)="deleteCom(cc.postCommentId.toString())" style="color: darkred">Supprimer</a></li>
+                                                            <li><a class="dropdown-item" type="button"  (click)="openCom(cc)"  data-bs-toggle="modal" data-bs-target="#exampleModal1" style="color: darkgreen">Modifier</a></li>
+                                                        </ul>
+                                                        <p class="" style="font-size: 4mm">{{cc.commentBody}}</p>
+                                         <div> <a *ngIf="c.user.userId == currentUser.userId" class="txtsm"  type="button"   (click)="openCom(c)"  data-bs-toggle="modal" data-bs-target="#exampleModal1" style="color: green;margin-right: 30px; margin-left: 20px; font-size: 4mm"> Modifier</a>  <a *ngIf="c.user.userId == currentUser.userId" class="txtsm" (click)="deleteCom(c.postCommentId.toString())" type="button" style="color: red; font-size: 4mm">Supprimer</a></div>
+
+                                                        <style>
+                                                            .txtsm:hover{color: #0298b8; }
+                                                            .txtsm{text-decoration: underline;
+                                                                font-size: 3mm;}
+                                                        </style>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                        <div class="accordion-body text-sm opacity-8" style="">
+                                            <form class="align-items-center">
+                                                <div class="input-group input-group-outline d-flex">
+                                                    <label class="form-label">Ajouter votre commentaire</label>
+                                                    <input type="text"  [(ngModel)]= "comment.commentBody" name="{{post1.postId.toString()}}" class="form-control ">
+                                                    <button class="btn bg-gradient-primary mb-0" (click)="addCommentReply(c.postCommentId.toString())" >
+                                                        <i class="material-icons">send</i>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                </ng-container>
+                        </div>
+
+                    </div>
+                    <div class="card-footer d-block">
+                        <form class="align-items-center">
+                            <div class="input-group input-group-outline d-flex">
+                                <label class="form-label">Ajouter Commentaire</label>
+                                <input type="text" [(ngModel)]= "comment.commentBody" name="{{post1.postId.toString()}}" class="form-control form-control-lg">
+                                <button  (click)="addComment(post1.postId.toString())" class="btn bg-gradient-primary mb-0">
+                                    <i class="material-icons">send</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+<!-- Modal update Comm -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modifier commentaire</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5>{{comm2.commentBody}}</h5>
+                <form>
+                    <div class="input-group input-group-outline my-3">
+                        <label class="form-label">Nouveau</label>
+                        <input name="commentBody" [(ngModel)]= "comment2.commentBody" type="text" class="form-control">
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Fermer</button>
+                <button type="button" class="btn bg-gradient-primary" (click)="UpdateComm(comm2.postCommentId.toString())">Enregistrer les modifications</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Update post -->
+<div class="modal fade" id="exampleModal231" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel23">Titre</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="p-4">
+                    <form>
+                        <div class="input-group input-group-outline  is-filled">
+                            <label class="form-label">Titre</label>
+                            <input name="postTitle1" value="{{post1.postTitle}}" [(ngModel)]= "post1.postTitle" type="text" class="form-control">
+                        </div>
+
+                        <div class="input-group input-group-dynamic" style="margin-top: 20px; " >
+
+                            <textarea  name="body1" value="{{post1.body}}" [(ngModel)]= "post1.body" type="text" class="form-control"></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Fermer</button>
+                <button type="button" (click)="UpdatePost(post1.postId.toString())" class="btn bg-gradient-primary">Enregistrer les modifications</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container py-7">
+    <div class="row mt-5">
+        <div class="col-sm-3 col-6 mx-auto">
+
+
+            <!-- delete -->
+            <div class="modal fade" id="exampleModalNotification" tabindex="-1" aria-labelledby="exampleModalNotification" aria-hidden="true">
+                <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+                    <div class="modal-content bg-gradient-danger">
+                        <div class="modal-header border-0">
+                            <h6 class="modal-title text-white" id="modal-title-notification">Votre attention est requise</h6>
+                            <button type="button" class="btn btn-link text-white my-1" data-bs-dismiss="modal"><i class="fas fa-times"></i></button>
+                        </div>
+                        <hr class="horizontal light mt-0">
+                        <div class="modal-body">
+                            <div class="py-3 text-center text-white">
+                                <i class="material-icons text-3xl">notifications_active</i>
+                                <h4 class="heading mt-4 text-white">Veuillez lire ça</h4>
+                                <p class="text-white opacity-8">Attention ! Êtes-vous sûr(e) de vouloir supprimer ce contenu ? Cette action est définitive..</p>
+                            </div>
+                        </div>
+                        <hr class="horizontal light mb-0">
+                        <div class="modal-footer justify-content-between border-0">
+                            <button type="button" (click)="deletePost(post1.postId.toString())" class="btn btn-white my-1">OK, j'ai compris</button>
+                            <button type="button" class="btn btn-link text-white my-1" data-bs-dismiss="modal">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>

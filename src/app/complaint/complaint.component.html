@@ -1,0 +1,90 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="right">
+                </ng-template>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Les Réclamations par Status </h5>
+                        <canvas #pieChart></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Les Réclamations par type </h5>
+                    <canvas #pieChartt></canvas>
+                </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Evolution des Réclamations par mois</h5>
+                        <canvas #lineChart></canvas>
+                    </div>
+                </div>
+
+
+            </p-toolbar>
+            <p-table #dt [value]="complaints" styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
+                     styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
+                     [filterDelay]="0" [globalFilterFields]="['complaintDate','complaintType', 'complaintStatus', 'description']">>
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Gestion des réclamations</h5>
+                        <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                           placeholder="Global Search"/>
+                </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 4rem">
+                        </th>
+                        <th pSortableColumn="complaintDate">Date Réclamation <p-sortIcon field="complaintDate"></p-sortIcon></th>
+                        <th pSortableColumn="complaintType">Type <p-sortIcon field="complaintType"></p-sortIcon></th>
+                        <th pSortableColumn="complaintStatus">Status <p-sortIcon field="complaintStatus"></p-sortIcon></th>
+                        <th pSortableColumn="description">Objet<p-sortIcon field="description"></p-sortIcon></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-complaint  >
+                    <tr>
+                        <td>
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{complaint.complaintDate}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{complaint.complaintType}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{complaint.complaint_status}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{complaint.description}}
+                        </td>
+                        <td>
+                            <div *ngIf="complaint.editable">
+                                <button pButton pRipple icon="pi pi-check" class="p-button-rounded p-button-success" (click)="updateUntreatedComplaint(complaint.complaintId)"></button>
+                                <button pButton pRipple icon="pi pi-times" class="p-button-rounded p-button-danger" (click)="complaint.editable=false"></button>
+                            </div>
+                            <div *ngIf="!complaint.editable">
+                                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-info" (click)="complaint.editable=true"></button>
+                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteComplaint(complaint.complaintId.toString())"></button>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        Il y' a eu  {{complaints ? complaints.length : 0 }} Réclamation.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+    </div>
+</div>
+

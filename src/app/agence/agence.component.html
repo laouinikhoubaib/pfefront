@@ -1,0 +1,113 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="right">
+                </ng-template>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Agences par type</h5>
+                            <canvas #pieChart></canvas>
+                    </div>
+                </div>
+            </p-toolbar>
+            <p-toolbar styleClass="p-mb-4">
+
+                <ng-template pTemplate="left">
+                    <button  pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openNew()"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                </ng-template>
+            </p-toolbar>
+            <p-table #dt [value]="listagence" styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
+                     styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
+                     [filterDelay]="0" [globalFilterFields]="['nom', 'numero', 'email', 'adresse', 'dateouverture', 'datefermeture', 'jourtravail', 'description', 'typeagence']">>
+
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Gestion des agences</h5>
+                        <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                           placeholder="Global Search"/>
+                </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                        </th>
+                        <th pSortableColumn="name">Nom d'agence <p-sortIcon field="name"></p-sortIcon></th>
+                        <th pSortableColumn="numero">Numéro de téléphone <p-sortIcon field="numero"></p-sortIcon></th>
+                        <th pSortableColumn="email">Email<p-sortIcon field="email"></p-sortIcon></th>
+                        <th pSortableColumn="adresse">Adresse<p-sortIcon field="adresse"></p-sortIcon></th>
+                        <th pSortableColumn="dateouverture">Ouverture<p-sortIcon field="dateouverture"></p-sortIcon></th>
+                        <th pSortableColumn="datefermeture">Fermeture<p-sortIcon field="datefermeture"></p-sortIcon></th>
+                        <th pSortableColumn="jourtravail">Jours de travail<p-sortIcon field="jourtravail"></p-sortIcon></th>
+                        <th pSortableColumn="description">Détails<p-sortIcon field="description"></p-sortIcon></th>
+                        <th pSortableColumn="type">Type d'agence<p-sortIcon field="type"></p-sortIcon></th>
+                        <th pSortableColumn="locked">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Status
+                                <p-sortIcon field="locked"></p-sortIcon>
+                                <p-columnFilter type="text" field="locked" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-newAgence  >
+                    <tr>
+                        <td>
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newAgence.nom}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newAgence.numero}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newAgence.email}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newAgence.adresse}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newAgence.dateouverture}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newAgence.datefermeture}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newAgence.jourtravail}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newAgence.description}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newAgence.typeagence}}
+                        </td>
+                        <td>
+                            <span *ngIf="newAgence.locked" [class]="'customer-badge status-unqualified'">Bloquée</span>
+                            <span *ngIf="!newAgence.locked" [class]="'customer-badge status-proposal'">Active</span>
+                        </td>
+                        <td style="text-align: center">
+                            <button *ngIf="!newAgence.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock" (click)="blockAgence(newAgence.nom)"></button>
+                            <button *ngIf="newAgence.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock-open" (click)="deblockAgence(newAgence.nom)"></button>
+                        </td>
+
+                    </tr>
+                </ng-template>
+
+
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        Il y' a eu  {{listagence ? listagence.length : 0 }} Agence.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,231 @@
+
+
+
+<!-- -------- START HEADER 4 w/ search book a ticket form ------- -->
+<header>
+    <div class="page-header min-height-400" style="background-image: url('../assets/img/city-profile.jpg');" loading="lazy">
+        <span class="mask bg-gradient-dark opacity-8"></span>
+    </div>
+</header>
+<!-- -------- END HEADER 4 w/ search book a ticket form ------- -->
+<div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6 mb-4">
+    <!-- START Testimonials w/ user image & text & info -->
+    <section class="py-sm-7 py-5 position-relative">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mx-auto">
+                    <div class="mt-n8 mt-md-n9 text-center">
+                        <img class="avatar avatar-xxl shadow-xl position-relative z-index-2" src="assets/img/{{profilPicture}}" alt="bruce" loading="lazy">
+                    </div>
+                    <div class="row py-5">
+                        <div class="col-lg-7 col-md-7 z-index-2 position-relative px-md-2 px-sm-5 mx-auto">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h3 class="mb-0">{{user.username}}</h3>
+                                <div class="d-block">
+                                    <button type="button" class="btn btn-sm btn-outline-info text-nowrap mb-0" (click)="followUser()" *ngIf="!friendExists">Follow</button>
+                                    <button type="button" class="btn btn-sm btn-outline-info text-nowrap mb-0" (click)="unfollowUser()" *ngIf="friendExists">Unfollow</button>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-auto">
+                                    <span class="h6">3</span>
+                                    <span>Posts</span>
+                                </div>
+                                <div class="col-auto">
+                                    <span class="h6">2</span>
+                                    <span>Joined Courses</span>
+                                </div>
+                                <div class="col-auto">
+                                    <span class="h6">{{friendList.length}}</span>
+                                    <span><a data-bs-toggle="modal" data-bs-target="#friendsModal" style="cursor:pointer;">Friends</a></span>
+                                </div>
+
+
+
+
+
+                            </div>
+                            <p class="text-lg mb-0">
+                                Decisions: If you can’t decide, the answer is no.
+                                If two equally difficult paths, choose the one more
+                                painful in the short term (pain avoidance is creating
+                                an illusion of equality). Choose the path that leaves
+                                you more equanimous. <br><a href="javascript:;" class="text-info icon-move-right">More about me
+                                <i class="fas fa-arrow-right text-sm ms-1"></i>
+                            </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END Testimonials w/ user image & text & info -->
+
+
+
+
+
+</div>
+
+
+
+
+
+<section class="py-lg-5">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card box-shadow-xl overflow-hidden mb-5">
+                    <div class="row">
+                        <div class="col-lg-5 position-relative bg-cover px-0" style="background-image: url('../assets/img/examples/blog2.jpg')" loading="lazy">
+                            <div class="z-index-2 text-center d-flex h-100 w-100 d-flex m-auto justify-content-center">
+                                <div class="mask bg-gradient-dark opacity-8"></div>
+                                <div class="p-5 ps-sm-8 position-relative text-start my-auto z-index-2">
+                                    <h3 class="text-white">Contact Information</h3>
+                                    <p class="text-white opacity-8 mb-4">Fill up the form and our Team will get back to you within 24 hours.</p>
+                                    <div class="d-flex p-2 text-white">
+                                        <div>
+                                            <i class="fas fa-phone text-sm"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <span class="text-sm opacity-8">(+40) 772 100 200</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex p-2 text-white">
+                                        <div>
+                                            <i class="fas fa-envelope text-sm"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <span class="text-sm opacity-8">hello@creative-tim.com</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex p-2 text-white">
+                                        <div>
+                                            <i class="fas fa-map-marker-alt text-sm"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <span class="text-sm opacity-8">Dyonisie Wolf Bucharest, RO 010458</span>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <button type="button" class="btn btn-icon-only btn-link text-white btn-lg mb-0" data-toggle="tooltip" data-placement="bottom" data-original-title="Log in with Facebook">
+                                            <i class="fab fa-facebook"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-icon-only btn-link text-white btn-lg mb-0" data-toggle="tooltip" data-placement="bottom" data-original-title="Log in with Twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-icon-only btn-link text-white btn-lg mb-0" data-toggle="tooltip" data-placement="bottom" data-original-title="Log in with Dribbble">
+                                            <i class="fab fa-dribbble"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-icon-only btn-link text-white btn-lg mb-0" data-toggle="tooltip" data-placement="bottom" data-original-title="Log in with Instagram">
+                                            <i class="fab fa-instagram"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <form class="p-3" id="contact-form" method="post">
+                                <div class="card-header px-4 py-sm-5 py-3">
+                                    <h2>Say Hi!</h2>
+                                    <p class="lead"> We'd like to talk with you.</p>
+                                </div>
+                                <div class="card-body pt-1">
+                                    <div class="row">
+                                        <div class="col-md-12 pe-2 mb-3">
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>My name is</label>
+                                                <input type="text" class="form-control" placeholder="Full Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 pe-2 mb-3">
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>I'm looking for</label>
+                                                <input type="text" class="form-control" placeholder="What you love">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 pe-2 mb-3">
+                                            <div class="input-group input-group-static mb-4">
+                                                <label>Your message</label>
+                                                <textarea name="message" class="form-control" id="message" rows="6" placeholder="I want to say that..."></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 text-end ms-auto">
+                                            <button type="submit" class="btn bg-gradient-info mb-0">Send Message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Friends Modal -->
+<div class="modal fade" id="friendsModal" tabindex="-1" aria-labelledby="friendsModal" aria-hidden="true">
+    <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="friendsModalLabel">Friend List</h5>
+            </div>
+            <div class="modal-body p-0">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table class="table align-items-center mb-0" *ngIf="friendList.length != 0">
+                            <tbody *ngFor="let friend of friendList; let i=index ">
+                            <tr>
+                                <td>
+                                    <div class="d-flex px-2 py-0">
+                                        <a href="javascript:;" class="avatar avatar-xs rounded-circle">
+                                            <img alt="Image placeholder" src="../../assets/img/team-4.jpg"> &nbsp;
+                                        </a>
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">&nbsp;{{friend.name}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <a class="text-xs icon-move-left" style="cursor:pointer;">Check Profil
+                                        <i class="fas fa-arrow-left text-sm ms-1"></i></a>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <a class="text-xs icon-move-left" style="cursor:pointer;">
+                                        <i class="fas fa-user-slash text-sm ms-1"></i>
+                                        Unfriend</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table align-items-center mb-0" *ngIf="friendList.length == 0">
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <span>You don't have any friends at the moment</span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

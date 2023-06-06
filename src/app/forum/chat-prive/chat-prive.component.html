@@ -1,0 +1,175 @@
+<body style="background-color: #8f93a9">
+<div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6" >
+    <div class="section my-5" >
+        <div class="container">
+            <div class="row flex-row" style="margin-top: 150px">
+                <div class="col-lg-4" >
+                    <div class="card max-height-vh-70 overflow-auto overflow-x-hidden mb-5 mb-lg-0">
+                        <form class="card-header">
+                            <div class="input-group input-group-outline">
+                                <label class="form-label">Search contact</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </form>
+                        <div class="card-body p-2">
+                        <ng-container *ngFor="let c of users">
+                            <a href="javascript:;" class="d-block p-2 uss" type="button" (click)="ref(currentUser.userId.toString(),c.userId.toString(),c.name,c.profilPic)">
+                                <div class="d-flex p-2">
+                                    <img alt="Image" src="assets/img/{{c.profilPic}}" class="avatar shadow">
+                                    <div class="ms-3">
+                                        <h6 class="mb-0">{{c.username}}</h6>
+                                        <p class="text-muted text-xs mb-2">1 hour ago</p>
+
+                                    </div>
+                                </div>
+                            </a>
+                            <style>.uss:hover{background-color: #0298b8} </style>
+                        </ng-container>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card max-height-vh-70">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent" >
+                            <div class="bg shadow border-radius-lg p-3" style=" background-color: {{map.get(currentUser.userId).color}}  ;">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <div class="d-flex align-items-center">
+                                            <img alt="Image" src="assets/img/{{map3.get(currentUser.userId)}}" class="avatar">
+                                            <div class="ms-3">
+                                                <h6 class="mb-0 d-block text-white">{{map2.get(currentUser.userId)}}</h6>
+                                                <span class="text-sm text-white opacity-8"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 my-auto">
+                                        <button class="btn btn-icon-only text-white mb-0 me-3 me-sm-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Video call">
+                                            <i class="material-icons">videocam</i>
+                                        </button>
+                                    </div>
+                                    <div class="col-1 my-auto">
+                                        <div class="dropdown dropdown-hover">
+                                            <button class="btn btn-icon-only text-white mb-0" type="button" data-bs-toggle="dropdown">
+                                                <i class="material-icons">settings</i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end me-sm-n2 p-2" aria-labelledby="chatmsg">
+
+                                                <li>
+                                                        <button class="rounded-circle" (click)="color(map.get(currentUser.userId).chatroomId.toString() , 'green')" style="height: 20px; margin-right: 5px; background-color: green"></button>
+                                                    <button class="rounded-circle" (click)="color(map.get(currentUser.userId).chatroomId.toString() , 'blue')" style="height: 20px; margin-right: 5px; background-color: blue"></button>
+                                                    <button class="rounded-circle" (click)="color(map.get(currentUser.userId).chatroomId.toString() , 'red')" style="height: 20px; margin-right: 5px; background-color: red"></button>
+                                                    <button class="rounded-circle" (click)="color(map.get(currentUser.userId).chatroomId.toString() , '#EC407A')" style="height: 20px; margin-right: 5px; background-color: #EC407A"></button>
+                                                    <button class="rounded-circle" (click)="color(map.get(currentUser.userId).chatroomId.toString() , '#7d1f8d')" style="height: 20px; margin-right: 5px; background-color: #7d1f8d"></button>
+                                                    <button class="rounded-circle" (click)="color(map.get(currentUser.userId).chatroomId.toString() , 'yellow')" style="height: 20px; margin-right: 5px; background-color: yellow"></button>
+                                                    <button class="rounded-circle" (click)="color(map.get(currentUser.userId).chatroomId.toString() , '#be6a00')" style="height: 20px; margin-right: 5px; background-color: #be6a00"></button>
+
+                                                </li>
+                                                <li>
+                                                    <hr class="dropdown-divider">
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body  overflow-auto overflow-x-hidden" style="height: 440px">
+                            <ng-container *ngIf="chhh">
+                                    <div *ngIf="map2.get(currentUser.userId)">
+                                <a href="javascript:;" class="avatar avatar-xl rounded-circle" style="margin-left: 45%">
+                                    <img alt="Image placeholder" src="assets/img/{{map3.get(currentUser.userId)}}">
+
+                                </a><br>
+                                <h7 style="margin-left: 38%">Start Chat with {{map2.get(currentUser.userId)}}</h7></div>
+                                <ng-container *ngFor="let aa of map.get(currentUser.userId).messages" >
+                                    <div class="row justify-content-start mb-4" *ngIf="aa.username != this.username  ">
+                                        <div class="col-auto">
+                                            <div class="card ">
+                                                <div class="card-body p-2">
+                                                    <p class="mb-1"> {{aa.username}} :
+                                                        {{aa.text}}
+                                                    </p>
+                                                    <div class="d-flex align-items-center text-sm opacity-6">
+                                                        <i class="material-icons text-sm me-1">schedule</i>
+                                                        <small>3:14am</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-end text-right mb-4" *ngIf="aa.username == this.username  ">
+                                        <div class="col-auto">
+                                            <div class="card bg text-white" style=" background-color: {{map.get(currentUser.userId).color}}  ;">
+                                                <div class="card-body p-2">
+                                                    <p class="mb-1">{{aa.username}} :
+                                                        {{aa.text}}<br>
+                                                    </p>
+                                                    <div class="d-flex align-items-center justify-content-end text-sm opacity-6">
+                                                        <i class="material-icons text-sm me-1">done_all</i>
+                                                        <small>4:42pm</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+
+                                    <ng-container *ngFor="let message of chatService.messages" >
+                                        <ng-container *ngIf="message.chatid == map.get(currentUser.userId).chatroomId">
+
+                                            <div class="row justify-content-start mb-4" *ngIf="message.user.name != this.username  ">
+                                                <div class="col-auto">
+                                                    <div class="card ">
+                                                        <div class="card-body p-2">
+                                                            <p class="mb-1"> {{message.user.name}} :
+                                                                {{message.text}}
+                                                            </p>
+                                                            <div class="d-flex align-items-center text-sm opacity-6">
+                                                                <i class="material-icons text-sm me-1">schedule</i>
+                                                                <small>3:14am</small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-end text-right mb-4" *ngIf="message.user.name == this.username  ">
+                                                <div class="col-auto">
+                                                    <div class="card bg text-white"style=" background-color: {{map.get(currentUser.userId).color}}  ;">
+                                                        <div class="card-body p-2">
+                                                            <p class="mb-1">{{message.user.name}} :
+                                                                {{message.text}}<br>
+                                                            </p>
+                                                            <div class="d-flex align-items-center justify-content-end text-sm opacity-6">
+                                                                <i class="material-icons text-sm me-1">done_all</i>
+                                                                <small>4:42pm</small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </ng-container>
+                                    </ng-container>
+
+                                </ng-container>
+
+                        </div>
+
+                        <div class="card-footer d-block">
+                            <form class="align-items-center">
+                                <div class="input-group input-group-outline d-flex">
+                                    <label class="form-label">Type your message</label>
+                                    <input  name="body" [(ngModel)]="messages" type="text" class="form-control form-control-lg">
+                                    <button  (click)="sendMessage($event, avatar)"  class="btn bg mb-0" style=" background-color: {{map.get(currentUser.userId).color}}  ;">
+                                        <i class="material-icons">send</i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>

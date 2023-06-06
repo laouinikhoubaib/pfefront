@@ -1,0 +1,88 @@
+<div class="layout-topbar">
+    <div class="topbar-left">
+        <a tabindex="0" class="menu-button" (click)="appMain.onMenuButtonClick($event)">
+            <i class="pi pi-chevron-left"></i>
+        </a>
+        <span class="topbar-separator"></span>
+        <ng-template ngFor let-item let-last="last" [ngForOf]="items">
+            <span class="viewname" style="text-transform: uppercase">{{item.label}}</span>
+        </ng-template>
+        <img id="logo-mobile" class="mobile-logo" [src]="'assets/layout/images/logo-'+ (app.colorScheme === 'light' ? 'dark' : 'white') + '.svg'" alt="diamond-layout" />
+    </div>
+    <div class="topbar-right">
+        <ul class="topbar-menu">
+            <li class='notifications-item' [ngClass]="{'active-menuitem ': appMain.topbarNotificationMenuActive}">
+                <ul class="notifications-menu fade-in-up">
+                    <li role="menuitem">
+                        <a href="#" tabindex="0">
+                            <i class="pi pi-shopping-cart"></i>
+                            <div class="notification-item">
+                                <div class="notification-summary">New Order</div>
+                                <div class="notification-detail">You have <strong>3</strong> new orders.</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li role="menuitem">
+                        <a href="#" tabindex="0">
+                            <i class="pi pi-check-square"></i>
+                            <div class="notification-item">
+                                <div class="notification-summary">Withdrawn Completed</div>
+                                <div class="notification-detail">Funds are on their way.</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li role="menuitem">
+                        <a href="#" tabindex="0">
+                            <i class="pi pi-chart-line"></i>
+                            <div class="notification-item">
+                                <div class="notification-summary">Monthly Reports</div>
+                                <div class="notification-detail">New reports are ready.</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li role="menuitem">
+                        <a href="#" tabindex="0">
+                            <i class="pi pi-comments"></i>
+                            <div class="notification-item">
+                                <div class="notification-summary">Comments</div>
+                                <div class="notification-detail"><strong>2</strong> new comments.</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li role="menuitem">
+                        <a href="#" tabindex="0">
+                            <i class="pi pi-exclamation-circle"></i>
+                            <div class="notification-item">
+                                <div class="notification-summary">Chargeback Request</div>
+                                <div class="notification-detail"><strong>1</strong> to review.</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="profile-item" [ngClass]="{'active-menuitem fadeInDown': appMain.topbarUserMenuActive}">
+                <a href="#" (click)="appMain.onTopbarUserMenuButtonClick($event)">
+                    <img src="assets/img/{{profilPicture}}" alt="diamond-layout" class="profile-image"/>
+                    <span class="profile-name">{{currentUser.username}}</span>
+                </a>
+                <ul class="profile-menu fade-in-up">
+                    <li>
+                        <a href="/#/profil">
+                            <i class="pi pi-user"(click)="redirectTo()"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="currentUser?.userId">
+                        <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
+                           (click)="logOut()" >
+                            <i class="pi pi-power-off" (click)="logOut()"></i>
+                            <span>Déconnexion</span>
+                        </a>
+
+                    </li>
+                </ul>
+        </ul>
+    </div>
+</div>

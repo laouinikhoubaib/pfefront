@@ -1,0 +1,107 @@
+
+<!-- Content Start -->
+<div class="content">
+    <div class="container-fluid pt-4 px-4">
+        <div class="bg-light text-center rounded p-4">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+
+                    <h3 class="p-m-0"> List des véhicules</h3>
+            </div>
+            <div class="table-responsive">
+                <div class="col-md-4">
+                    <input class="form-control" type="text"  name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442; Search">
+                    </div>
+                    <br>
+                        <form [formGroup]="datePickerForm" >
+                            <div class="row col-6">
+                                <!--<div class="col-6">
+                                    <label for="">Start</label>
+                                    <input type="date" name="startdate" [(ngModel)]="contract.startdate" class="form-control">
+                                </div> -->
+                                <!-- Recent Sales Start -->
+<!--                                <mat-form-field  class="example-form-field form-control" appearance="fill">-->
+<!--                                    <mat-label  class="form-label" >Selectionner l'intervale de date</mat-label>-->
+<!--                                    <mat-date-range-input  [rangePicker]="campaignOnePicker"-->
+<!--                                        >-->
+<!--                                        <input matStartDate formControlName="startdate" placeholder="Start date">-->
+<!--                                        <input matEndDate formControlName="enddate" placeholder="End date">-->
+<!--                                    </mat-date-range-input>-->
+<!--                                    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>-->
+<!--                                    <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>-->
+<!--                                    <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>-->
+<!--                                </mat-form-field>-->
+                            </div>
+                            <div style="text-align: left;">                 
+                                           <button style="margin-top: 20px; width: 30%; margin-bottom: 20px;" type="button" (click)="getAvailableOffers()" class="btn btn-dark">Chercher les Offres disponibles </button>
+                            </div>
+                        </form>
+                        <button (click)="filterD()" class="btn btn-success"><i class="bi bi-sort-down"></i></button>
+                          
+                          <button (click)="filterA()" class="btn btn-info"><i class="bi bi-sort-up"></i></button>
+                          <button routerLink="/superadmin/AddVehicule" type="button" class="btn btn-dark ml-3" style="background-color: rosybrown; font-weight: bold;"><i class="bi bi-plus-circle"></i></button>
+                        <div style="text-align:right; padding-bottom: 30px;"> <button type="button" routerLink="/superadmin/AddVehicule" routerLinkActive="active" class="btn btn-dark" style="color: black; font-weight: bold;">Ajouter une véhicule</button></div>
+                <table class="table" >
+                    
+                    <thead class="table-dark" style="border-radius: 20px;">
+                        <tr >
+                            <th scope="col">Image</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Matricule</th>
+                            <th scope="col">Nombre de places</th>
+                            <th scope="col">Couleur</th>
+                            <th scope="col">Longueur</th>
+                            <th scope="col">Largeur</th>
+                            <th scope="col">Puissance</th>
+                            <th scope="col">Charge utile</th>
+                            <th scope="col">Date d'ajout</th>
+                            <th scope="col">Jours de Location</th>
+                            <th scope="col">Alimentation</th>
+                            <th scope="col">Agence</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <tr *ngFor="let i of list | filter:searchText
+                        | paginate
+                            : {
+                                itemsPerPage: tableSize,
+                                currentPage: page,
+                                totalItems: count
+                              };
+                        let x = index">
+                            <td><img src="assets/img/{{ i.picture }}" width="40"></td>
+                            <td> {{ i.vehiculeId }}</td>
+                            <td>{{i.matricule}}</td>
+                            <td>{{i.nbrplaces}}</td>
+                            <td>{{i.couleur}}</td>
+                            <td>{{i.longueur}}</td>
+                            <td>{{i.largeur}}</td>
+                            <td>{{i.puissance}}</td>
+                            <td>{{i.chargeutile}}</td>
+                            <td>{{i.dateajout}}</td>
+                            <td>{{i.jourslocation}}</td>
+                            <td>{{i.Alimentation}}</td>
+                            <td>{{nomAgence}}</td>
+                            <td>{{i.description}}</td>
+
+                            <td style="text-align: center;">
+<!--                                <button (click)="deleteOffer(i.vehiculeId)" type="button" class="btn btn-danger mr-2" > <i class="bi bi-trash-fill"></i></button>-->
+                                <button class="btn btn-primary mr-2" (click)="update(i)" style="margin-left: 5px;"><i class="bi bi-pencil-fill"></i></button>
+                                <button class="btn btn-primary mr-2" (click)="detail(i)"  style="margin-left: 5px;"><i class="bi bi-eye-fill"></i></button>
+                            </td>
+                            <td>
+                                <button class="btn btn-success" (click)="disponile(i)">Disponibilité</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="d-flex justify-content-center">
+                    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+                    </pagination-controls>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
