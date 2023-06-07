@@ -80,9 +80,9 @@ export class ListeVehiculeFrontComponent implements OnInit {
     this.router.navigate(['/UpdateVehicule', i.vehiculeId]);
   }
 
-  detail(data:any){
+  detail(data: any){
     console.log(data);
-    const url = 'listeReservation/' + data.vehiculeId;
+    const url = 'listeReservation/' + data.vehiculeId + '/ajout' ;
     this.router.navigateByUrl(url);
   }
 
