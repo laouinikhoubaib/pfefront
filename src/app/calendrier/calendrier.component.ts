@@ -23,7 +23,7 @@ export class CalendrierComponent implements OnInit {
         });
     }
 
-    mapReservationsToEvents(reservations: Reservation[]): Object[] {
+    mapReservationsToEvents(reservations: Reservation[]): object[] {
         return reservations.map(reservation => {
             const endDateTime = reservation.datefin ? new Date(reservation.datefin) : new Date(reservation.datedebut);
             return {
