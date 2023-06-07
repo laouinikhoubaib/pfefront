@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { EventSettingsModel } from '@syncfusion/ej2-angular-schedule';
-import { Reservation } from '../models/reservation';
+import {Component, OnInit} from '@angular/core';
+import {EventSettingsModel} from '@syncfusion/ej2-angular-schedule';
+import {Reservation} from '../models/reservation';
 import {ReservationServiceService} from '../service/reservation-service.service';
 
 @Component({
@@ -10,28 +10,39 @@ import {ReservationServiceService} from '../service/reservation-service.service'
 })
 export class CalendrierComponent implements OnInit {
 
-    reservations: Reservation[] = [];
 
-    eventSettings: EventSettingsModel = { dataSource: [] };
+    eventSettings: EventSettingsModel;
 
-    constructor(private reservationService: ReservationServiceService) { }
+
+    public selectedDate: Date = new Date(2023, 5, 14);
+
+
+    constructor(private reservationService: ReservationServiceService) {
+    }
 
     ngOnInit(): void {
         this.reservationService.getReservation().subscribe(reservations => {
-            this.reservations = reservations;
-            this.eventSettings.dataSource = this.mapReservationsToEvents(reservations);
+           this.eventSettings = { dataSource : this.ReservationsCalendar(reservations) };
         });
+
+        console.log(this.selectedDate);
+        console.log(this.eventSettings);
     }
 
-    mapReservationsToEvents(reservations: Reservation[]): object[] {
+    ReservationsCalendar(reservations: Reservation[]): object[] {
         return reservations.map(reservation => {
+
             const endDateTime = reservation.datefin ? new Date(reservation.datefin) : new Date(reservation.datedebut);
+            // this.selectedDate = new Date(reservation.datedebut);
+            // console.log(reservation.datedebut);
+            // console.log(reservation.datefin);
             return {
                 Id: reservation.reservid,
-                Subject: `Reservation ${reservation.reservid}`,
+                Subject: 'reservation ' + reservation.reservid,
                 StartTime: new Date(reservation.datedebut),
-                EndTime: endDateTime,
+                EndTime: new Date(endDateTime),
             };
+
         });
     }
 }
