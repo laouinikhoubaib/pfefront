@@ -4,7 +4,6 @@ import {AppMainComponent} from './back/app.main.component';
 import {AppNotfoundComponent} from './pages/app.notfound.component';
 import {AppErrorComponent} from './pages/app.error.component';
 import {AppAccessdeniedComponent} from './pages/app.accessdenied.component';
-import {RegisterComponent} from './user/register/register.component';
 import {LoginComponent} from './user/login/login.component';
 import {HomeComponent} from './user/home/home.component';
 import {FrontLandingComponent} from './user/front-landing/front-landing.component';
@@ -18,12 +17,9 @@ import {Auth2Guard} from './guards/auth2.guard';
 import {AdminDashboardBackofficeComponent} from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
 import {AgenceComponent} from './agence/agence.component';
 import {SAdminDashboardBackofficeComponent} from './user/super-admin-dashboard-backoffice/super-admin-dashboard-backoffice.component';
-import {RegisterComponent3} from './user/register3/register3.component';
-import {RegisterComponent2} from './user/register2/register2.component';
 import {
     FAdminDashboardBackofficeComponent
 } from './user/franchise-admin-dashboard-backoffice/franchise-admin-dashboard-backoffice.component';
-import {Complaint} from './models/complaint';
 import {ComplaintComponent} from './complaint/complaint.component';
 import {ChatboxComponent} from './chatbox/chatbox.component';
 import {ForumComponent} from './forum/forum.component';
@@ -64,7 +60,6 @@ import {CalendrierComponent} from './calendrier/calendrier.component';
                 {path: 'admin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]},
                     children: [
                         {path: '', component: AdminDashboardBackofficeComponent},
-
                         {path: 'listVehicules', component: ListeVehiculeFrontComponent },
                         {path: 'listVehiculesback', component: ListeVehiculesComponent },
 
@@ -81,7 +76,6 @@ import {CalendrierComponent} from './calendrier/calendrier.component';
                     children: [
                         {path: '', component: AdminDashboardBackofficeComponent},
                         {path: 'listVehicules', component: ListeVehiculeFrontComponent },
-
                         {path: 'listVehiculesback', component: ListeVehiculesComponent },
 
                     ]
@@ -92,7 +86,6 @@ import {CalendrierComponent} from './calendrier/calendrier.component';
                         {path: 'agence', component: AgenceComponent},
                         {path: 'complaint', component: ComplaintComponent},
                         {path: '', component: SAdminDashboardBackofficeComponent},
-
                         {path: 'AddVehicule', component: AjoutVehiculeComponent },
                         {path: 'listVehicules', component: ListeVehiculeFrontComponent },
                         {path: 'UpdateVehicule/:idvehicule', component: UpdateVehiculeComponent },
@@ -111,14 +104,10 @@ import {CalendrierComponent} from './calendrier/calendrier.component';
                         {path: 'post-detais/:id', component: PostDetailsComponent},
                         {path: 'user-post', component: UserPostsComponent},
                         {path: 'listVehicules', component: ListeVehiculeFrontComponent },
-
                         {path: 'listVehiculesback', component: ListeVehiculesComponent },
 
                     ]
                 },
-                {path: 'register', component: RegisterComponent},
-                {path: 'register2', component: RegisterComponent2},
-                {path: 'register3', component: RegisterComponent3},
                 {path: 'error', component: AppErrorComponent},
                 {path: 'access', component: AppAccessdeniedComponent},
                 {path: 'notfound', component: AppNotfoundComponent},

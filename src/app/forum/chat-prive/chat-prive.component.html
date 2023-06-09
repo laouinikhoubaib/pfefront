@@ -7,7 +7,7 @@
                     <div class="card max-height-vh-70 overflow-auto overflow-x-hidden mb-5 mb-lg-0">
                         <form class="card-header">
                             <div class="input-group input-group-outline">
-                                <label class="form-label">Search contact</label>
+                                <label class="form-label">Chercher un collègue</label>
                                 <input type="text" class="form-control">
                             </div>
                         </form>
@@ -18,8 +18,6 @@
                                     <img alt="Image" src="assets/img/{{c.profilPic}}" class="avatar shadow">
                                     <div class="ms-3">
                                         <h6 class="mb-0">{{c.username}}</h6>
-                                        <p class="text-muted text-xs mb-2">1 hour ago</p>
-
                                     </div>
                                 </div>
                             </a>
@@ -35,17 +33,12 @@
                                 <div class="row">
                                     <div class="col-md-10">
                                         <div class="d-flex align-items-center">
-                                            <img alt="Image" src="assets/img/{{map3.get(currentUser.userId)}}" class="avatar">
+                                            <img alt="Profil Picture" src="assets/img/{{profilPicture}}" class="avatar avatar-xs rounded-circle mx-2">
                                             <div class="ms-3">
                                                 <h6 class="mb-0 d-block text-white">{{map2.get(currentUser.userId)}}</h6>
                                                 <span class="text-sm text-white opacity-8"></span>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-1 my-auto">
-                                        <button class="btn btn-icon-only text-white mb-0 me-3 me-sm-0" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Video call">
-                                            <i class="material-icons">videocam</i>
-                                        </button>
                                     </div>
                                     <div class="col-1 my-auto">
                                         <div class="dropdown dropdown-hover">
@@ -77,11 +70,7 @@
                         <div class="card-body  overflow-auto overflow-x-hidden" style="height: 440px">
                             <ng-container *ngIf="chhh">
                                     <div *ngIf="map2.get(currentUser.userId)">
-                                <a href="javascript:;" class="avatar avatar-xl rounded-circle" style="margin-left: 45%">
-                                    <img alt="Image placeholder" src="assets/img/{{map3.get(currentUser.userId)}}">
-
-                                </a><br>
-                                <h7 style="margin-left: 38%">Start Chat with {{map2.get(currentUser.userId)}}</h7></div>
+                                <h7 style="margin-left: 38%"> {{map2.get(currentUser.userId)}}</h7></div>
                                 <ng-container *ngFor="let aa of map.get(currentUser.userId).messages" >
                                     <div class="row justify-content-start mb-4" *ngIf="aa.username != this.username  ">
                                         <div class="col-auto">
@@ -90,10 +79,6 @@
                                                     <p class="mb-1"> {{aa.username}} :
                                                         {{aa.text}}
                                                     </p>
-                                                    <div class="d-flex align-items-center text-sm opacity-6">
-                                                        <i class="material-icons text-sm me-1">schedule</i>
-                                                        <small>3:14am</small>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -158,7 +143,7 @@
                         <div class="card-footer d-block">
                             <form class="align-items-center">
                                 <div class="input-group input-group-outline d-flex">
-                                    <label class="form-label">Type your message</label>
+                                    <label class="form-label">Votre message</label>
                                     <input  name="body" [(ngModel)]="messages" type="text" class="form-control form-control-lg">
                                     <button  (click)="sendMessage($event, avatar)"  class="btn bg mb-0" style=" background-color: {{map.get(currentUser.userId).color}}  ;">
                                         <i class="material-icons">send</i>

@@ -42,8 +42,88 @@
                         <ng-template pTemplate="caption">
                             <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                                 <div>
-                                    <button  pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="redirectTo()" ></button>
+                                    <button  pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openDialog()"></button>
                                 </div>
+                                <p-dialog header="Ajouter un utilisateur" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [style]="{ 'width': '600px', 'height': '600px' }">
+                                    <div class="text-center">
+                                        <h2></h2>
+                                    </div>
+                                    <section>
+                                        <form role="form" #f="ngForm" (ngSubmit)="f.form.valid && register()">
+                                            <div class="row justify-space-between text-center py-2">
+
+                                                <div class="row">
+                                                    <div class="alert alert-primary text-white font-weight-bold" role="alert" *ngIf="errorMessage">
+                                                        {{errorMessage}}
+                                                    </div>
+                                                </div>
+                                                <h5 class="card card-body border-0 shadow-lg rounded-lg bg-transparent animate__animated animate__fadeInRight login-form" style="color: grey;">
+                                                    Veuillez spécifier le role
+                                                </h5>
+                                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                    <input type="radio" class="btn-check" name="role" id="role1" [(ngModel)]="middleRole" #role="ngModel" [value]="'USER'" autocomplete="off" *ngIf="currentUser?.role == 'ADMIN' || currentUser?.role == 'SUPERADMIN'">
+                                                    <label class="btn btn-outline-dark" for="role1"><i class="pi pi-user"></i>&nbsp; AGENT</label>
+                                                </div>
+                                            </div>
+
+                                            <h5 class="card card-body border-0 shadow-lg rounded-lg bg-transparent animate__animated animate__fadeInRight login-form" style="color: grey;">
+                                                Informations personnelles
+                                            </h5>
+
+                                            <div class="input-container">
+                                                <input type="email" id="email" class="form-control" name="email" [(ngModel)]="user.email" #email="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                                                <label for="email" class="label">Email</label>
+                                                <div class="underline"></div>
+                                                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+                                                    <div *ngIf="email.errors.required">Email is required.</div>
+                                                    <div *ngIf="email.errors.pattern">Invalid email format.</div>
+                                                </div>
+                                            </div>
+                                            <div class="input-container">
+                                                <input type="date" id="birthDate" class="form-control" name="birthDate" [(ngModel)]="user.birthDate" #birthDate="ngModel" required>
+                                                <label for="birthDate" class="label">Date d'enregistrement</label>
+                                                <div class="underline"></div>
+                                            </div>
+                                            <div class="input-container">
+                                                <input type="file" id="formFile" class="form-control" name="formFile" (change)="onFileSelcted($event)" required>
+                                                <label for="formFile" class="label">Photo de profile</label>
+                                                <div class="underline"></div>
+                                            </div>
+                                            <div class="row justify-space-between text-center py-2">
+                                                <h5 class="card card-body border-0 shadow-lg rounded-lg bg-transparent animate__animated animate__fadeInRight login-form" style="color: grey;">
+                                                    Spécifier l'agence
+                                                </h5>
+                                            </div>
+                                            <div class="input-container">
+                                                <select  type="select" id="agence" class="form-select" name="agence" [(ngModel)]="nomAgence" required [style]="{ 'width': '520px', 'height': '40px' }">
+                                                    <option value="">Sélectionnez une agence</option>
+                                                    <option *ngFor="let agence of listagence" [value]="agence.nom">{{ agence.nom }}</option>
+                                                </select>
+                                                <div class="underline"></div>
+                                            </div>
+                                            <div class="row justify-space-between text-center py-2">
+                                                <h6 class="card card-body border-0 shadow-lg rounded-lg bg-transparent animate__animated animate__fadeInRight login-form" style="color: black;">
+                                                    Informations de connexion
+                                                </h6>
+                                            </div>
+                                            <div class="input-container">
+                                                <input type="text" id="username" class="form-control" name="username" [(ngModel)]="user.username" #username="ngModel" required>
+                                                <label for="username" class="label">Username</label>
+                                                <div class="underline"></div>
+                                            </div>
+
+                                            <div class="input-container">
+                                                <input type="password" id="password" class="form-control" name="password" [(ngModel)]="user.password" #password="ngModel" required>
+                                                <label for="password" class="label">Mot de passe</label>
+                                                <div class="underline"></div>
+                                            </div>
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-primary btn-lg w-100 mb-3 animate__animated animate__fadeInUp" [style]="{ 'width': '550px', 'height': '40px' }">Enregistrer</button>
+                                            </div>
+                                        </form>
+                                    </section>
+                                </p-dialog>
+
                                 <span class="p-input-icon-left">
                     <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
@@ -53,9 +133,6 @@
                         </ng-template>
                         <ng-template pTemplate="header">
                             <tr>
-<!--                                <th style="width: 3rem">-->
-<!--                                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>-->
-<!--                                </th>-->
                                 <th pSortableColumn="name" style="width: 18rem">
                                     <div class="p-d-flex p-jc-between p-ai-center">
                                         Username
@@ -98,9 +175,6 @@
                         </ng-template>
                         <ng-template pTemplate="body" let-user>
                             <tr class="p-selectable-row">
-<!--                                <td>-->
-<!--                                    <p-tableCheckbox [value]="customer"></p-tableCheckbox>-->
-<!--                                </td>-->
                                 <td>
                                     <img src="assets/img/{{user.profilPic}}" width="40" height="40"
                                          style="vertical-align: middle" class="profil-pic-round"/>

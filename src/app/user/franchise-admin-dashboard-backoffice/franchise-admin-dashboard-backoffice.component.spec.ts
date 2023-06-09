@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminDashboardBackofficeComponent } from './franchise-admin-dashboard-backoffice.component';
+import { FAdminDashboardBackofficeComponent } from './franchise-admin-dashboard-backoffice.component';
 
 describe('AdminDashboardBackofficeComponent', () => {
-  let component: AdminDashboardBackofficeComponent;
-  let fixture: ComponentFixture<AdminDashboardBackofficeComponent>;
+  let component: FAdminDashboardBackofficeComponent;
+  let fixture: ComponentFixture<FAdminDashboardBackofficeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminDashboardBackofficeComponent ]
+      declarations: [ FAdminDashboardBackofficeComponent ]
     })
         .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminDashboardBackofficeComponent);
+    fixture = TestBed.createComponent(FAdminDashboardBackofficeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

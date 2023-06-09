@@ -4,20 +4,20 @@
         <div class="col-12" >
             <nav class="navbar navbar-expand-lg  blur border-radius-xl top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4 " >
                 <div class="container-fluid px-0">
-                    <a class="navbar-brand ps-2 d-flex justify-content-between cursor-pointer align-items-center " routerLink="" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom">
+                    <a class="navbar-brand ps-2 d-flex justify-content-between cursor-pointer align-items-center " routerLink="" >
                         <i class="material-icons opacity-6 me-1 text-md">home</i>
                         Home
                     </a>
-                    <a class="navbar-brand ps-2 d-flex justify-content-between cursor-pointer align-items-center " routerLink="/admin" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" *ngIf="currentUser?.role == 'ADMIN'">
+                    <a class="navbar-brand ps-2 d-flex justify-content-between cursor-pointer align-items-center " routerLink="/admin"  *ngIf="currentUser?.role == 'ADMIN'">
                         <i class="material-icons opacity-6 me-1 text-md">dashboard</i>
                         Admin Dashboard
                     </a>
-                    <a class="navbar-brand ps-2 d-flex justify-content-between cursor-pointer align-items-center " routerLink="/adminfranchise" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" *ngIf="currentUser?.role == 'ADMIN_FRANCHISE'">
+                    <a class="navbar-brand ps-2 d-flex justify-content-between cursor-pointer align-items-center " routerLink="/adminfranchise" *ngIf="currentUser?.role == 'ADMIN_FRANCHISE'">
                         <i class="material-icons opacity-6 me-1 text-md">dashboard</i>
                         Dashboard
                     </a>
 
-                    <a class="navbar-brand ps-2 d-flex justify-content-between cursor-pointer align-items-center " routerLink="/superadmin" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" *ngIf="currentUser?.role == 'SUPERADMIN'">
+                    <a class="navbar-brand ps-2 d-flex justify-content-between cursor-pointer align-items-center " routerLink="/superadmin"  *ngIf="currentUser?.role == 'SUPERADMIN'">
                         <i class="material-icons opacity-6 me-1 text-md">dashboard</i>
                         Super Admin Dashboard
                     </a>
@@ -93,8 +93,6 @@
                                     <img src="assets/img/down-arrow-dark.svg" alt="down-arrow" class="arrow ms-1 d-lg-none d-block ms-auto">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animation dropdown-md mt-0 mt-lg-3 p-3 border-radius-lg" aria-labelledby="dropdownMenuDocs" *ngIf="notificationList.length != 0">
-
-                                    <!--Big Screen Notifications-->
                                     <div class="d-none d-lg-block">
                                         <ul class="list-group">
                                             <li class="nav-item list-group-item border-0 p-0" *ngFor="let notif of notificationList">

@@ -13,25 +13,25 @@ import {UserService} from '../../service/user.service';
 })
 export class NavbarComponent implements OnInit {
 
-  notificationId: number = 123;
   currentUser: User = new User;
   notificationList: Array<Notification> = [];
   profilPicture!: string;
   allUsers: Array<User> = [];
   allAdmins: Array<User> = [];
+
   constructor(private authenticationService: AuthenticationService, private userService: UserService, private router: Router) {
     this.authenticationService.currentUser.subscribe( data => {
       this.currentUser = data;
     });
     if (this.currentUser == null){
       this.currentUser = new User();
-      this.currentUser.username = "";
+      this.currentUser.username = '';
       this.currentUser.userId = 0;
       this.currentUser.userId = 0;
-      this.currentUser.password = "";
-      this.currentUser.accessToken = "";
-      this.currentUser.email = "";
-      this.currentUser.refreshToken = "";
+      this.currentUser.password = '';
+      this.currentUser.accessToken = '';
+      this.currentUser.email = '';
+      this.currentUser.refreshToken = '';
 
     }
   }
@@ -44,7 +44,7 @@ export class NavbarComponent implements OnInit {
       this.userService.getUserProfilPicture().subscribe(pic => {
         this.profilPicture = pic.split('\\').pop();
       }, err => {
-        this.profilPicture = "https://res.cloudinary.com/diubo1tzp/image/upload/v1650587140/defaultProfilePicture_drigsj.png";
+        this.profilPicture = 'https://res.cloudinary.com/diubo1tzp/image/upload/v1650587140/defaultProfilePicture_drigsj.png';
       });
     }
 
