@@ -16,8 +16,8 @@ export class AjoutVehiculeComponent implements OnInit {
 
   myLinkElement: HTMLLinkElement;
 
-  constructor(private service: VehiculeService , private httpClient: HttpClient, private routerNav: Router, private router : Router
-      , private servicea: AgenceService)  {
+  constructor(private service: VehiculeService , private httpClient: HttpClient, private routerNav: Router, private router: Router
+      ,private servicea: AgenceService)  {
 
 
     this.myLinkElement = document.createElement('link');

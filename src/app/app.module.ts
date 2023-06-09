@@ -100,7 +100,6 @@ import {AppErrorComponent} from './pages/app.error.component';
 import {AppAccessdeniedComponent} from './pages/app.accessdenied.component';
 import {BreadcrumbService} from './back/app.breadcrumb.service';
 import {MenuService} from './back/app.menu.service';
-import { RegisterComponent } from './user/register/register.component';
 import { LoginComponent } from './user/login/login.component';
 import { HomeComponent } from './user/home/home.component';
 import { NavbarComponent } from './user/navbar/navbar.component';
@@ -111,8 +110,6 @@ import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.
 import { NewPasswordComponent } from './user/new-password/new-password.component';
 import { AdminDashboardBackofficeComponent } from './user/admin-dashboard-backoffice/admin-dashboard-backoffice.component';
 import {AgenceComponent} from './agence/agence.component';
-import {RegisterComponent2} from './user/register2/register2.component';
-import {RegisterComponent3} from './user/register3/register3.component';
 import {SAdminDashboardBackofficeComponent} from './user/super-admin-dashboard-backoffice/super-admin-dashboard-backoffice.component';
 import {
     FAdminDashboardBackofficeComponent
@@ -251,9 +248,6 @@ import {ScheduleModule, DayService, WeekService, WorkWeekService, MonthService, 
         AppNotfoundComponent,
         AppErrorComponent,
         AppAccessdeniedComponent,
-        RegisterComponent,
-        RegisterComponent2,
-        RegisterComponent3,
         LoginComponent,
         HomeComponent,
         NavbarComponent,

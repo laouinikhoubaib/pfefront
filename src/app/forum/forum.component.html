@@ -127,10 +127,7 @@
                             <button routerLink="/chatP" style="width: 500px" type="button" class="btn bg-gradient-primary btn-block mb-3" >
                                 Discussion            </button>
                         </li>
-                        <li class="nav-item">
-                            <button routerLink="/chat" style="width: 500px" type="button" class="btn bg-gradient-primary btn-block mb-3" >
-                                Groupes           </button>
-                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -266,15 +263,8 @@
                                                             <a type="button" (click)="ratePost(p.postId.toString(),'4')"><i class="far fa-star"></i></a>
                                                             <a type="button" (click)="ratePost(p.postId.toString(),'5')"><i class="far fa-star"></i></a>
                                                         </div>
-                                                        <style>
-                                                            .far:hover {
-                                                                transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-                                                            }
-                                                            .fas:hover {
-                                                                transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-                                                            }
-                                                        </style>
                                                     </div>
+
                                                     <ng-container *ngFor="let l of p.postLikes">
                                                         <ng-container *ngIf="l.user.userId == currentUser.userId">
                                                             <button class="btn bg-gradient-primary btn-icon btn-" type="button" *ngIf="l.isLiked==true" >
@@ -291,12 +281,17 @@
                                                     </ng-container>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                <br>
+                <br>
+                <br>
+                <br>
                     <div class="card-body text-center">
                         <div class=" mt-n6 ">
                             <button type="button"  (click)="addLikePost(p.postId.toString())" class="btn li zob btn-primary  btn-icon-only rounded-circle" style="margin-left: 18%; margin-right: 10px" >
@@ -311,16 +306,6 @@
                             <button type="button" class="btn zob  bg-success btn-icon-only rounded-circle" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"  style="margin-left: 20px; margin-right: 400px">
                                 <span class="btn-inner--icon"><i class="fa fa-comment" style="color: whitesmoke"></i></span>
                             </button>
-
-                            <style>
-
-
-                                .zob:hover {
-                                    transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-                                }
-                            </style>
-
-
 
                             <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionRental" style="width: 700px; margin-left: 24% ">
                                 <div class="card card-body">
