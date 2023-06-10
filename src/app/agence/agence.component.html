@@ -13,15 +13,82 @@
             </p-toolbar>
             <p-toolbar styleClass="p-mb-4">
 
-                <ng-template pTemplate="left">
-                    <button  pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openNew()"></button>
-                </ng-template>
+                <div>
+                    <button  pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openDialog()"></button>
+                </div>
+
+                <p-dialog header="Ajouter une agence" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [style]="{ 'width': '600px', 'height': '600px' }">
+                    <div class="text-center">
+                        <h2></h2>
+                    </div>
+                    <section>
+                        <form role="form" #f="ngForm" (ngSubmit)="f.form.valid && addAgence()">
+                            <div class="row justify-space-between text-center py-2">
+                            <div class="row">
+                                <div class="alert alert-primary text-white font-weight-bold" role="alert" *ngIf="errorMessage">
+                                    {{errorMessage}}
+                                </div>
+                            </div>
+                                <div class="input-container">
+                                    <input type="text" id="nom" class="form-control" name="nom" [(ngModel)]="newAgence.nom" #nom="ngModel" required>
+                                    <label for="nom" class="label">Nom d'agence</label>
+                                    <div class="underline"></div>
+                                </div>
+                                <div class="input-container">
+                                    <input type="text" id="numero" class="form-control" name="numero" [(ngModel)]="newAgence.numero" #numero="ngModel" required>
+                                    <label for="numero" class="label">Numéro de téléphone</label>
+                                    <div class="underline"></div>
+                                </div>
+                                <div class="input-container">
+                                    <input type="text" id="adresse" class="form-control" name="adresse" [(ngModel)]="newAgence.adresse" #adresse="ngModel" required>
+                                    <label for="adresse" class="label">Adresse</label>
+                                    <div class="underline"></div>
+                                </div>
+                                <div class="input-container">
+                                    <input type="email" id="email" class="form-control" name="email" [(ngModel)]="newAgence.email" #email="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                                    <label for="email" class="label">Email</label>
+                                    <div class="underline"></div>
+                                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+                                        <div *ngIf="email.errors.required">Email Manquant</div>
+                                        <div *ngIf="email.errors.pattern">Format de l'email non valide</div>
+                                    </div>
+                                </div>
+
+                                <div class="input-container">
+                                    <select id="typeagence" [(ngModel)]="newAgence.typeagence" name="typeagence" class="form-control" #typeagence="ngModel" required [style]="{ 'width': '520px', 'height': '40px' }">
+                                        <option value="" >Choisissez le type d'agence</option>
+                                        <option value="normale">Ordinaire</option>
+                                        <option value="franchise">Franchise</option>
+                                    </select>
+                                    <div class="underline"></div>
+                                </div>
+                                <div class="input-container">
+                                    <input type="text" id="jourtravail" class="form-control" name="jourtravail" [(ngModel)]="newAgence.jourtravail" #jourtravail="ngModel" required>
+                                    <label for="jourtravail" class="label">Jours de travail (De ... à)</label>
+                                    <div class="underline"></div>
+                                </div>
+
+                                <div class="input-container">
+                                    <input type="text" id="description" class="form-control" name="description" [(ngModel)]="newAgence.description" #description="ngModel" required>
+                                    <label for="description" class="label">Description</label>
+                                    <div class="underline"></div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg w-100 mb-3 animate__animated animate__fadeInUp" [style]="{ 'width': '550px', 'height': '40px' }">Enregistrer</button>
+                            </div>
+                        </form>
+                    </section>
+                </p-dialog>
+
+
                 <ng-template pTemplate="right">
                 </ng-template>
             </p-toolbar>
             <p-table #dt [value]="listagence" styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
                      styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
-                     [filterDelay]="0" [globalFilterFields]="['nom', 'numero', 'email', 'adresse', 'dateouverture', 'datefermeture', 'jourtravail', 'description', 'typeagence']">>
+                     [filterDelay]="0" [globalFilterFields]="['nom', 'numero', 'email', 'adresse', 'jourtravail', 'description', 'typeagence']">>
 
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
@@ -41,8 +108,6 @@
                         <th pSortableColumn="numero">Numéro de téléphone <p-sortIcon field="numero"></p-sortIcon></th>
                         <th pSortableColumn="email">Email<p-sortIcon field="email"></p-sortIcon></th>
                         <th pSortableColumn="adresse">Adresse<p-sortIcon field="adresse"></p-sortIcon></th>
-                        <th pSortableColumn="dateouverture">Ouverture<p-sortIcon field="dateouverture"></p-sortIcon></th>
-                        <th pSortableColumn="datefermeture">Fermeture<p-sortIcon field="datefermeture"></p-sortIcon></th>
                         <th pSortableColumn="jourtravail">Jours de travail<p-sortIcon field="jourtravail"></p-sortIcon></th>
                         <th pSortableColumn="description">Détails<p-sortIcon field="description"></p-sortIcon></th>
                         <th pSortableColumn="type">Type d'agence<p-sortIcon field="type"></p-sortIcon></th>
@@ -72,12 +137,6 @@
                             {{newAgence.adresse}}
                         </td>
                         <td><span class="p-column-title"></span>
-                            {{newAgence.dateouverture}}
-                        </td>
-                        <td><span class="p-column-title"></span>
-                            {{newAgence.datefermeture}}
-                        </td>
-                        <td><span class="p-column-title"></span>
                             {{newAgence.jourtravail}}
                         </td>
                         <td><span class="p-column-title"></span>
@@ -94,7 +153,6 @@
                             <button *ngIf="!newAgence.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock" (click)="blockAgence(newAgence.nom)"></button>
                             <button *ngIf="newAgence.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock-open" (click)="deblockAgence(newAgence.nom)"></button>
                         </td>
-
                     </tr>
                 </ng-template>
 

@@ -26,10 +26,6 @@ export class AgenceService  extends  RequestBaseService {
     return this.http.get<Agence>('http://localhost:8080/SpringMVC/api/agence/getAgence/' + agenceId);
   }
 
-  getAgenceById(agenceId: number): Observable<Agence> {
-    return this.http.get<Agence>('http://localhost:8080/SpringMVC/api/agence/getAgence/' + agenceId.toString());
-  }
-
   createAgence(agence: Agence) {
     return this.http.post<Agence>('http://localhost:8080/SpringMVC/api/agence/addAgence/', agence, {headers: this.getHeaders});
   }

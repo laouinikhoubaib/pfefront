@@ -11,11 +11,10 @@
                     <div class="p-col-6">
                         <div class="overview-number">{{allUsers.length}}</div>
                         <div class="overview-subtext">Enregistrés
-
                         </div>
                     </div>
 
-                    </div>
+                </div>
             </div>
         </div>
 
@@ -100,8 +99,8 @@
                                                 <label for="email" class="label">Email</label>
                                                 <div class="underline"></div>
                                                 <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
-                                                    <div *ngIf="email.errors.required">Email is required.</div>
-                                                    <div *ngIf="email.errors.pattern">Invalid email format.</div>
+                                                    <div *ngIf="email.errors.required">Email Manquant</div>
+                                                    <div *ngIf="email.errors.pattern">Format de l'email non valide</div>
                                                 </div>
                                             </div>
 
@@ -138,9 +137,9 @@
 
 
                                             <div class="row justify-space-between text-center py-2">
-                                                <h6 class="card card-body border-0 shadow-lg rounded-lg bg-transparent animate__animated animate__fadeInRight login-form" style="color: black;">
+                                                <h5 class="card card-body border-0 shadow-lg rounded-lg bg-transparent animate__animated animate__fadeInRight login-form" style="color: black;">
                                                     Informations de connexion
-                                                </h6>
+                                                </h5>
                                             </div>
                                             <div class="input-container">
                                                 <input type="text" id="username" class="form-control" name="username" [(ngModel)]="user.username" #username="ngModel" required>
