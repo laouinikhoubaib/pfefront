@@ -5,28 +5,13 @@ import {Agence} from '../models/agence';
 import {AgenceService} from '../service/agence.service';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import * as Chart from 'chart.js';
+import Swal from 'sweetalert2';
+import {User} from '../models/user.model';
 
 @Component({
   selector: 'app-agence',
   templateUrl: './agence.component.html',
-  styles: [`
-        :host ::ng-deep .p-dialog .product-image {
-            width: 150px;
-            margin: 0 auto 2rem auto;
-            display: block;
-        }
-
-        @media screen and (max-width: 960px) {
-            :host ::ng-deep .p-datatable.p-datatable-customers .p-datatable-tbody > tr > td:last-child {
-                text-align: center;
-            }
-
-            :host ::ng-deep .p-datatable.p-datatable-customers .p-datatable-tbody > tr > td:nth-child(6) {
-                display: flex;
-            }
-        }
-
-    `],
+  styleUrls: ['./agence.component.scss'],
   providers: [MessageService, ConfirmationService]
 })
 
@@ -35,16 +20,15 @@ export class AgenceComponent implements OnInit {
   @ViewChild('pieChart') pieChart: ElementRef;
 
   listagence: Agence[];
-  agence1: Agence = new Agence();
-  agence2: Agence = new Agence();
   agence: Agence;
-  agenceId: string;
-  eventDialog: boolean;
-  eventDialogg: boolean;
+  agenceId: number;
   submitted: boolean;
   private routeSub: Subscription;
   newAgence = new Agence();
   chart: any;
+  displayDialog = false;
+  errorMessage: string = '';
+  agencet: Agence = new Agence();
 
   constructor( private router: Router, private messageService: MessageService, private service: AgenceService,  private route: ActivatedRoute) {}
 
@@ -54,12 +38,10 @@ export class AgenceComponent implements OnInit {
       console.log(res);
       this.listagence = res;
     });
-    this.route.paramMap.subscribe(params => {
-      this.agenceId = params.get('id');
-      this.loadAgence();
-    });
+
     this.getCountByTypeAgence();
   }
+
   getCountByTypeAgence() {
     this.service.getCountByTypeAgence().subscribe(
         data => {
@@ -106,17 +88,15 @@ export class AgenceComponent implements OnInit {
   }
   addAgence(){
     this.service.createAgence(this.newAgence).subscribe(comp => {
-      this.router.navigate(['/superadmin/agence']).then(() => {
-        window.location.reload();
+      this.router.navigate(['/superadmin']).then(() => {
       });
-
+      this.successNotification();
     });
-
+    this.errorMessage = 'Erreur est survenue  veuillez vérifier';
   }
-  loadAgence() {
-    this.service.getAgence(this.agenceId).subscribe(agence => {
-      this.agence = agence;
-    });
+
+  openDialog() {
+    this.displayDialog = true;
   }
 
   blockAgence(nom: string){
@@ -134,22 +114,18 @@ export class AgenceComponent implements OnInit {
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate([currentUrl]);
   }
-  updateAgence() {
-    this.service.updateAgence(this.agenceId, this.agence).subscribe(agence => {
-      this.agence = agence;
-      console.log('Agence mise à jour avec succès !');
+
+  successNotification() {
+    Swal.fire({
+      text: 'Agence ajoutée avec succès!',
+      showCancelButton: false,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'OK'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload();
+      }
     });
-  }
-
-  hideDialog() {
-    this.eventDialogg = false;
-    this.submitted = false;
-  }
-
-  openNew() {
-    this.listagence = [];
-    this.submitted = false;
-    this.eventDialog = true;
   }
 
 }

@@ -75,8 +75,8 @@
                                                 <label for="email" class="label">Email</label>
                                                 <div class="underline"></div>
                                                 <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
-                                                    <div *ngIf="email.errors.required">Email is required.</div>
-                                                    <div *ngIf="email.errors.pattern">Invalid email format.</div>
+                                                    <div *ngIf="email.errors.required">Email Manquant</div>
+                                                    <div *ngIf="email.errors.pattern">Format de l'email non valide</div>
                                                 </div>
                                             </div>
                                             <div class="input-container">
@@ -131,6 +131,8 @@
                 </span>
                             </div>
                         </ng-template>
+
+
                         <ng-template pTemplate="header">
                             <tr>
                                 <th pSortableColumn="name" style="width: 18rem">
