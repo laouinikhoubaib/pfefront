@@ -29,7 +29,7 @@ export class AppMenuComponent implements OnInit {
                     {label: 'Réservations', icon: 'pi pi-fw pi-id-card', routerLink: ['réservation']},
                     {label: 'Contrats et factures', icon: 'pi pi-fw pi-comment', routerLink: ['contrat']},
                     {label: 'Calendrier', icon: 'pi pi-fw pi-calendar', routerLink: ['Calendrier']},
-                    {label: 'Gestion des véhicules', icon: 'pi pi-fw pi-file', routerLink: ['vehicules']},
+                    {label: 'Gestion des véhicules', icon: 'pi pi-fw pi-file', routerLink: ['listVehiculesback']},
                     {label: 'Agences', icon: 'pi pi-exclamation-circle', routerLink: ['agence']},
                     {label: 'Réclamations', icon: 'pi pi-exclamation-triangle', routerLink: ['complaint']}
 

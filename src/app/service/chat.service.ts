@@ -17,8 +17,8 @@ export class ChatService extends  RequestBaseService{
   public stompClient;
 
   constructor(authenticationService: AuthenticationService, http: HttpClient , ) {
-  super(authenticationService, http);
-  this.initializeWebSocketConnection();
+    super(authenticationService, http);
+    this.initializeWebSocketConnection();
   }
 
   initializeWebSocketConnection() {

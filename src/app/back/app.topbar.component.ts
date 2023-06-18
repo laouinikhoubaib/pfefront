@@ -13,7 +13,8 @@ import {AgenceService} from '../service/agence.service';
 
 @Component({
     selector: 'app-topbar',
-    templateUrl: './app.topbar.component.html'
+    templateUrl: './app.topbar.component.html',
+    styleUrls: ['./app.topbar.component.css']
 })
 export class AppTopBarComponent implements OnInit, OnDestroy{
 
@@ -27,6 +28,7 @@ export class AppTopBarComponent implements OnInit, OnDestroy{
 
     profilPicture!: string;
     allUsers: Array<User> = [];
+    isLoading: boolean = false;
 
     constructor(public breadcrumbService: BreadcrumbService, public app: AppComponent, public appMain: AppMainComponent,
                 private authenticationService: AuthenticationService, private userService: UserService, private router: Router, private agenceService: AgenceService) {
@@ -63,6 +65,7 @@ export class AppTopBarComponent implements OnInit, OnDestroy{
                 this.profilPicture = "https://res.cloudinary.com/diubo1tzp/image/upload/v1650587140/defaultProfilePicture_drigsj.png";
             });
         }
+
     }
 
     ngOnDestroy() {
@@ -78,10 +81,14 @@ export class AppTopBarComponent implements OnInit, OnDestroy{
             });
     }
 
-    logOut(){
+
+    logOut() {
+        this.isLoading = true;
+
         this.authenticationService.logOut();
         this.router.navigate(['/login'])
             .then(() => {
+                this.isLoading = false;
                 window.location.reload();
             });
     }

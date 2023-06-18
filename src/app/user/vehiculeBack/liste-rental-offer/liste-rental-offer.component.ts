@@ -83,7 +83,7 @@ export class ListeVehiculesComponent implements OnInit {
 
   update(i: any) {
     console.log('update', i)
-    this.router.navigate(['/superadmin/UpdateVehicule',i.offreid])
+    this.router.navigate(['/superadmin/UpdateVehicule', i.offreid]);
   }
 
   detail(data:any){

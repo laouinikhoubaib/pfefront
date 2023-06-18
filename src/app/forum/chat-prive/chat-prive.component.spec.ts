@@ -10,7 +10,7 @@ describe('ChatPriveComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ ChatPriveComponent ]
     })
-    .compileComponents();
+        .compileComponents();
   });
 
   beforeEach(() => {

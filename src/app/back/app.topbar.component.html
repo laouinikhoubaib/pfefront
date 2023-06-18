@@ -76,12 +76,18 @@
 
                     <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="currentUser?.userId">
                         <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
-                           (click)="logOut()" >
+                           (click)="logOut()">
                             <i class="pi pi-power-off" (click)="logOut()"></i>
                             <span>Déconnexion</span>
                         </a>
-
                     </li>
+
+                    <div class="loader-overlay" *ngIf="isLoading">
+                        <div class="loader-container">
+                            <div class="loader"></div>
+                            <span class="loader-text">Chargement en cours...</span>
+                        </div>
+                    </div>
                 </ul>
         </ul>
     </div>

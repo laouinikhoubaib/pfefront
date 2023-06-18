@@ -163,12 +163,7 @@ export class SAdminDashboardBackofficeComponent implements OnInit {
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate([currentUrl]);
   }
-  redirectTo(){
-    this.router.navigate(['/register'])
-        .then(() => {
-          window.location.reload();
-        });
-  }
+
   getNomAgence(): void {
     this.userService.getNomAgence(this.userId)
         .subscribe(nomAgence => this.nomAgence = nomAgence);
