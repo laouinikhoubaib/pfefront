@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   myLinkElement: HTMLLinkElement;
 
   user: User = new User();
-  errorMessage: string = "";
+  errorMessage: string = '';
+  isLoading: boolean = false;
 
   constructor(public app: AppComponent, private authenticationService: AuthenticationService, private router: Router) {
     this.myLinkElement = document.createElement('link');
@@ -37,20 +38,17 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
 
-  login(){
-    this.authenticationService.login(this.user).subscribe( data => {
-      this.router.navigate(['user/landing']);
-    }, err => {
-      this.errorMessage = 'Username or password is incorrect';
-      console.log(err);
-    });
-  }
-
-  redirectTo(){
-    this.router.navigate(['/register'])
-        .then(() => {
-          window.location.reload();
-        });
+  login() {
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+      this.authenticationService.login(this.user).subscribe(data => {
+        this.router.navigate(['user/landing']);
+      }, err => {
+        this.errorMessage = 'Nom d\'utilisateur ou mot de passe incorrect';
+        console.log(err);
+      });
+    }, 1000);
   }
 
 }

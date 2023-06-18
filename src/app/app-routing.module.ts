@@ -72,14 +72,6 @@ import {CalendrierComponent} from './calendrier/calendrier.component';
                         {path: 'listVehiculesback', component: ListeVehiculesComponent },
                     ]
                 },
-                {path: 'adminfranchise', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN_FRANCHISE]},
-                    children: [
-                        {path: '', component: AdminDashboardBackofficeComponent},
-                        {path: 'listVehicules', component: ListeVehiculeFrontComponent },
-                        {path: 'listVehiculesback', component: ListeVehiculesComponent },
-
-                    ]
-                },
 
                 {path: 'superadmin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.SUPERADMIN]},
                     children: [

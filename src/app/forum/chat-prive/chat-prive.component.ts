@@ -7,7 +7,6 @@ import {ForumService} from '../../service/forum.service';
 import {Chatroom} from '../../models/chatroom';
 import {Message} from '../../models/message';
 import {Router} from '@angular/router';
-import {UserService} from '../../service/user.service';
 
 @Component({
   selector: 'app-chat-prive',
@@ -30,9 +29,9 @@ export class ChatPriveComponent implements OnInit {
   map: Map<number, Chatroom> = new Map();
   map2: Map<number, string> = new Map();
   map3: Map<number, string> = new Map();
-  profilPicture!: string;
 
-  constructor(private router: Router, public chatService: ChatService, private service: ForumService, private authenticationService: AuthenticationService, private userService: UserService) {
+
+  constructor(private router: Router, public chatService: ChatService, private service: ForumService, private authenticationService: AuthenticationService) {
     this.authenticationService.currentUser.subscribe(data => {
       this.currentUser = data;
     });
@@ -53,11 +52,7 @@ export class ChatPriveComponent implements OnInit {
     this.map.set(this.currentUser.userId, this.ch);
     this.map2.set(this.currentUser.userId, 'Lancer le Chat');
     this.map3.set(this.currentUser.userId, 'profile_user.jpg');
-    this.userService.getUserProfilPicture().subscribe(pic => {
-      this.profilPicture = pic.split('\\').pop();
-    }, err => {
-      this.profilPicture = 'https://res.cloudinary.com/diubo1tzp/image/upload/v1650587140/defaultProfilePicture_drigsj.png';
-    });
+
   }
 
   sendMessage(event: any, avatar: string) {
@@ -73,13 +68,14 @@ export class ChatPriveComponent implements OnInit {
     this.chatService.sendMessage(obj);
   }
 
-  ref(id1: string, id2: string, xx: string, yy) {
+  ref(id1: string, id2: string, xx: string,yy) {
     this.routeSub = this.service.getchatroom(id1, id2).subscribe(res => {
       console.log(res);
       this.ch = res;
       this.map.set(this.currentUser.userId, this.ch);
       this.map2.set(this.currentUser.userId, xx);
       this.map3.set(this.currentUser.userId, yy);
+
       console.log(this.chatLists[res.chatroomId]);
       console.log(this.currentUser.userId);
     });

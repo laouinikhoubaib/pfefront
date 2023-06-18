@@ -42,6 +42,7 @@
         "sweetalert2": "^11.7.5",
         "tslib": "^2.0.0",
         "web-animations-js": "^2.3.2",
+        "sockjs-client": "^1.6.0",
         "zone.js": "~0.10.2"
     },
     "devDependencies": {
