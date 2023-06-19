@@ -151,7 +151,15 @@
 
 
 
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
 
+.container .col-md-6 {
+  flex: 1;
+}
 
 
 

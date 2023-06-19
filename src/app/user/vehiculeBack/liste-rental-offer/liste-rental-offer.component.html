@@ -1,107 +1,194 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
 
-<!-- Content Start -->
-<div class="content">
-    <div class="container-fluid pt-4 px-4">
-        <div class="bg-light text-center rounded p-4">
-            <div class="d-flex align-items-center justify-content-between mb-4">
-
-                    <h3 class="p-m-0"> List des véhicules</h3>
-            </div>
-            <div class="table-responsive">
-                <div class="col-md-4">
-                    <input class="form-control" type="text"  name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442; Search">
+                <div class="p-col-6 p-md-6 p-xl-3">
+                    <div class="card no-gutter widget-overview-box widget-overview-box-3">
+                            <span class="overview-icon">
+                                <i class="pi pi-user"></i>
+                            </span>
+                        <span class="overview-title">Vehicules</span>
+                        <div class="overview-detail">
+                            <div class="p-col-6">
+                                <div class="overview-number">{{allUsers.length}}</div>
+                                <div class="overview-subtext">Enregistrés</div>
+                            </div>
+                        </div>
                     </div>
-                    <br>
-                        <form [formGroup]="datePickerForm" >
-                            <div class="row col-6">
-                                <!--<div class="col-6">
-                                    <label for="">Start</label>
-                                    <input type="date" name="startdate" [(ngModel)]="contract.startdate" class="form-control">
-                                </div> -->
-                                <!-- Recent Sales Start -->
-<!--                                <mat-form-field  class="example-form-field form-control" appearance="fill">-->
-<!--                                    <mat-label  class="form-label" >Selectionner l'intervale de date</mat-label>-->
-<!--                                    <mat-date-range-input  [rangePicker]="campaignOnePicker"-->
-<!--                                        >-->
-<!--                                        <input matStartDate formControlName="startdate" placeholder="Start date">-->
-<!--                                        <input matEndDate formControlName="enddate" placeholder="End date">-->
-<!--                                    </mat-date-range-input>-->
-<!--                                    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>-->
-<!--                                    <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>-->
-<!--                                    <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>-->
-<!--                                </mat-form-field>-->
-                            </div>
-                            <div style="text-align: left;">                 
-                                           <button style="margin-top: 20px; width: 30%; margin-bottom: 20px;" type="button" (click)="getAvailableOffers()" class="btn btn-dark">Chercher les Offres disponibles </button>
-                            </div>
-                        </form>
-                        <button (click)="filterD()" class="btn btn-success"><i class="bi bi-sort-down"></i></button>
-                          
-                          <button (click)="filterA()" class="btn btn-info"><i class="bi bi-sort-up"></i></button>
-                          <button routerLink="/superadmin/AddVehicule" type="button" class="btn btn-dark ml-3" style="background-color: rosybrown; font-weight: bold;"><i class="bi bi-plus-circle"></i></button>
-                        <div style="text-align:right; padding-bottom: 30px;"> <button type="button" routerLink="/superadmin/AddVehicule" routerLinkActive="active" class="btn btn-dark" style="color: black; font-weight: bold;">Ajouter une véhicule</button></div>
-                <table class="table" >
-                    
-                    <thead class="table-dark" style="border-radius: 20px;">
-                        <tr >
-                            <th scope="col">Image</th>
-                            <th scope="col">ID</th>
-                            <th scope="col">Matricule</th>
-                            <th scope="col">Nombre de places</th>
-                            <th scope="col">Couleur</th>
-                            <th scope="col">Longueur</th>
-                            <th scope="col">Largeur</th>
-                            <th scope="col">Puissance</th>
-                            <th scope="col">Charge utile</th>
-                            <th scope="col">Date d'ajout</th>
-                            <th scope="col">Jours de Location</th>
-                            <th scope="col">Alimentation</th>
-                            <th scope="col">Agence</th>
-                            <th scope="col">Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <tr *ngFor="let i of list | filter:searchText
-                        | paginate
-                            : {
-                                itemsPerPage: tableSize,
-                                currentPage: page,
-                                totalItems: count
-                              };
-                        let x = index">
-                            <td><img src="assets/img/{{ i.picture }}" width="40"></td>
-                            <td> {{ i.vehiculeId }}</td>
-                            <td>{{i.matricule}}</td>
-                            <td>{{i.nbrplaces}}</td>
-                            <td>{{i.couleur}}</td>
-                            <td>{{i.longueur}}</td>
-                            <td>{{i.largeur}}</td>
-                            <td>{{i.puissance}}</td>
-                            <td>{{i.chargeutile}}</td>
-                            <td>{{i.dateajout}}</td>
-                            <td>{{i.jourslocation}}</td>
-                            <td>{{i.Alimentation}}</td>
-                            <td>{{nomAgence}}</td>
-                            <td>{{i.description}}</td>
-
-                            <td style="text-align: center;">
-<!--                                <button (click)="deleteOffer(i.vehiculeId)" type="button" class="btn btn-danger mr-2" > <i class="bi bi-trash-fill"></i></button>-->
-                                <button class="btn btn-primary mr-2" (click)="update(i)" style="margin-left: 5px;"><i class="bi bi-pencil-fill"></i></button>
-                                <button class="btn btn-primary mr-2" (click)="detail(i)"  style="margin-left: 5px;"><i class="bi bi-eye-fill"></i></button>
-                            </td>
-                            <td>
-                                <button class="btn btn-success" (click)="disponile(i)">Disponibilité</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="d-flex justify-content-center">
-                    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
-                    </pagination-controls>
+                </div>
+                <div class="p-col-12 p-lg-4">
+                    <div class="card">
+                        <h4>Les vehicules les plus actives</h4>
+                        <p>Les vehicules les plus actives qui travaillent au sein de réseau</p>
+                    </div>
                 </div>
 
-            </div>
+            </p-toolbar>
+            <p-toolbar styleClass="p-mb-4">
+
+                <div>
+                    <button  pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openDialog()"></button>
+                </div>
+
+                <p-dialog header="Ajouter une agence" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [style]="{ 'width': '600px', 'height': '600px' }">
+                    <div class="text-center">
+                        <h2></h2>
+                    </div>
+                    <section>
+                        <form role="form" #f="ngForm" (ngSubmit)="f.form.valid && addVehicule()">
+                            <div class="row justify-space-between text-center py-2">
+                                <div class="row">
+                                    <div class="alert alert-primary text-white font-weight-bold" role="alert" *ngIf="errorMessage">
+                                        {{errorMessage}}
+                                    </div>
+                                </div>
+                                <div class="input-container">
+                                    <input type="text" id="nom" class="form-control" name="nom" [(ngModel)]="newVehicule.nomAgence" #nom="ngModel" required>
+                                    <label for="nom" class="label">Nom d'agence</label>
+                                    <div class="underline"></div>
+                                </div>
+                                <div class="input-container">
+                                    <input type="text" id="numero" class="form-control" name="numero" [(ngModel)]="newVehicule.matricule" #numero="ngModel" required>
+                                    <label for="numero" class="label">Matricule</label>
+                                    <div class="underline"></div>
+                                </div>
+                                <div class="input-container">
+                                    <input type="text" id="adresse" class="form-control" name="adresse" [(ngModel)]="newVehicule.puissance" #adresse="ngModel" required>
+                                    <label for="adresse" class="label">Puissance</label>
+                                    <div class="underline"></div>
+                                </div>
+                                <div class="input-container">
+                                    <input type="email" id="email" class="form-control" name="email" [(ngModel)]="newVehicule.longueur" #email="ngModel" required >
+                                    <label for="email" class="label">Longueur</label>
+                                </div>
+
+                                <div class="input-container">
+                                    <input type="text" id="largeur" class="form-control" name="largeur" [(ngModel)]="newVehicule.largeur" #largeur="ngModel" required >
+                                    <label for="largeur" class="label">Longueur</label>
+                                </div>
+
+                                <div class="input-container">
+                                    <select id="typeagence" [(ngModel)]="newVehicule.alimentation" name="typeagence" class="form-control" #typeagence="ngModel" required [style]="{ 'width': '520px', 'height': '40px' }">
+                                        <option value="" >Choisissez l'alimentation</option>
+                                        <option value="LOCATION_VOITURE">LOCATION_VOITURE</option>
+                                        <option value="LOCATION_UTILITAIRE">LOCATION_UTILITAIRE</option>
+                                    </select>
+                                    <div class="underline"></div>
+                                </div>
+                                <div class="input-container">
+                                    <input type="text" id="jourtravail" class="form-control" name="jourtravail" [(ngModel)]="newVehicule.chargeutile" #jourtravail="ngModel" required>
+                                    <label for="jourtravail" class="label">Jours de travail (De ... à)</label>
+                                    <div class="underline"></div>
+                                </div>
+
+                                <div class="input-container">
+                                    <input type="text" id="description" class="form-control" name="description" [(ngModel)]="newVehicule.description" #description="ngModel" required>
+                                    <label for="description" class="label">Description</label>
+                                    <div class="underline"></div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg w-100 mb-3 animate__animated animate__fadeInUp" [style]="{ 'width': '550px', 'height': '40px' }">Enregistrer</button>
+                            </div>
+                        </form>
+                    </section>
+                </p-dialog>
+
+
+                <ng-template pTemplate="right">
+                </ng-template>
+            </p-toolbar>
+            <p-table #dt [value]="listagence" styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
+                     styleClass="p-datatable-customers" [rowHover]="true" [rows]="14" [paginator]="true"
+                     [filterDelay]="0" [globalFilterFields]="['matricule', 'nbrplaces', 'couleur', 'longueur', 'largeur', 'puissance', 'typeagence',
+                     'description', 'dateajout', 'prix', 'alimentation', 'categorie', 'typeUtilitaire', 'typeVoiture']">
+
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Gestion des véhicules</h5>
+                        <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                           placeholder="Global Search"/>
+                </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                        </th>
+                        <th pSortableColumn="matricule">Matricule <p-sortIcon field="matricule"></p-sortIcon></th>
+                        <th pSortableColumn="nbrplaces">Nombre de places <p-sortIcon field="nbrplaces"></p-sortIcon></th>
+                        <th pSortableColumn="couleur">Couleur<p-sortIcon field="couleur"></p-sortIcon></th>
+                        <th pSortableColumn="longueur">Longueur<p-sortIcon field="longueur"></p-sortIcon></th>
+                        <th pSortableColumn="largeur">Largeur<p-sortIcon field="largeur"></p-sortIcon></th>
+                        <th pSortableColumn="puissance">Puissance<p-sortIcon field="puissance"></p-sortIcon></th>
+                        <th pSortableColumn="chargeutile">Charge utile<p-sortIcon field="chargeutile"></p-sortIcon></th>
+                        <th pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon></th>
+                        <th pSortableColumn="dateajout">Date d'ajout <p-sortIcon field="dateajout"></p-sortIcon></th>
+                        <th pSortableColumn="prix">Prix<p-sortIcon field="prix"></p-sortIcon></th>
+                        <th pSortableColumn="alimentation">Alimentation<p-sortIcon field="alimentation"></p-sortIcon></th>
+                        <th pSortableColumn="categorie">Categorie<p-sortIcon field="categorie"></p-sortIcon></th>
+                        <th pSortableColumn="typeUtilitaire">Type utilitaire<p-sortIcon field="typeUtilitaire"></p-sortIcon></th>
+                        <th pSortableColumn="typeVoiture">Type voiture<p-sortIcon field="typeVoiture"></p-sortIcon></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-newVehicule>
+                    <tr>
+                        <td>
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newVehicule.matricule}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newVehicule.couleur}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newVehicule.longueur}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newVehicule.largeur}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newVehicule.puissance}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newVehicule.chargeutile}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newVehicule.description}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newVehicule.dateajout}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newVehicule.prix}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newVehicule.alimentation}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newVehicule.categorie}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newVehicule.typeUtilitaire}}
+                        </td>
+                        <td><span class="p-column-title"></span>
+                            {{newVehicule.typeVoiture}}
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        Il y' a eu  {{listagence ? listagence.length : 0 }} Agence.
+                    </div>
+                </ng-template>
+            </p-table>
         </div>
     </div>
 </div>
+
+
+
