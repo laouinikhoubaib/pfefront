@@ -2,14 +2,36 @@
     <div class="p-col-12">
         <div class="card">
             <p-toolbar styleClass="p-mb-4">
-                <ng-template pTemplate="right">
-                </ng-template>
+
+                <div class="p-col-6 p-md-6 p-xl-3">
+                    <div class="card no-gutter widget-overview-box widget-overview-box-3">
+                            <span class="overview-icon">
+                                <i class="pi pi-user"></i>
+                            </span>
+                        <span class="overview-title">Agences</span>
+                        <div class="overview-detail">
+                            <div class="p-col-6">
+                                <div class="overview-number">{{allUsers.length}}</div>
+                                <div class="overview-subtext">Enregistrés</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12 p-lg-4">
+                    <div class="card">
+                        <h4>Les agences les plus actives</h4>
+                        <p>Les agences les plus actives qui travaillent au sein de réseau</p>
+                    </div>
+                </div>
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Agences par type</h5>
                             <canvas #pieChart></canvas>
                     </div>
                 </div>
+
+
+
             </p-toolbar>
             <p-toolbar styleClass="p-mb-4">
 

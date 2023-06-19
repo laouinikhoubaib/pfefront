@@ -29,6 +29,7 @@ export class AgenceComponent implements OnInit {
   displayDialog = false;
   errorMessage: string = '';
   agencet: Agence = new Agence();
+  allUsers: Array<Agence> = [];
 
   constructor( private router: Router, private messageService: MessageService, private service: AgenceService,  private route: ActivatedRoute) {}
 
@@ -38,7 +39,9 @@ export class AgenceComponent implements OnInit {
       console.log(res);
       this.listagence = res;
     });
-
+    this.service.getAgences().subscribe(users => {
+      this.allUsers = users;
+    });
     this.getCountByTypeAgence();
   }
 
