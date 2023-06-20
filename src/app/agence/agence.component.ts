@@ -21,14 +21,12 @@ export class AgenceComponent implements OnInit {
 
   listagence: Agence[];
   agence: Agence;
-  agenceId: number;
   submitted: boolean;
   private routeSub: Subscription;
   newAgence = new Agence();
   chart: any;
   displayDialog = false;
   errorMessage: string = '';
-  agencet: Agence = new Agence();
   allUsers: Array<Agence> = [];
 
   constructor( private router: Router, private messageService: MessageService, private service: AgenceService,  private route: ActivatedRoute) {}
