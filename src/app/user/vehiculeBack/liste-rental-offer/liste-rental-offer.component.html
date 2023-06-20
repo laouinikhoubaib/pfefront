@@ -23,8 +23,178 @@
                         <p>Les vehicules les plus actives qui travaillent au sein de réseau</p>
                     </div>
                 </div>
-
             </p-toolbar>
+
+                <div>
+                    <button  pButton pRipple label="Ajouter" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openDialog()"></button>
+                </div>
+
+                <p-dialog header="Ajouter une véhicule" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [style]="{ 'width': '600px', 'height': '600px' }">
+                    <div class="text-center">
+                        <h2></h2>
+                    </div>
+                    <section>
+                        <form role="form" #f="ngForm" (ngSubmit)="f.form.valid && addVehicule()">
+                            <div class="row justify-space-between text-center py-2">
+                                <div class="row">
+                                    <div class="alert alert-primary text-white font-weight-bold" role="alert" *ngIf="errorMessage">
+                                        {{errorMessage}}
+                                    </div>
+                                </div>
+
+                                <div class="row justify-space-between text-center py-2">
+                                    <h5 class="card card-body border-0 shadow-lg rounded-lg bg-transparent animate__animated animate__fadeInRight login-form" style="color: grey;">
+                                        Spécifier l'agence
+                                    </h5>
+                                </div>
+
+                                <div class="input-container">
+                                    <select  type="select" id="agence" class="form-select" name="agence" [(ngModel)]="nomAgence" required [style]="{ 'width': '520px', 'height': '40px' }">
+                                        <option value="">Sélectionnez une agence</option>
+                                        <option *ngFor="let agence of listagence" [value]="agence.nom">{{ agence.nom }}</option>
+                                    </select>
+
+                                    <div class="underline"></div>
+                                </div>
+
+                                <div class="input-container">
+                                    <input type="text" id="matricule" class="form-control" name="matricule" [(ngModel)]="newVehicule.matricule" #matricule="ngModel" required>
+                                    <label for="matricule" class="label">Matricule</label>
+                                    <div class="underline"></div>
+                                </div>
+                                <div class="input-container">
+                                    <input type="text" id="nbr_places" class="form-control" name="nbr_places" [(ngModel)]="newVehicule.nbr_places" #nbr_places="ngModel" required>
+                                    <label for="nbr_places" class="label">Nombre de places</label>
+                                    <div class="underline"></div>
+                                </div>
+                                <div class="input-container">
+                                    <input type="text" id="couleur" class="form-control" name="couleur" [(ngModel)]="newVehicule.couleur" #couleur="ngModel" required>
+                                    <label for="couleur" class="label">Couleur</label>
+                                    <div class="underline"></div>
+                                </div>
+
+                                <div class="input-container">
+                                    <input type="text" id="longueur" class="form-control" name="longueur" [(ngModel)]="newVehicule.longueur" #longueur="ngModel" required>
+                                    <label for="longueur" class="label">Longueur</label>
+                                    <div class="underline"></div>
+                                </div>
+
+                                <div class="input-container">
+                                    <input type="text" id="largeur" class="form-control" name="largeur" [(ngModel)]="newVehicule.largeur" #largeur="ngModel" required>
+                                    <label for="largeur" class="label">Largeur</label>
+                                    <div class="underline"></div>
+                                </div>
+
+                                <div class="input-container">
+                                    <input type="text" id="puissance" class="form-control" name="puissance" [(ngModel)]="newVehicule.puissance" #puissance="ngModel" required>
+                                    <label for="puissance" class="label">Puissance</label>
+                                    <div class="underline"></div>
+                                </div>
+
+                                <div class="input-container">
+                                    <input type="text" id="charge_utile" class="form-control" name="charge_utile" [(ngModel)]="newVehicule.charge_utile" #charge_utile="ngModel" required>
+                                    <label for="charge_utile" class="label">Charge utile</label>
+                                    <div class="underline"></div>
+                                </div>
+
+                                <div class="input-container">
+                                    <input type="date" id="dateajout" class="form-control" name="dateajout" [(ngModel)]="newVehicule.dateajout" #dateajout="ngModel" required>
+                                    <label for="dateajout" class="label">Date d'ajout</label>
+                                    <div class="underline"></div>
+                                </div>
+
+                                <div class="input-container">
+                                    <input type="text" id="prix" class="form-control" name="prix" [(ngModel)]="newVehicule.prix" #prix="ngModel" required>
+                                    <label for="prix" class="label">Prix</label>
+                                    <div class="underline"></div>
+                                </div>
+
+                                <div class="input-container">
+                                    <select id="alimentation" [(ngModel)]="newVehicule.alimentation" name="alimentation" class="form-control" #alimentation="ngModel" required [style]="{ 'width': '520px', 'height': '40px' }">
+                                        <option value="" >Choisissez le type d'alimentation</option>
+                                        <option value="essance">Essance</option>
+                                        <option value="diesel">Diesel</option>
+                                        <option value="electrique">Electrique</option>
+                                    </select>
+                                    <div class="underline"></div>
+                                </div>
+
+                                <div class="input-container">
+                                    <select id="categorie" [(ngModel)]="newVehicule.categorie" name="categorie" class="form-control" #categorie="ngModel" required [style]="{ 'width': '520px', 'height': '40px' }">
+                                        <option value="" >Choisissez la Categorie</option>
+                                        <option value="LOCATION_VOITURE">Location voiture</option>
+                                        <option value="LOCATION_UTILITAIRE">Location utilitaire</option>
+                                    </select>
+                                    <div class="underline"></div>
+                                </div>
+
+<!--                                <div class="input-container">-->
+<!--                                    <select id="typeUtilitaire" [(ngModel)]="newVehicule.typeUtilitaire" name="typeUtilitaire" class="form-control" #typeUtilitaire="ngModel" required [style]="{ 'width': '520px', 'height': '40px' }">-->
+<!--                                        <option value="" >Choisissez la type Categorie</option>-->
+<!--                                        <option value="voiture_société">Voiture société</option>-->
+<!--                                        <option value="utilitaire_3m3">Utilitaire 3m3</option>-->
+<!--                                        <option value="utilitaire_4m3">Utilitaire 4m3</option>-->
+<!--                                        <option value="utilitaire_6m3">Utilitaire 6m3</option>-->
+<!--                                        <option value="utilitaire_7m3">Utilitaire 7m3</option>-->
+<!--                                        <option value="utilitaire_8m3">Utilitaire 8m3</option>-->
+<!--                                        <option value="utilitaire_12m3">Utilitaire 12m3</option>-->
+<!--                                        <option value="utilitaire_15m3">Utilitaire 15m3</option>-->
+<!--                                        <option value="utilitaire_20m3">Utilitaire 20m3</option>-->
+<!--                                        <option value="utilitaire_20m3_avec_hayon">Utilitaire 20m3 avec hayon</option>-->
+<!--                                        <option value="utilitaire_25m3">Utilitaire 25m3</option>-->
+<!--                                        <option value="utilitaire_30m3">Utilitaire 30m3</option>-->
+<!--                                        <option value="poids_lourd">Poids lourd</option>-->
+<!--                                        <option value="benne_basculante">Benne basculante</option>-->
+<!--                                        <option value="camion_benne_paysagiste">Location voiture</option>-->
+<!--                                        <option value="camion_plateau_ridelles">Camion avec benne paysagiste</option>-->
+<!--                                        <option value="camion_pupitre">Camion pupitre</option>-->
+<!--                                        <option value="camion_plateau">Camion plateau</option>-->
+<!--                                        <option value="remorque_porte_voiture">Remorque porte voiture</option>-->
+<!--                                        <option value="remorque_porte_moto_ou_quad">Remorque porte moto ou quad</option>-->
+<!--                                    </select>-->
+<!--                                    <div class="underline"></div>-->
+<!--                                </div>-->
+
+                                <div class="input-container">
+                                    <select id="typeVoiture" [(ngModel)]="newVehicule.typeVoiture" name="typeVoiture" class="form-control" #typeVoiture="ngModel" required [style]="{ 'width': '520px', 'height': '40px' }">
+                                        <option value="" >Choisissez la type Categorie</option>
+                                        <option value="economique">Economique</option>
+                                        <option value="citadine">Citadine</option>
+                                        <option value="affaire">Affaire</option>
+                                        <option value="affaireplus">Affaire+</option>
+                                        <option value="confort">Confort</option>
+                                        <option value="confortplus">Confort +</option>
+                                        <option value="berline">Berline</option>
+                                        <option value="berlineplus">Berline + </option>
+                                        <option value="septplaces">7 places</option>
+                                        <option value="mini_bus">Mini bus</option>
+                                        <option value="mini_bus_prestige">Mini bus prestige</option>
+                                        <option value="tendance">Tendance</option>
+                                        <option value="prestige">Prestige</option>
+                                        <option value="Classe_G">Classe_G</option>
+                                    </select>
+                                    <div class="underline"></div>
+                                </div>
+
+                                <div class="input-container">
+                                    <input type="file" id="formFile" class="form-control" name="formFile" (change)= "onFileSelcted($event)" required>
+                                    <label for="formFile" class="label">Image</label>
+                                    <div class="underline"></div>
+                                </div>
+
+                                <div class="input-container">
+                                    <input type="text" id="description" class="form-control" name="description" [(ngModel)]="newVehicule.description" #description="ngModel" required>
+                                    <label for="description" class="label">Description</label>
+                                    <div class="underline"></div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg w-100 mb-3 animate__animated animate__fadeInUp" [style]="{ 'width': '550px', 'height': '40px' }">Enregistrer</button>
+                            </div>
+                        </form>
+                    </section>
+                </p-dialog>
             <p-table
                 #dt
                 [value]="listvehicule"
@@ -33,7 +203,8 @@
                 [rows]="10"
                 [paginator]="true"
                 [filterDelay]="0"
-                [globalFilterFields]="['matricule', 'nbr_places', 'couleur', 'longueur', 'largeur', 'puissance', 'typeagence', 'description', 'charge_utile', 'dateajout']">
+                [globalFilterFields]="['matricule', 'nbr_places', 'couleur', 'longueur', 'largeur', 'puissance',
+                 'typeagence', 'description', 'charge_utile', 'dateajout', 'prix', 'alimentation', 'categorie']">
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                         <h5 class="p-m-0">Gestion des véhicules</h5>
@@ -53,25 +224,33 @@
                         <th pSortableColumn="largeur">Largeur<p-sortIcon field="largeur"></p-sortIcon></th>
                         <th pSortableColumn="puissance">Puissance<p-sortIcon field="puissance"></p-sortIcon></th>
                         <th pSortableColumn="chargeutile">Charge utile<p-sortIcon field="charge_utile"></p-sortIcon></th>
-                        <div class="p-d-flex p-jc-between p-ai-center">
-                            Date d'ajout
-                            <p-sortIcon field="dateajout"></p-sortIcon>
-                            <p-columnFilter type="date" field="dateajout" display="menu" class="p-ml-auto"></p-columnFilter>
-                        </div>
+                        <th pSortableColumn="dateajout">Date d'ajout<p-sortIcon field="dateajout" type="date"></p-sortIcon></th>
+                        <th pSortableColumn="prix">Prix<p-sortIcon field="prix"></p-sortIcon></th>
+                        <th pSortableColumn="alimentation">Alimentation<p-sortIcon field="alimentation"></p-sortIcon></th>
+                        <th pSortableColumn="categorie">Categorie<p-sortIcon field="categorie"></p-sortIcon></th>
+
                         <th>Actions</th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-vehicule let-colIndex="index">
                     <tr>
                         <td></td>
-                        <td>{{ vehicule.matricule }}</td>
+                        <td>
+                            <img src="assets/img/{{vehicule.picture}}" width="40" height="40"
+                                 style="vertical-align: middle" class="profil-pic-round"/>
+                            {{vehicule.matricule}}
+                        </td>
                         <td>{{ vehicule.nbr_places }}</td>
                         <td>{{ vehicule.couleur }}</td>
                         <td>{{ vehicule.longueur }}</td>
                         <td>{{ vehicule.largeur }}</td>
                         <td>{{ vehicule.puissance }}</td>
                         <td>{{ vehicule.charge_utile }}</td>
-                        <td>{{ vehicule.dateajout | date: 'MM/dd/yyyy'}}</td>
+                        <td>{{ vehicule.dateajout | date: 'dd-MM-yyyy'}}</td>
+                        <td>{{ vehicule.prix }}</td>
+                        <td>{{ vehicule.alimentation }}</td>
+                        <td>{{ vehicule.categorie }}</td>
+
                         <td>
                             <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-secondary p-mr-2"></button>
                             <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>

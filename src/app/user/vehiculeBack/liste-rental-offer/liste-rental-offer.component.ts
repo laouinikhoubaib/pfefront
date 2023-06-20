@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import Swal from 'sweetalert2';
 import {Vehicule} from '../../../models/vehicule';
 import {VehiculeService} from '../../../service/vehicule.service';
 import {Subscription} from 'rxjs/dist/types';
+import {UserService} from '../../../service/user.service';
+import {Agence} from '../../../models/agence';
+import {AgenceService} from '../../../service/agence.service';
+import {User} from '../../../models/user.model';
 
 
 @Component({
@@ -24,10 +28,12 @@ export class ListeVehiculesComponent implements OnInit {
   listvehicule: Vehicule[];
   displayDialog = false;
   errorMessage: string = '';
-  agenceParsed: string = '';
+  userParsed: string = '';
   selectedFile!: File;
+  userId: number;
+  listagence: Agence[];
 
-  constructor(private formBuilder: FormBuilder, private service: VehiculeService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private service: VehiculeService, private router: Router, private userService: UserService, private route: ActivatedRoute, private servicea: AgenceService) { }
 
   ngOnInit(): void {
     this.routeSub = this.service.getAllVehicules().subscribe(res => {
@@ -37,16 +43,25 @@ export class ListeVehiculesComponent implements OnInit {
     this.service.getAllVehicules().subscribe(users => {
       this.allAgences = users;
     });
+    this.userId = +this.route.snapshot.paramMap.get('userId');
+    this.getNomAgence();
+
+    this.getAgences();
 
   }
+
+  getAgences() {
+    this.servicea.getAgences().subscribe(res => {
+      console.log(res);
+      this.listagence = res;
+    });
+  }
   addVehicule() {
-    this.service.addVehicule(this.agenceParsed, this.selectedFile, this.nomAgence).subscribe(comp => {
-      this.listvehicule.push(this.newVehicule);
-      this.newVehicule = new Vehicule();
+    this.userParsed = JSON.stringify(this.newVehicule);
+    this.service.addVehicule(this.userParsed, this.selectedFile, this.nomAgence).subscribe(data => {
       this.router.navigate(['/superadmin']).then(() => {
       });
-      this.successNotification();
-    });
+      this.successNotification(); });
     this.errorMessage = 'Erreur est survenue  veuillez vérifier';
   }
   successNotification() {
@@ -61,9 +76,16 @@ export class ListeVehiculesComponent implements OnInit {
       }
     });
   }
+  getNomAgence(): void {
+    this.userService.getNomAgence(this.userId)
+        .subscribe(nomAgence => this.nomAgence = nomAgence);
+  }
   openDialog() {
     this.displayDialog = true;
   }
-
+  onFileSelcted(event: any){
+    console.log(event);
+    this.selectedFile = event.target.files[0];
+  }
 
 }
