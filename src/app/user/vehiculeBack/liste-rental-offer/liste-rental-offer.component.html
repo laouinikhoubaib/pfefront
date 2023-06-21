@@ -58,41 +58,41 @@
                                 </div>
 
                                 <div class="input-container">
-                                    <input type="text" id="matricule" class="form-control" name="matricule" [(ngModel)]="newVehicule.matricule" #matricule="ngModel" required>
+                                    <input type="text" id="matricule" class="form-control" name="matricule" [(ngModel)]="vehicule.matricule" #matricule="ngModel" required>
                                     <label for="matricule" class="label">Matricule</label>
                                     <div class="underline"></div>
                                 </div>
                                 <div class="input-container">
-                                    <input type="text" id="nbr_places" class="form-control" name="nbr_places" [(ngModel)]="newVehicule.nbr_places" #nbr_places="ngModel" required>
+                                    <input type="text" id="nbr_places" class="form-control" name="nbr_places" [(ngModel)]="vehicule.nbr_places" #nbr_places="ngModel" required>
                                     <label for="nbr_places" class="label">Nombre de places</label>
                                     <div class="underline"></div>
                                 </div>
                                 <div class="input-container">
-                                    <input type="text" id="couleur" class="form-control" name="couleur" [(ngModel)]="newVehicule.couleur" #couleur="ngModel" required>
+                                    <input type="text" id="couleur" class="form-control" name="couleur" [(ngModel)]="vehicule.couleur" #couleur="ngModel" required>
                                     <label for="couleur" class="label">Couleur</label>
                                     <div class="underline"></div>
                                 </div>
 
                                 <div class="input-container">
-                                    <input type="text" id="longueur" class="form-control" name="longueur" [(ngModel)]="newVehicule.longueur" #longueur="ngModel" required>
+                                    <input type="text" id="longueur" class="form-control" name="longueur" [(ngModel)]="vehicule.longueur" #longueur="ngModel" required>
                                     <label for="longueur" class="label">Longueur</label>
                                     <div class="underline"></div>
                                 </div>
 
                                 <div class="input-container">
-                                    <input type="text" id="largeur" class="form-control" name="largeur" [(ngModel)]="newVehicule.largeur" #largeur="ngModel" required>
+                                    <input type="text" id="largeur" class="form-control" name="largeur" [(ngModel)]="vehicule.largeur" #largeur="ngModel" required>
                                     <label for="largeur" class="label">Largeur</label>
                                     <div class="underline"></div>
                                 </div>
 
                                 <div class="input-container">
-                                    <input type="text" id="puissance" class="form-control" name="puissance" [(ngModel)]="newVehicule.puissance" #puissance="ngModel" required>
+                                    <input type="text" id="puissance" class="form-control" name="puissance" [(ngModel)]="vehicule.puissance" #puissance="ngModel" required>
                                     <label for="puissance" class="label">Puissance</label>
                                     <div class="underline"></div>
                                 </div>
 
                                 <div class="input-container">
-                                    <input type="text" id="charge_utile" class="form-control" name="charge_utile" [(ngModel)]="newVehicule.charge_utile" #charge_utile="ngModel" required>
+                                    <input type="text" id="charge_utile" class="form-control" name="charge_utile" [(ngModel)]="vehicule.charge_utile" #charge_utile="ngModel" required>
                                     <label for="charge_utile" class="label">Charge utile</label>
                                     <div class="underline"></div>
                                 </div>
@@ -104,13 +104,13 @@
                                 </div>
 
                                 <div class="input-container">
-                                    <input type="text" id="prix" class="form-control" name="prix" [(ngModel)]="newVehicule.prix" #prix="ngModel" required>
+                                    <input type="text" id="prix" class="form-control" name="prix" [(ngModel)]="vehicule.prix" #prix="ngModel" required>
                                     <label for="prix" class="label">Prix</label>
                                     <div class="underline"></div>
                                 </div>
 
                                 <div class="input-container">
-                                    <select id="alimentation" [(ngModel)]="newVehicule.alimentation" name="alimentation" class="form-control" #alimentation="ngModel" required [style]="{ 'width': '520px', 'height': '40px' }">
+                                    <select id="alimentation" [(ngModel)]="vehicule.alimentation" name="alimentation" class="form-control" #alimentation="ngModel" required [style]="{ 'width': '520px', 'height': '40px' }">
                                         <option value="" >Choisissez le type d'alimentation</option>
                                         <option value="essance">Essance</option>
                                         <option value="diesel">Diesel</option>
@@ -120,7 +120,7 @@
                                 </div>
 
                                 <div class="input-container">
-                                    <select id="categorie" [(ngModel)]="newVehicule.categorie" name="categorie" class="form-control" #categorie="ngModel" required [style]="{ 'width': '520px', 'height': '40px' }">
+                                    <select id="categorie" [(ngModel)]="vehicule.categorie" name="categorie" class="form-control" #categorie="ngModel" required [style]="{ 'width': '520px', 'height': '40px' }">
                                         <option value="" >Choisissez la Categorie</option>
                                         <option value="LOCATION_VOITURE">Location voiture</option>
                                         <option value="LOCATION_UTILITAIRE">Location utilitaire</option>
@@ -156,7 +156,7 @@
 <!--                                </div>-->
 
                                 <div class="input-container">
-                                    <select id="typeVoiture" [(ngModel)]="newVehicule.typeVoiture" name="typeVoiture" class="form-control" #typeVoiture="ngModel" required [style]="{ 'width': '520px', 'height': '40px' }">
+                                    <select id="typeVoiture" [(ngModel)]="vehicule.typeVoiture" name="typeVoiture" class="form-control" #typeVoiture="ngModel" required [style]="{ 'width': '520px', 'height': '40px' }">
                                         <option value="" >Choisissez la type Categorie</option>
                                         <option value="economique">Economique</option>
                                         <option value="citadine">Citadine</option>
@@ -183,7 +183,7 @@
                                 </div>
 
                                 <div class="input-container">
-                                    <input type="text" id="description" class="form-control" name="description" [(ngModel)]="newVehicule.description" #description="ngModel" required>
+                                    <input type="text" id="description" class="form-control" name="description" [(ngModel)]="vehicule.description" #description="ngModel" required>
                                     <label for="description" class="label">Description</label>
                                     <div class="underline"></div>
                                 </div>
