@@ -67,7 +67,7 @@ export class ListeVehiculesComponent implements OnInit {
   }
   successNotification() {
     Swal.fire({
-      text: 'Agence ajoutée avec succès!',
+      text: 'Véhicule ajoutée avec succès!',
       showCancelButton: false,
       confirmButtonColor: '#3085d6',
       confirmButtonText: 'OK'

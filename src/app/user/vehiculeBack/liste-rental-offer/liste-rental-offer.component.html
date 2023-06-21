@@ -53,7 +53,6 @@
                                         <option value="">Sélectionnez une agence</option>
                                         <option *ngFor="let agence of listagence" [value]="agence.nom">{{ agence.nom }}</option>
                                     </select>
-
                                     <div class="underline"></div>
                                 </div>
 
@@ -98,8 +97,8 @@
                                 </div>
 
                                 <div class="input-container">
-                                    <input type="date" id="dateajout" class="form-control" name="dateajout" [(ngModel)]="newVehicule.dateajout" #dateajout="ngModel" required>
-                                    <label for="dateajout" class="label">Date d'ajout</label>
+                                    <input type="date" id="dateajout" class="form-control" name="dateajout" [(ngModel)]="vehicule.dateajout" #dateajout="ngModel" required>
+                                    <label for="dateajout" class="label">Date d'enregistrement</label>
                                     <div class="underline"></div>
                                 </div>
 

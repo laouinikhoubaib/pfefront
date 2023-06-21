@@ -75,9 +75,6 @@ export class NavbarComponent implements OnInit {
           window.location.reload();
         });
   }
-
-  
-
   logOut() {
     this.isLoading = true;
     setTimeout(() => {
