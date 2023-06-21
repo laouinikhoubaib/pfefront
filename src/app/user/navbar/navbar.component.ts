@@ -18,6 +18,7 @@ export class NavbarComponent implements OnInit {
   profilPicture!: string;
   allUsers: Array<User> = [];
   allAdmins: Array<User> = [];
+  isLoading: boolean = false;
 
   constructor(private authenticationService: AuthenticationService, private userService: UserService, private router: Router) {
     this.authenticationService.currentUser.subscribe( data => {
@@ -75,14 +76,18 @@ export class NavbarComponent implements OnInit {
         });
   }
 
+  
 
-  logOut(){
-    this.authenticationService.logOut();
-    this.router.navigate(['/login'])
-        .then(() => {
-          window.location.reload();
-        });
+  logOut() {
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+      this.authenticationService.logOut();
+      this.router.navigate(['/login']);
+    }, 2000);
   }
+
+
 
   redirectTo(){
     this.router.navigate(['/login'])

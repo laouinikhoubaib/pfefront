@@ -84,13 +84,11 @@ export class AppTopBarComponent implements OnInit, OnDestroy{
 
     logOut() {
         this.isLoading = true;
-
-        this.authenticationService.logOut();
-        this.router.navigate(['/login'])
-            .then(() => {
-                this.isLoading = false;
-                window.location.reload();
-            });
+        setTimeout(() => {
+            this.isLoading = false;
+            this.authenticationService.logOut();
+            this.router.navigate(['/login']);
+        }, 1000);
     }
 
 

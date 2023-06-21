@@ -32,6 +32,7 @@ export class ListeVehiculesComponent implements OnInit {
   selectedFile!: File;
   userId: number;
   listagence: Agence[];
+  vehicule: Vehicule = new Vehicule();
 
   constructor(private formBuilder: FormBuilder, private service: VehiculeService, private router: Router, private userService: UserService, private route: ActivatedRoute, private servicea: AgenceService) { }
 
@@ -57,7 +58,7 @@ export class ListeVehiculesComponent implements OnInit {
     });
   }
   addVehicule() {
-    this.userParsed = JSON.stringify(this.newVehicule);
+    this.userParsed = JSON.stringify(this.vehicule);
     this.service.addVehicule(this.userParsed, this.selectedFile, this.nomAgence).subscribe(data => {
       this.router.navigate(['/superadmin']).then(() => {
       });
