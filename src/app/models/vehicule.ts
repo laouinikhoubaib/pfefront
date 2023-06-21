@@ -8,12 +8,12 @@ import {TypeVoiture} from './typeVoiture';
 export class Vehicule {
   vehiculeId!: any;
   matricule!: string;
-  nbr_places!: string;
+  nbrPlaces!: string;
   couleur!: string;
   longueur!: string;
   largeur!: string;
   puissance!: string;
-  charge_utile!: string;
+  chargeutile!: string;
   description!: string;
   dateajout!: Date;
   picture!: string;
@@ -26,4 +26,5 @@ export class Vehicule {
   categorie!: Categorie;
   typeUtilitaire!: TypeUtilitaire;
   typeVoiture!: TypeVoiture;
+
 }

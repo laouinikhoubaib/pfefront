@@ -60,14 +60,14 @@ export class ListeVehiculesComponent implements OnInit {
   addVehicule() {
     this.userParsed = JSON.stringify(this.vehicule);
     this.service.addVehicule(this.userParsed, this.selectedFile, this.nomAgence).subscribe(data => {
-      this.router.navigate(['/superadmin']).then(() => {
+      this.router.navigate(['/superadmin/listVehiculesback']).then(() => {
       });
       this.successNotification(); });
     this.errorMessage = 'Erreur est survenue  veuillez vérifier';
   }
   successNotification() {
     Swal.fire({
-      text: 'Agence ajoutée avec succès!',
+      text: 'Véhicule ajoutée avec succès!',
       showCancelButton: false,
       confirmButtonColor: '#3085d6',
       confirmButtonText: 'OK'

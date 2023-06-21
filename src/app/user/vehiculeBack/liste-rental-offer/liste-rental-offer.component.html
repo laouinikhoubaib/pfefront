@@ -53,7 +53,6 @@
                                         <option value="">Sélectionnez une agence</option>
                                         <option *ngFor="let agence of listagence" [value]="agence.nom">{{ agence.nom }}</option>
                                     </select>
-
                                     <div class="underline"></div>
                                 </div>
 
@@ -63,8 +62,8 @@
                                     <div class="underline"></div>
                                 </div>
                                 <div class="input-container">
-                                    <input type="text" id="nbr_places" class="form-control" name="nbr_places" [(ngModel)]="vehicule.nbr_places" #nbr_places="ngModel" required>
-                                    <label for="nbr_places" class="label">Nombre de places</label>
+                                    <input type="text" id="nbrplaces" class="form-control" name="nbr_places" [(ngModel)]="vehicule.nbrplaces" #nbrplaces="ngModel" required>
+                                    <label for="nbrplaces" class="label">Nombre de places</label>
                                     <div class="underline"></div>
                                 </div>
                                 <div class="input-container">
@@ -75,37 +74,37 @@
 
                                 <div class="input-container">
                                     <input type="text" id="longueur" class="form-control" name="longueur" [(ngModel)]="vehicule.longueur" #longueur="ngModel" required>
-                                    <label for="longueur" class="label">Longueur</label>
+                                    <label for="longueur" class="label">Longueur(m)</label>
                                     <div class="underline"></div>
                                 </div>
 
                                 <div class="input-container">
                                     <input type="text" id="largeur" class="form-control" name="largeur" [(ngModel)]="vehicule.largeur" #largeur="ngModel" required>
-                                    <label for="largeur" class="label">Largeur</label>
+                                    <label for="largeur" class="label">Largeur(m)</label>
                                     <div class="underline"></div>
                                 </div>
 
                                 <div class="input-container">
                                     <input type="text" id="puissance" class="form-control" name="puissance" [(ngModel)]="vehicule.puissance" #puissance="ngModel" required>
-                                    <label for="puissance" class="label">Puissance</label>
+                                    <label for="puissance" class="label">Puissance(chevaux)</label>
                                     <div class="underline"></div>
                                 </div>
 
                                 <div class="input-container">
-                                    <input type="text" id="charge_utile" class="form-control" name="charge_utile" [(ngModel)]="vehicule.charge_utile" #charge_utile="ngModel" required>
-                                    <label for="charge_utile" class="label">Charge utile</label>
+                                    <input type="text" id="chargeutile" class="form-control" name="charge_utile" [(ngModel)]="vehicule.chargeutile" #chargeutile="ngModel" required>
+                                    <label for="chargeutile" class="label">Charge utile(Kg)</label>
                                     <div class="underline"></div>
                                 </div>
 
                                 <div class="input-container">
-                                    <input type="date" id="dateajout" class="form-control" name="dateajout" [(ngModel)]="newVehicule.dateajout" #dateajout="ngModel" required>
-                                    <label for="dateajout" class="label">Date d'ajout</label>
+                                    <input type="date" id="dateajout" class="form-control" name="dateajout" [(ngModel)]="vehicule.dateajout" #dateajout="ngModel" required>
+                                    <label for="dateajout" class="label">Date d'enregistrement</label>
                                     <div class="underline"></div>
                                 </div>
 
                                 <div class="input-container">
                                     <input type="text" id="prix" class="form-control" name="prix" [(ngModel)]="vehicule.prix" #prix="ngModel" required>
-                                    <label for="prix" class="label">Prix</label>
+                                    <label for="prix" class="label">Prix(euro)</label>
                                     <div class="underline"></div>
                                 </div>
 
@@ -128,35 +127,35 @@
                                     <div class="underline"></div>
                                 </div>
 
-<!--                                <div class="input-container">-->
-<!--                                    <select id="typeUtilitaire" [(ngModel)]="newVehicule.typeUtilitaire" name="typeUtilitaire" class="form-control" #typeUtilitaire="ngModel" required [style]="{ 'width': '520px', 'height': '40px' }">-->
-<!--                                        <option value="" >Choisissez la type Categorie</option>-->
-<!--                                        <option value="voiture_société">Voiture société</option>-->
-<!--                                        <option value="utilitaire_3m3">Utilitaire 3m3</option>-->
-<!--                                        <option value="utilitaire_4m3">Utilitaire 4m3</option>-->
-<!--                                        <option value="utilitaire_6m3">Utilitaire 6m3</option>-->
-<!--                                        <option value="utilitaire_7m3">Utilitaire 7m3</option>-->
-<!--                                        <option value="utilitaire_8m3">Utilitaire 8m3</option>-->
-<!--                                        <option value="utilitaire_12m3">Utilitaire 12m3</option>-->
-<!--                                        <option value="utilitaire_15m3">Utilitaire 15m3</option>-->
-<!--                                        <option value="utilitaire_20m3">Utilitaire 20m3</option>-->
-<!--                                        <option value="utilitaire_20m3_avec_hayon">Utilitaire 20m3 avec hayon</option>-->
-<!--                                        <option value="utilitaire_25m3">Utilitaire 25m3</option>-->
-<!--                                        <option value="utilitaire_30m3">Utilitaire 30m3</option>-->
-<!--                                        <option value="poids_lourd">Poids lourd</option>-->
-<!--                                        <option value="benne_basculante">Benne basculante</option>-->
-<!--                                        <option value="camion_benne_paysagiste">Location voiture</option>-->
-<!--                                        <option value="camion_plateau_ridelles">Camion avec benne paysagiste</option>-->
-<!--                                        <option value="camion_pupitre">Camion pupitre</option>-->
-<!--                                        <option value="camion_plateau">Camion plateau</option>-->
-<!--                                        <option value="remorque_porte_voiture">Remorque porte voiture</option>-->
-<!--                                        <option value="remorque_porte_moto_ou_quad">Remorque porte moto ou quad</option>-->
-<!--                                    </select>-->
-<!--                                    <div class="underline"></div>-->
-<!--                                </div>-->
+                                <div class="input-container">
+                                    <select id="typeUtilitaire" [(ngModel)]="newVehicule.typeUtilitaire" name="typeUtilitaire" class="form-control" #typeUtilitaire="ngModel" required [style]="{ 'width': '520px', 'height': '40px' }"[disabled]="vehicule.categorie === 'LOCATION_VOITURE'">
+                                        <option value="" >Choisissez la type Categorie</option>
+                                        <option value="voiture_société">Voiture société</option>
+                                        <option value="utilitaire_3m3">Utilitaire 3m3</option>
+                                        <option value="utilitaire_4m3">Utilitaire 4m3</option>
+                                        <option value="utilitaire_6m3">Utilitaire 6m3</option>
+                                        <option value="utilitaire_7m3">Utilitaire 7m3</option>
+                                        <option value="utilitaire_8m3">Utilitaire 8m3</option>
+                                        <option value="utilitaire_12m3">Utilitaire 12m3</option>
+                                        <option value="utilitaire_15m3">Utilitaire 15m3</option>
+                                        <option value="utilitaire_20m3">Utilitaire 20m3</option>
+                                        <option value="utilitaire_20m3_avec_hayon">Utilitaire 20m3 avec hayon</option>
+                                        <option value="utilitaire_25m3">Utilitaire 25m3</option>
+                                        <option value="utilitaire_30m3">Utilitaire 30m3</option>
+                                        <option value="poids_lourd">Poids lourd</option>
+                                        <option value="benne_basculante">Benne basculante</option>
+                                        <option value="camion_benne_paysagiste">Location voiture</option>
+                                        <option value="camion_plateau_ridelles">Camion avec benne paysagiste</option>
+                                        <option value="camion_pupitre">Camion pupitre</option>
+                                        <option value="camion_plateau">Camion plateau</option>
+                                        <option value="remorque_porte_voiture">Remorque porte voiture</option>
+                                        <option value="remorque_porte_moto_ou_quad">Remorque porte moto ou quad</option>
+                                    </select>
+                                    <div class="underline"></div>
+                                </div>
 
                                 <div class="input-container">
-                                    <select id="typeVoiture" [(ngModel)]="vehicule.typeVoiture" name="typeVoiture" class="form-control" #typeVoiture="ngModel" required [style]="{ 'width': '520px', 'height': '40px' }">
+                                    <select id="typeVoiture" [(ngModel)]="vehicule.typeVoiture" name="typeVoiture" class="form-control" #typeVoiture="ngModel" required [style]="{ 'width': '520px', 'height': '40px' }"[disabled]="vehicule.categorie !== 'LOCATION_VOITURE'">
                                         <option value="" >Choisissez la type Categorie</option>
                                         <option value="economique">Economique</option>
                                         <option value="citadine">Citadine</option>
@@ -203,8 +202,8 @@
                 [rows]="10"
                 [paginator]="true"
                 [filterDelay]="0"
-                [globalFilterFields]="['matricule', 'nbr_places', 'couleur', 'longueur', 'largeur', 'puissance',
-                 'typeagence', 'description', 'charge_utile', 'dateajout', 'prix', 'alimentation', 'categorie']">
+                [globalFilterFields]="['matricule', 'nbrplaces', 'couleur', 'longueur', 'largeur', 'puissance',
+                 'typeagence', 'description', 'chargeutile', 'dateajout', 'prix', 'alimentation', 'categorie']">
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                         <h5 class="p-m-0">Gestion des véhicules</h5>
@@ -218,7 +217,7 @@
                     <tr>
                         <th style="width: 3rem"></th>
                         <th pSortableColumn="matricule">Matricule<p-sortIcon field="matricule"></p-sortIcon></th>
-                        <th pSortableColumn="nbrplaces">Nombre de places<p-sortIcon field="nbr_places"></p-sortIcon></th>
+                        <th pSortableColumn="nbrplaces">Nombre de places<p-sortIcon field="nbrplaces"></p-sortIcon></th>
                         <th pSortableColumn="couleur">Couleur<p-sortIcon field="couleur"></p-sortIcon></th>
                         <th pSortableColumn="longueur">Longueur<p-sortIcon field="longueur"></p-sortIcon></th>
                         <th pSortableColumn="largeur">Largeur<p-sortIcon field="largeur"></p-sortIcon></th>
@@ -240,12 +239,12 @@
                                  style="vertical-align: middle" class="profil-pic-round"/>
                             {{vehicule.matricule}}
                         </td>
-                        <td>{{ vehicule.nbr_places }}</td>
+                        <td>{{ vehicule.nbrplaces }}</td>
                         <td>{{ vehicule.couleur }}</td>
                         <td>{{ vehicule.longueur }}</td>
                         <td>{{ vehicule.largeur }}</td>
                         <td>{{ vehicule.puissance }}</td>
-                        <td>{{ vehicule.charge_utile }}</td>
+                        <td>{{ vehicule.chargeutile }}</td>
                         <td>{{ vehicule.dateajout | date: 'dd-MM-yyyy'}}</td>
                         <td>{{ vehicule.prix }}</td>
                         <td>{{ vehicule.alimentation }}</td>
