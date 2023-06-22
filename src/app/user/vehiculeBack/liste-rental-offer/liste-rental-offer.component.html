@@ -121,8 +121,8 @@
                                 <div class="input-container">
                                     <select id="categorie" [(ngModel)]="vehicule.categorie" name="categorie" class="form-control" #categorie="ngModel" required [style]="{ 'width': '520px', 'height': '40px' }">
                                         <option value="" >Choisissez la Categorie</option>
-                                        <option value="LOCATION_VOITURE">Location voiture</option>
-                                        <option value="LOCATION_UTILITAIRE">Location utilitaire</option>
+                                        <option value="LOCATION_VOITURE">voiture</option>
+                                        <option value="LOCATION_UTILITAIRE">utilitaire</option>
                                     </select>
                                     <div class="underline"></div>
                                 </div>
@@ -227,11 +227,19 @@
                         <th pSortableColumn="prix">Prix<p-sortIcon field="prix"></p-sortIcon></th>
                         <th pSortableColumn="alimentation">Alimentation<p-sortIcon field="alimentation"></p-sortIcon></th>
                         <th pSortableColumn="categorie">Categorie<p-sortIcon field="categorie"></p-sortIcon></th>
-
+                        <th>
+                        </th>
+                        <th pSortableColumn="locked">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Status
+                                <p-sortIcon field="locked"></p-sortIcon>
+                                <p-columnFilter type="text" field="locked" display="menu" class="p-ml-auto"></p-columnFilter>
+                            </div>
+                        </th>
                         <th>Actions</th>
                     </tr>
                 </ng-template>
-                <ng-template pTemplate="body" let-vehicule let-colIndex="index">
+                <ng-template pTemplate="body" let-vehicule>
                     <tr>
                         <td></td>
                         <td>
@@ -249,10 +257,16 @@
                         <td>{{ vehicule.prix }}</td>
                         <td>{{ vehicule.alimentation }}</td>
                         <td>{{ vehicule.categorie }}</td>
-
                         <td>
+                        </td>
+                        <td>
+                            <span *ngIf="vehicule.locked" [class]="'customer-badge status-unqualified'">Bloquée</span>
+                            <span *ngIf="!vehicule.locked" [class]="'customer-badge status-proposal'">Active</span>
+                        </td>
+                        <td style="text-align: center">
                             <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-secondary p-mr-2"></button>
-                            <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
+                            <button *ngIf="!vehicule.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock" (click)="blockVehicule(vehicule.matricule)"></button>
+                            <button *ngIf="vehicule.locked" pButton type="button" class="p-button-secondary" icon="pi pi-lock-open" (click)="deblockVehicule(vehicule.matricule)"></button>
                         </td>
                     </tr>
                 </ng-template>

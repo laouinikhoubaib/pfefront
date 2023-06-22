@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { ReservationServiceService } from 'src/app/service/reservation-service.service';
 import {VehiculeService} from '../../service/vehicule.service';
 import {Vehicule} from '../../models/vehicule';
+import {Categorie} from '../../models/categorie';
 
 
 @Component({
@@ -33,6 +34,7 @@ export class ListeVehiculeFrontComponent implements OnInit {
   month = this.today.getMonth();
   year = this.today.getFullYear();
   datePickerForm: FormGroup;
+
 
   constructor(private formBuilder: FormBuilder, private service: VehiculeService,    private serviceContrat: ReservationServiceService, private router: Router) { }
 
@@ -128,6 +130,13 @@ export class ListeVehiculeFrontComponent implements OnInit {
       return a.price - b.price;
     });
   }
-
+  loadVehiculesByCategorie(categorie: Categorie): void {
+    this.service.getVehiculesByCategorie(categorie).subscribe(
+        (res) => {
+          this.list = res;
+          console.log(res);
+        }
+    );
+  }
 
 }
