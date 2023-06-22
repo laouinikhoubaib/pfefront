@@ -34,6 +34,8 @@ import {AddReservationComponent} from './reservation/add-reservation/add-reserva
 import {ReservationComponent} from './reservation/reservation.component';
 import {ListeReservationComponent} from './reservation/liste-reservation/liste-reservation.component';
 import {CalendrierComponent} from './calendrier/calendrier.component';
+import {ListeVehiculeUtilitaireFrontComponent} from './vehiculeutilitaire/liste-vehiculeutilitaire/liste-vehiculesutilitaire.component';
+import {ListeVehiculeVoitureFrontComponent} from './vehiculevoiture/liste-vehiculevoiture/liste-vehiculevoiture.component';
 
 
 
@@ -51,6 +53,8 @@ import {CalendrierComponent} from './calendrier/calendrier.component';
                         {path: 'chatP', component: ChatPriveComponent},
                         {path: 'user-post', component: UserPostsComponent},
                         {path: 'listVehicules', component: ListeVehiculeFrontComponent },
+                        {path: 'listVehiculesUtilitaires', component: ListeVehiculeUtilitaireFrontComponent},
+                        {path: 'listVehiculesVoitures', component: ListeVehiculeVoitureFrontComponent},
                         {path: 'listeReservation/:id/ajout', component: AddReservationComponent },
                         {path: 'listeReservation/:id', component: ReservationComponent },
                         {path: 'listReservation', component: ListeReservationComponent },
@@ -62,6 +66,8 @@ import {CalendrierComponent} from './calendrier/calendrier.component';
                         {path: '', component: AdminDashboardBackofficeComponent},
                         {path: 'listVehicules', component: ListeVehiculeFrontComponent },
                         {path: 'listVehiculesback', component: ListeVehiculesComponent },
+                        {path: 'listVehiculesUtilitaires', component: ListeVehiculeUtilitaireFrontComponent},
+                        {path: 'listVehiculesVoitures', component: ListeVehiculeVoitureFrontComponent},
 
                     ]
                 },
@@ -70,6 +76,8 @@ import {CalendrierComponent} from './calendrier/calendrier.component';
                         {path: '', component: FAdminDashboardBackofficeComponent},
                         {path: 'listVehicules', component: ListeVehiculeFrontComponent },
                         {path: 'listVehiculesback', component: ListeVehiculesComponent },
+                        {path: 'listVehiculesUtilitaires', component: ListeVehiculeUtilitaireFrontComponent},
+                        {path: 'listVehiculesVoitures', component: ListeVehiculeVoitureFrontComponent},
                     ]
                 },
 
@@ -82,6 +90,8 @@ import {CalendrierComponent} from './calendrier/calendrier.component';
                         {path: 'listVehicules', component: ListeVehiculeFrontComponent },
                         {path: 'UpdateVehicule/:idvehicule', component: UpdateVehiculeComponent },
                         {path: 'listVehiculesback', component: ListeVehiculesComponent },
+                        {path: 'listVehiculesUtilitaires', component: ListeVehiculeUtilitaireFrontComponent},
+                        {path: 'listVehiculesVoitures', component: ListeVehiculeVoitureFrontComponent},
 
                     ]
                 },
@@ -97,6 +107,8 @@ import {CalendrierComponent} from './calendrier/calendrier.component';
                         {path: 'user-post', component: UserPostsComponent},
                         {path: 'listVehicules', component: ListeVehiculeFrontComponent },
                         {path: 'listVehiculesback', component: ListeVehiculesComponent },
+                        {path: 'listVehiculesUtilitaires', component: ListeVehiculeUtilitaireFrontComponent},
+                        {path: 'listVehiculesVoitures', component: ListeVehiculeVoitureFrontComponent},
 
                     ]
                 },
@@ -108,8 +120,9 @@ import {CalendrierComponent} from './calendrier/calendrier.component';
                 {path: 'login', component: LoginComponent},
                 {path: '**', redirectTo: '/notfound'},
                 {path: 'listVehicules', component: ListeVehiculeFrontComponent },
-
                 {path: 'listVehiculesback', component: ListeVehiculesComponent },
+                {path: 'listVehiculesUtilitaires', component: ListeVehiculeUtilitaireFrontComponent},
+                {path: 'listVehiculesVoitures', component: ListeVehiculeVoitureFrontComponent},
             ])
         ],
         exports: [RouterModule]

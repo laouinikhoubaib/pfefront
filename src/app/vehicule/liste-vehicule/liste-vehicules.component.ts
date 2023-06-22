@@ -10,7 +10,7 @@ import {Categorie} from '../../models/categorie';
 
 
 @Component({
-  selector: 'app-liste-vehicule',
+  selector: 'app-liste-vehiculeutilitaire',
   templateUrl: './liste-vehicules.component.html',
   styleUrls: ['./liste-vehicules.component.css']
 })
@@ -129,14 +129,6 @@ export class ListeVehiculeFrontComponent implements OnInit {
     this.list = this.list.sort(function(a:any, b:any){
       return a.price - b.price;
     });
-  }
-  loadVehiculesByCategorie(categorie: Categorie): void {
-    this.service.getVehiculesByCategorie(categorie).subscribe(
-        (res) => {
-          this.list = res;
-          console.log(res);
-        }
-    );
   }
 
 }

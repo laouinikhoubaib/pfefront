@@ -33,6 +33,7 @@ export class VehiculeService extends  RequestBaseService{
   private BASE_URL_TRI_ASC = 'http://localhost:8080/SpringMVC/api/vehicule/tri';
   private baseUrl = 'http://localhost:8080/SpringMVC/api/vehicule';
 
+
   getAllVehicules(): Observable<any> {
     return this.http.get(`${this.BASE_URL}`);
   }
@@ -87,8 +88,13 @@ export class VehiculeService extends  RequestBaseService{
     return this.http.put('http://localhost:8080/SpringMVC/api/vehicule/deblock', matricule, {headers: this.getHeaders});
   }
 
-  getVehiculesByCategorie(categorie: Categorie): Observable<Vehicule[]> {
-    const url = `${this.baseUrl}/categorie/${categorie}`;
+  getVehiculesByLocationVoiture(): Observable<Vehicule[]> {
+    const url = `${this.baseUrl}/categorie/voiture`;
+    return this.http.get<Vehicule[]>(url);
+  }
+
+  getVehiculesByLocationUtilitaire(): Observable<Vehicule[]> {
+    const url = `${this.baseUrl}/categorie/utilitaire`;
     return this.http.get<Vehicule[]>(url);
   }
 }

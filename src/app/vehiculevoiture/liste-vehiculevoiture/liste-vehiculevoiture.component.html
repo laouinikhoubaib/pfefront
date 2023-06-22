@@ -1,0 +1,40 @@
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="card">
+<div class="center-text">
+  <h1 class="mt-3 mb-3">Liste des véhicules utilitaires</h1>
+</div>
+</div>
+
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-3" *ngFor="let vehicule of voitureVehicules | filter:searchText">
+      <div class="card">
+        <div class="card-body">
+          <div class="image-container">
+            <img style="width: 290px; height: 200px; cursor: pointer;" src="assets/img/vehicule/{{ vehicule.picture }}" alt="Image Size 100x100" (click)="getVehiculesByLocationVoiture()">
+          </div>
+          <h5 class="center-text">{{ vehicule.matricule }}</h5>
+          <p class="card-text">{{ vehicule.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
