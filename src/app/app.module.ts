@@ -134,6 +134,8 @@ import {AjoutVehiculeComponent} from './user/vehiculeBack/ajout-rental-offer/ajo
 import { NgxPaginationModule } from 'ngx-pagination';
 import {CalendrierComponent} from './calendrier/calendrier.component';
 import {ScheduleModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService} from '@syncfusion/ej2-angular-schedule';
+import {ListeVehiculeUtilitaireFrontComponent} from './vehiculeutilitaire/liste-vehiculeutilitaire/liste-vehiculesutilitaire.component';
+import {ListeVehiculeVoitureFrontComponent} from './vehiculevoiture/liste-vehiculevoiture/liste-vehiculevoiture.component';
 // import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
 
 @NgModule({
@@ -249,6 +251,8 @@ import {ScheduleModule, DayService, WeekService, WorkWeekService, MonthService, 
         AppErrorComponent,
         AppAccessdeniedComponent,
         LoginComponent,
+        ListeVehiculeUtilitaireFrontComponent,
+        ListeVehiculeVoitureFrontComponent,
         HomeComponent,
         NavbarComponent,
         FrontFooterComponent,

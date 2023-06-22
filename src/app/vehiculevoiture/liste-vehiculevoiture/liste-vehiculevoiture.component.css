@@ -1,0 +1,43 @@
+.center-text {
+    text-align: center;
+}
+
+.card {
+    background-color: white;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-container:hover img {
+    transform: scale(1.1);
+}
+
+.image-container:hover .action-buttons {
+    display: flex;
+}
+
+.action-buttons {
+    display: none;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    transition: all 0.3s ease;
+}
+
+.action-buttons button {
+    width: 100%;
+    transform: scale(1);
+    transition: all 0.3s ease;
+}
+
+.action-buttons button:hover {
+    transform: scale(1.1);
+}
