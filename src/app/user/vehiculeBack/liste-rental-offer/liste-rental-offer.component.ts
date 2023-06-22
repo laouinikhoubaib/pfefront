@@ -14,7 +14,7 @@ import {User} from '../../../models/user.model';
 @Component({
   selector: 'app-liste-rental-offer',
   templateUrl: './liste-rental-offer.component.html',
-  styleUrls: ['./liste-rental-offer.component.css']
+  styleUrls: ['./liste-rental-offer.component.scss']
 })
 export class ListeVehiculesComponent implements OnInit {
 
@@ -87,6 +87,21 @@ export class ListeVehiculesComponent implements OnInit {
   onFileSelcted(event: any){
     console.log(event);
     this.selectedFile = event.target.files[0];
+  }
+  blockVehicule(matricule: string){
+    this.service.blockVehicule(matricule).subscribe();
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
+  }
+
+  deblockVehicule(matricule: string){
+    this.service.deblockVehicule(matricule).subscribe();
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
   }
 
 }

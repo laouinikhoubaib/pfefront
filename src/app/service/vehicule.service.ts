@@ -5,13 +5,18 @@ import { UserService } from './user.service';
 import {Vehicule} from '../models/vehicule';
 import {Agence} from '../models/agence';
 import {environment} from '../../environments/environment';
+import {AuthenticationService} from './authentication.service';
+import {RequestBaseService} from './request-base.service';
+import {Categorie} from '../models/categorie';
 const API_URL = `${environment.BASE_URL}/api/vehicule/`;
 @Injectable({
   providedIn: 'root'
 })
-export class VehiculeService {
+export class VehiculeService extends  RequestBaseService{
 
-  constructor(private http: HttpClient, private userService: UserService) { }
+  constructor(authenticationService: AuthenticationService, http: HttpClient, private userService: UserService) {
+    super(authenticationService, http);
+  }
   agence: Agence = new Agence();
   agences: Agence[];
 
@@ -26,7 +31,7 @@ export class VehiculeService {
   private BASE_URL_AVAILABLE_OFFERS = 'http://localhost:8080/SpringMVC/api/vehicule/GetAvailableVehicules/';
   private BASE_URL_TRI_DES = 'http://localhost:8080/SpringMVC/api/vehicule/triDesc';
   private BASE_URL_TRI_ASC = 'http://localhost:8080/SpringMVC/api/vehicule/tri';
-
+  private baseUrl = 'http://localhost:8080/SpringMVC/api/vehicule';
 
   getAllVehicules(): Observable<any> {
     return this.http.get(`${this.BASE_URL}`);
@@ -72,5 +77,18 @@ export class VehiculeService {
 
   getDisponible(vehiculeid: any): Observable <boolean> {
     return this.http.get<boolean>('http://localhost:8080/SpringMVC/api/vehicule/Disponibilite/' + vehiculeid);
+  }
+
+  blockVehicule(matricule: string){
+    return this.http.put('http://localhost:8080/SpringMVC/api/vehicule/block', matricule, {headers: this.getHeaders});
+  }
+
+  deblockVehicule(matricule: string){
+    return this.http.put('http://localhost:8080/SpringMVC/api/vehicule/deblock', matricule, {headers: this.getHeaders});
+  }
+
+  getVehiculesByCategorie(categorie: Categorie): Observable<Vehicule[]> {
+    const url = `${this.baseUrl}/categorie/${categorie}`;
+    return this.http.get<Vehicule[]>(url);
   }
 }
