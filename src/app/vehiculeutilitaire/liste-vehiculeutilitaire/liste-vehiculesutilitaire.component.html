@@ -1,41 +1,30 @@
 
 
+<div class="custom-containers">
+  </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-<div class="card">
+<br class="custom-br">
+<br class="custom-br">
+<div class="custom-container">
   <div class="center-text">
-    <h1 class="mt-3 mb-3">Liste des véhicules utilitaires</h1>
+    <h6>Découvrez la sélection de véhicules utilitaires en location</h6>
   </div>
 </div>
-
-<div class="container">
-  <div class="row mt-4">
-    <div class="col-md-3" *ngFor="let vehicule of utilitaireVehicules | filter:searchText">
+<br class="custom-br">
+<br class="custom-br">
+<br class="custom-br">
+  <div class="row mt-4 d-flex justify-content-center">
+    <div class="col-4" *ngFor="let vehicule of utilitaireVehicules | filter:searchText">
       <div class="card">
-        <div class="card-body">
-          <div class="image-container">
-            <img style="width: 290px; height: 200px; cursor: pointer;" src="assets/img/vehicule/{{ vehicule.picture }}" alt="Image Size 100x100" (click)="getVehiculesByLocationUtilitaire()">
-          </div>
-          <h5 class="center-text">{{ vehicule.matricule }}</h5>
-          <p class="card-text">{{ vehicule.description }}</p>
+        <div class="image-container">
+          <img style="width: 290px; height: 200px; cursor: pointer;" src="assets/img/vehicule/{{ vehicule.picture }}" alt="Image Size 100x100" (click)="getVehiculesByLocationUtilitaire()">
         </div>
+        <h5 class="center-text">{{ vehicule.typeUtilitaire }}</h5>
+        <p class="center-text">{{ vehicule.description }}</p>
+        <button (click)="detail(vehicule)" style="width: 600px" type="submit" class="btn btn-primary">
+          Obtenir un prix
+        </button>
       </div>
     </div>
   </div>
-</div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
