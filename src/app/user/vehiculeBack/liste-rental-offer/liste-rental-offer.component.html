@@ -128,7 +128,7 @@
                                 </div>
 
                                 <div class="input-container">
-                                    <select id="typeUtilitaire" [(ngModel)]="newVehicule.typeUtilitaire" name="typeUtilitaire" class="form-control" #typeUtilitaire="ngModel" required [style]="{ 'width': '520px', 'height': '40px' }"[disabled]="vehicule.categorie === 'LOCATION_VOITURE'">
+                                    <select id="typeUtilitaire" [(ngModel)]="vehicule.typeUtilitaire" name="typeUtilitaire" class="form-control" #typeUtilitaire="ngModel" required [style]="{ 'width': '520px', 'height': '40px' }"[disabled]="vehicule.categorie === 'LOCATION_VOITURE'">
                                         <option value="" >Choisissez la type Categorie</option>
                                         <option value="voiture_société">Voiture société</option>
                                         <option value="utilitaire_3m3">Utilitaire 3m3</option>
@@ -144,11 +144,11 @@
                                         <option value="utilitaire_30m3">Utilitaire 30m3</option>
                                         <option value="poids_lourd">Poids lourd</option>
                                         <option value="benne_basculante">Benne basculante</option>
-                                        <option value="camion_benne_paysagiste">Location voiture</option>
                                         <option value="camion_plateau_ridelles">Camion avec benne paysagiste</option>
                                         <option value="camion_pupitre">Camion pupitre</option>
                                         <option value="camion_plateau">Camion plateau</option>
                                         <option value="remorque_porte_voiture">Remorque porte voiture</option>
+                                        <option value="camion_plateau_ridelles">Camion plateau ridelles</option>
                                         <option value="remorque_porte_moto_ou_quad">Remorque porte moto ou quad</option>
                                     </select>
                                     <div class="underline"></div>

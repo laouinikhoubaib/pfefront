@@ -2,9 +2,6 @@
     text-align: center;
 }
 
-.card {
-    background-color: white;
-}
 
 .image-container {
     display: flex;
@@ -41,3 +38,72 @@
 .action-buttons button:hover {
     transform: scale(1.1);
 }
+
+
+
+.custom-container {
+    /*background-color: #757575;*/
+    max-width: 2000px;
+    margin: auto;
+}
+.custom-containers {
+    /*background-color: #757575;*/
+    max-width: 2000px;
+    margin: auto;
+}
+
+.card {
+    width: 600px;
+    height: 400px;
+    margin: 10px;
+    /*background-color: #BDBDBD;*/
+}
+.custom-button {
+    background-color: #D7CCC8;
+}
+
+.custom-containers {
+    position: relative;
+    height: 780px;
+    overflow: hidden;
+}
+
+.custom-containers::before,
+.custom-containers::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1000px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: carousel 10s infinite;
+}
+
+.custom-containers::after {
+    background-image: url("C:\Users\khoubaib\Desktop\CarRentalFront\src\assets\img\2.jpg");
+    animation-delay: 5s;
+}
+.custom-containers::before {
+    background-image: url("C:\Users\khoubaib\Desktop\CarRentalFront\src\assets\img\4.jpg");
+    animation-delay: 10s;
+}
+
+@keyframes carousel {
+    0% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 0;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+

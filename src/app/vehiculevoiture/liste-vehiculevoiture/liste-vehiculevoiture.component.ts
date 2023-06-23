@@ -21,7 +21,7 @@ export class ListeVehiculeVoitureFrontComponent implements OnInit {
   voitureVehicules: Vehicule[] = [];
 
 
-  constructor(private formBuilder: FormBuilder, private service: VehiculeService) { }
+  constructor(private formBuilder: FormBuilder, private service: VehiculeService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -33,6 +33,29 @@ export class ListeVehiculeVoitureFrontComponent implements OnInit {
         .subscribe(vehicules => {
           this.voitureVehicules = vehicules;
         });
+  }
+
+  detail(data: any){
+    console.log(data);
+    const url = 'listeReservation/' + data.vehiculeId + '/ajout' ;
+    this.router.navigateByUrl(url);
+  }
+
+  disponile(data: any) {
+    console.log(data.vehiculeId);
+    this.service.getDisponible(data.vehiculeId).subscribe(
+        (isAvailable) => {
+          if (isAvailable) {
+            alert('Le véhicule est disponible');
+          } else {
+            alert('Le véhicule n\'est pas disponible');
+          }
+        },
+        (error) => {
+          console.log('Erreur de serveur lors de la vérification de disponibilité:', error);
+          alert('Erreur de serveur lors de la vérification de disponibilité');
+        }
+    );
   }
 
 }
