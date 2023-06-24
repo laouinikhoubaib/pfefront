@@ -97,4 +97,23 @@ export class VehiculeService extends  RequestBaseService{
     const url = `${this.baseUrl}/categorie/utilitaire`;
     return this.http.get<Vehicule[]>(url);
   }
+
+  getUtilitaireVehiculesByAgence(vehiculeId: number): Observable<any> {
+    const url = `${this.baseUrl}/same-agence/utilitaire?vehiculeId=${vehiculeId}`;
+    return this.http.get(url);
+  }
+  getVoitureVehiculesByAgence(vehiculeId: number): Observable<any> {
+    const url = `${this.baseUrl}/same-agence/voiture?vehiculeId=${vehiculeId}`;
+    return this.http.get(url);
+  }
+  getUtilitaireVehiculesByCurrentUser(): Observable<Vehicule[]> {
+    const url = `${this.baseUrl}/same-agence/utilitaire?vehiculeId=${this.currentUser.userId}`;
+    return this.http.get<Vehicule[]>(url);
+  }
+  getVoitureVehiculesByCurrentUser(): Observable<Vehicule[]> {
+    const agenceId = this.currentUser.agence ? this.currentUser.agence.agenceId : null;
+    const url = `${this.baseUrl}/same-agence/voiture?agenceId=${agenceId}`;
+    return this.http.get<Vehicule[]>(url);
+  }
+
 }
