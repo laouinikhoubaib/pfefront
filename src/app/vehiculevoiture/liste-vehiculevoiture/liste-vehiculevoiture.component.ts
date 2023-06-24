@@ -7,6 +7,8 @@ import { ReservationServiceService } from 'src/app/service/reservation-service.s
 import {VehiculeService} from '../../service/vehicule.service';
 import {Vehicule} from '../../models/vehicule';
 import {Categorie} from '../../models/categorie';
+import {User} from '../../models/user.model';
+import {UserService} from '../../service/user.service';
 
 
 @Component({
@@ -19,21 +21,43 @@ export class ListeVehiculeVoitureFrontComponent implements OnInit {
   title = 'Angular Search Using ng2-search-filter';
   searchText!: any;
   voitureVehicules: Vehicule[] = [];
+  currentUser: User;
+  nomAgence: string;
+  userId: number;
 
+  constructor(private formBuilder: FormBuilder, private service: VehiculeService, private router: Router, private userService: UserService) { }
 
-  constructor(private formBuilder: FormBuilder, private service: VehiculeService, private router: Router) { }
+    ngOnInit(): void {
+        this.userService.getCurrentUser().subscribe((user: User) => {
+            this.currentUser = user;
+            this.userId = user.userId;
 
-  ngOnInit(): void {
+            if (user.agence) {
+                this.nomAgence = user.agence.nom;
+            } else {
+                this.userService.getAgencyNameByUserId(user.userId).subscribe((data: any) => {
+                    this.nomAgence = data.nom;
+                }, err => {
+                    console.error(err);
+                    this.nomAgence = '';
+                });
+            }
 
-    this.getVehiculesByLocationVoiture();
-
-  }
-  getVehiculesByLocationVoiture(): void {
-    this.service.getVehiculesByLocationVoiture()
-        .subscribe(vehicules => {
-          this.voitureVehicules = vehicules;
+            this.getVehiculesByLocationVoiture();
         });
-  }
+    }
+
+    getVehiculesByLocationVoiture(): void {
+        if (this.currentUser && this.currentUser.agence) {
+            this.service.getVoitureVehiculesByCurrentUser().subscribe(vehicules => {
+                this.voitureVehicules = vehicules;
+            });
+        } else if (this.currentUser && this.currentUser.userId) {
+            this.service.getVoitureVehiculesByAgence(this.currentUser.userId).subscribe(vehicules => {
+                this.voitureVehicules = vehicules;
+            });
+        }
+    }
 
   detail(data: any){
     console.log(data);
