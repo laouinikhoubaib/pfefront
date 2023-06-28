@@ -112,7 +112,7 @@
                             <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="currentUser?.userId">
                                 <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
                                    routerLink="profil" >
-                                    <img alt="Profil Picture" src="assets/img/{{profilPicture}}" class="avatar avatar-xs rounded-circle mx-2">
+                                    <img alt="Profil Picture" src="assets/img/{{currentUser.profilPic}}" class="avatar avatar-xs rounded-circle mx-2">
                                     {{currentUser.username}}
                                 </a>
                             </li>
