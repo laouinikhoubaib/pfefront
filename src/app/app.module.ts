@@ -136,6 +136,10 @@ import {CalendrierComponent} from './calendrier/calendrier.component';
 import {ScheduleModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService} from '@syncfusion/ej2-angular-schedule';
 import {ListeVehiculeUtilitaireFrontComponent} from './vehiculeutilitaire/liste-vehiculeutilitaire/liste-vehiculesutilitaire.component';
 import {ListeVehiculeVoitureFrontComponent} from './vehiculevoiture/liste-vehiculevoiture/liste-vehiculevoiture.component';
+import {MapComponent} from './agence/map/map.component';
+import { AgenceFrontComponent } from './agence/agence-front/agence-front.component';
+import { AgenceDeteilComponent } from './agence/agence-deteil/agence-deteil.component';
+import { PaiementComponent } from './reservation/paiement/paiement.component';
 // import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
 
 @NgModule({
@@ -254,6 +258,7 @@ import {ListeVehiculeVoitureFrontComponent} from './vehiculevoiture/liste-vehicu
         ListeVehiculeUtilitaireFrontComponent,
         ListeVehiculeVoitureFrontComponent,
         HomeComponent,
+        MapComponent,
         NavbarComponent,
         FrontFooterComponent,
         FrontLandingComponent,
@@ -279,7 +284,10 @@ import {ListeVehiculeVoitureFrontComponent} from './vehiculevoiture/liste-vehicu
         RevenuByOfferComponent,
         ListeVehiculesComponent,
         AjoutVehiculeComponent,
-        CalendrierComponent
+        CalendrierComponent,
+        AgenceFrontComponent,
+        AgenceDeteilComponent,
+        PaiementComponent
 
     ],
     providers: [

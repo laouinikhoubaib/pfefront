@@ -29,9 +29,9 @@
         "@syncfusion/ej2-angular-calendars": "^18.3.48",
         "@syncfusion/ej2-angular-schedule": "^18.4.39",
         "@syncfusion/ej2-material-theme": "~18.4.39",
-        "sockjs-client": "^1.6.0",
         "chart.js": "2.7.3",
         "jspdf": "^2.5.1",
+        "leaflet": "^1.7.1",
         "ng2-search-filter": "^0.5.1",
         "ngx-cookie-service": "^16.0.0",
         "primeflex": "^2.0.0",
@@ -39,10 +39,10 @@
         "primeng": "11.2.0",
         "prismjs": "1.20.0",
         "rxjs": "~6.6.0",
+        "sockjs-client": "^1.6.0",
         "sweetalert2": "^11.7.5",
         "tslib": "^2.0.0",
         "web-animations-js": "^2.3.2",
-        "sockjs-client": "^1.6.0",
         "zone.js": "~0.10.2"
     },
     "devDependencies": {

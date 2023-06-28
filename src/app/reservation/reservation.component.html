@@ -97,6 +97,7 @@
                 <div>
                   <button style="margin-top: 10px; margin-bottom: 10px;" (click)="loadPdfff()" class="btn btn-success">Télécharger</button>
                 </div>
+
               </div>
                 <table class="table">
                     <thead class="table-dark">
@@ -106,6 +107,7 @@
                         <th scope="col">Date début</th>
                         <th scope="col">Date fin</th>
                         <th scope="col">Détails de contrat</th>
+                          <th scope="col">Paiement</th>
                       </tr>
                     </thead>
                     <tbody *ngFor="let item of contrats">
@@ -118,6 +120,10 @@
                               <a href="javascript:void(0)" class="btn btn-primary" style="margin-left: 5px;" (click)="generatePDF(item)">
                                   <i class="bi bi-download"></i>
                               </a>
+                          </td>
+
+                          <td>
+                          <a class="btn btn-primary" style="margin-left: 5px;" (click)="addpayement(item.reservid)">Payer</a>
                           </td>
                       </tr>
                     

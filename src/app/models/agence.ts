@@ -16,6 +16,8 @@ export class Agence{
     description!: string;
     typeagence!: TypeAgence;
     locked: boolean = false;
+    lang?: string;
+    latitude?: string;
     user: User[];
 
 }
