@@ -49,14 +49,13 @@ export class ChatPriveComponent implements OnInit {
     });
     this.username = this.currentUser.username;
     this.allchat();
-    this.ch.color = '#EC407A';
+    this.ch.color = '#59c0f0';
     this.map.set(this.currentUser.userId, this.ch);
-    this.map2.set(this.currentUser.userId, 'Start Chat');
+    this.map2.set(this.currentUser.userId, 'Démarrer le chat');
     this.map3.set(this.currentUser.userId, 'profile_user.jpg');
 
   }
 
-  // Prepare the chat message then call the chatService method 'sendMessage' to actually send the message
   sendMessage(event: any, avatar: string) {
     let obj: Message = {
       text: this.messages,
@@ -82,12 +81,6 @@ export class ChatPriveComponent implements OnInit {
     });
   }
 
-  // send(id: string){
-  //   this.routeSub = this.service.sendmsg(this.ch.chatroomId.toString() , this.mess).subscribe(res => {
-  //     console.log(res);
-  //     this.allchat();
-  //   });
-  // }
 
   allchat() {
     this.routeSub = this.service.allchat().subscribe(res => {

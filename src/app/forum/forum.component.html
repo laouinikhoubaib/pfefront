@@ -127,10 +127,7 @@
                             <button routerLink="/chatP" style="width: 500px" type="button" class="btn bg-gradient-primary btn-block mb-3" >
                                 Discussion            </button>
                         </li>
-                        <li class="nav-item">
-                            <button routerLink="/chat" style="width: 500px" type="button" class="btn bg-gradient-primary btn-block mb-3" >
-                                Groupes           </button>
-                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -166,7 +163,7 @@
 
             </div>
             <ng-container *ngFor ="let p of listPost | filter:term;">
-                <div class="card " data-animation="true"  >
+                <div class="card custom-container" data-animation="true"  >
                         <div class="container" >
                             <div class="row" style="margin-left: 0%">
                                 <div class="col-lg-14 col-md-14 mx-auto">
@@ -528,39 +525,6 @@
 </div>
 
 
-<!--<div class="container py-7">-->
-<!--    <div class="row mt-5">-->
-<!--        <div class="col-sm-3 col-6 mx-auto">-->
-
-
-            <!-- deletebalert -->
-<!--            <div class="modal fade" id="exampleModalNotification" tabindex="-1" aria-labelledby="exampleModalNotification" aria-hidden="true">-->
-<!--                <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">-->
-<!--                    <div class="modal-content bg-gradient-danger">-->
-<!--                        <div class="modal-header border-0">-->
-<!--                            <h6 class="modal-title text-white" id="modal-title-notification">Your attention is required</h6>-->
-<!--                            <button type="button" class="btn btn-link text-white my-1" data-bs-dismiss="modal"><i class="fas fa-times"></i></button>-->
-<!--                        </div>-->
-<!--                        <hr class="horizontal light mt-0">-->
-<!--                        <div class="modal-body">-->
-<!--                            <div class="py-3 text-center text-white">-->
-<!--                                <i class="material-icons text-3xl">notifications_active</i>-->
-<!--                                <h4 class="heading mt-4 text-white">You should read this!</h4>-->
-<!--                                <p class="text-white opacity-8">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <hr class="horizontal light mb-0">-->
-<!--                        <div class="modal-footer justify-content-between border-0">-->
-<!--                            <button type="button" class="btn btn-white my-1" (click)="deletePost(post2.postId.toString())">OK, j'ai compris</button>-->
-<!--                            <button type="button" class="btn btn-link text-white my-1" data-bs-dismiss="modal">Close</button>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
 
 <div class="col-md-4">
     <!-- Modal -->
@@ -576,7 +540,6 @@
                 <div class="modal-body">
 
                     <form>
-
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="imagen" #imagenInputFile
                                    (change)="onFileSelcted($event)" accept="image/png, image/jpeg, image/gif">
