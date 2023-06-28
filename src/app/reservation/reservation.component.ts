@@ -77,4 +77,8 @@ export class ReservationComponent implements OnInit {
       }
     });
   }
+  addpayement(idReservation: any) {
+    console.log('update', idReservation);
+    this.router.navigate(['/addpayment', idReservation]);
+  }
 }

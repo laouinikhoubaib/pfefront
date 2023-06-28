@@ -28,7 +28,8 @@ export class AgenceComponent implements OnInit {
   displayDialog = false;
   errorMessage: string = '';
   allUsers: Array<Agence> = [];
-
+  latLng;
+  event: Agence = new Agence();
   constructor( private router: Router, private messageService: MessageService, private service: AgenceService,  private route: ActivatedRoute) {}
 
 
@@ -88,6 +89,8 @@ export class AgenceComponent implements OnInit {
     });
   }
   addAgence(){
+    this.event.lang = this.latLng.lng;
+    this.event.latitude = this.latLng.lat;
     this.service.createAgence(this.newAgence).subscribe(comp => {
       this.router.navigate(['/superadmin']).then(() => {
       });
@@ -95,7 +98,11 @@ export class AgenceComponent implements OnInit {
     });
     this.errorMessage = 'Erreur est survenue  veuillez vérifier';
   }
-
+  getLatLng(agencex){
+    console.log('we are in parent component');
+    console.log(agencex);
+    this.latLng = agencex;
+  }
   openDialog() {
     this.displayDialog = true;
   }

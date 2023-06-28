@@ -36,6 +36,10 @@ import {ListeReservationComponent} from './reservation/liste-reservation/liste-r
 import {CalendrierComponent} from './calendrier/calendrier.component';
 import {ListeVehiculeUtilitaireFrontComponent} from './vehiculeutilitaire/liste-vehiculeutilitaire/liste-vehiculesutilitaire.component';
 import {ListeVehiculeVoitureFrontComponent} from './vehiculevoiture/liste-vehiculevoiture/liste-vehiculevoiture.component';
+import {MapComponent} from './agence/map/map.component';
+import {AgenceFrontComponent} from './agence/agence-front/agence-front.component';
+import {AgenceDeteilComponent} from './agence/agence-deteil/agence-deteil.component';
+import {PaiementComponent} from './reservation/paiement/paiement.component';
 
 
 
@@ -59,6 +63,11 @@ import {ListeVehiculeVoitureFrontComponent} from './vehiculevoiture/liste-vehicu
                         {path: 'listeReservation/:id', component: ReservationComponent },
                         {path: 'listReservation', component: ListeReservationComponent },
                          {path: 'calendrier', component: CalendrierComponent },
+                        {path: 'map', component: MapComponent},
+                        {path: 'agenceFront', component: AgenceFrontComponent, canActivate: [Auth2Guard]},
+                        {path: 'detailAgence/:id', component: AgenceDeteilComponent, canActivate: [Auth2Guard]},
+                        {path: 'addpayment/:id', component: PaiementComponent},
+
                     ]
                 },
                 {path: 'admin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]},
@@ -69,6 +78,7 @@ import {ListeVehiculeVoitureFrontComponent} from './vehiculevoiture/liste-vehicu
                         {path: 'listVehiculesUtilitaires', component: ListeVehiculeUtilitaireFrontComponent},
                         {path: 'listVehiculesVoitures', component: ListeVehiculeVoitureFrontComponent},
 
+
                     ]
                 },
                 {path: 'adminfranchise', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN_FRANCHISE]},
@@ -78,6 +88,7 @@ import {ListeVehiculeVoitureFrontComponent} from './vehiculevoiture/liste-vehicu
                         {path: 'listVehiculesback', component: ListeVehiculesComponent },
                         {path: 'listVehiculesUtilitaires', component: ListeVehiculeUtilitaireFrontComponent},
                         {path: 'listVehiculesVoitures', component: ListeVehiculeVoitureFrontComponent},
+
                     ]
                 },
 

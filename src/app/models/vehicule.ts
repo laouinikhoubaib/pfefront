@@ -18,6 +18,7 @@ export class Vehicule {
   dateajout!: Date;
   picture!: string;
   prix: any;
+  quantite!: any;
   isLocked: boolean = false;
   jourslocation!: any;
   [key: string]: any;

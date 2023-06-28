@@ -15,8 +15,9 @@ import {Router} from '@angular/router';
 })
 export class ChatPriveComponent implements OnInit {
 
-
+  // Holding the chat messages
   private routeSub: Subscription;
+  //mess: Message = new Message();
   chhh: Chatroom[];
   ch: Chatroom = new Chatroom();
   chatLists: Chatroom[];
@@ -48,13 +49,14 @@ export class ChatPriveComponent implements OnInit {
     });
     this.username = this.currentUser.username;
     this.allchat();
-    this.ch.color = '#0298b8';
+    this.ch.color = '#EC407A';
     this.map.set(this.currentUser.userId, this.ch);
-    this.map2.set(this.currentUser.userId, 'Lancer le Chat');
+    this.map2.set(this.currentUser.userId, 'Start Chat');
     this.map3.set(this.currentUser.userId, 'profile_user.jpg');
 
   }
 
+  // Prepare the chat message then call the chatService method 'sendMessage' to actually send the message
   sendMessage(event: any, avatar: string) {
     let obj: Message = {
       text: this.messages,
@@ -68,18 +70,24 @@ export class ChatPriveComponent implements OnInit {
     this.chatService.sendMessage(obj);
   }
 
-  ref(id1: string, id2: string, xx: string,yy) {
+  ref(id1: string, id2: string, xx: string, yy) {
     this.routeSub = this.service.getchatroom(id1, id2).subscribe(res => {
       console.log(res);
       this.ch = res;
       this.map.set(this.currentUser.userId, this.ch);
       this.map2.set(this.currentUser.userId, xx);
       this.map3.set(this.currentUser.userId, yy);
-
       console.log(this.chatLists[res.chatroomId]);
       console.log(this.currentUser.userId);
     });
   }
+
+  // send(id: string){
+  //   this.routeSub = this.service.sendmsg(this.ch.chatroomId.toString() , this.mess).subscribe(res => {
+  //     console.log(res);
+  //     this.allchat();
+  //   });
+  // }
 
   allchat() {
     this.routeSub = this.service.allchat().subscribe(res => {

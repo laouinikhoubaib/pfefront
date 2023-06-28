@@ -7,5 +7,5 @@ export class Paiement {
     TypePayment   !: string;
     cardholderName!: string;
     datepaiement!: Date;
-    iddelivery!: number;
+    idReservation!: number;
   }
