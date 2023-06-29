@@ -10,11 +10,12 @@ import {Reservation} from '../models/reservation';
 })
 export class ReservationServiceService {
   private BASE_URL_DELETE = 'http://localhost:8080/SpringMVC/api/reservation/deleteReservation';
-  private BASE_URL_REVENU_BY_OFFRE = 'http://localhost:8080/SpringMVC/api/reservation/revenueoffer'
+  private BASE_URL_REVENU_BY_OFFRE = 'http://localhost:8080/SpringMVC/api/reservation/revenueoffer';
   private BASE_URL_IS_VALID = 'http://localhost:8080/SpringMVC/api/reservation/ContractIsValidd';
   private BASE_URL_GET_BY_ID = 'http://localhost:8080/SpringMVC/api/reservation/getRentalContract';
   private BASE_URL_ADD = 'http://localhost:8080/SpringMVC/api/reservation/addReservation/';
   private apiUrl = 'http://localhost:8080/SpringMVC/api/reservation/GetAllReservations';
+  private apiUrll = 'http://localhost:8080/SpringMVC/api/reservation';
   constructor(
     private http: HttpClient, private userService: UserService
   ) { }
@@ -52,5 +53,9 @@ export class ReservationServiceService {
     return this.http.get<number>(`${this.BASE_URL_REVENU_BY_OFFRE}/${id}`);
   }
 
+  generateQrCode(reservid: number) {
+    const url = `${this.apiUrll}/qrcode/${reservid}`;
+    return this.http.get(url, { responseType: 'text' });
+  }
 
 }

@@ -66,8 +66,9 @@ export class VehiculeService extends  RequestBaseService{
 
   calculateRevenueForUser(id: any){
     console.log('gg' , id);
-    return this.http.get(' http://localhost:8080/SpringMVC/api/reservation/revenue/'+id)
+    return this.http.get(' http://localhost:8080/SpringMVC/api/vehicule/revenue/' + id);
   }
+
   getAvailableOffers(date1: any, date2: any){
     return this.http.get(this.BASE_URL_AVAILABLE_OFFERS + date1 + "/" + date2);
   }
@@ -115,5 +116,6 @@ export class VehiculeService extends  RequestBaseService{
     const url = `${this.baseUrl}/same-agence/voiture?agenceId=${agenceId}`;
     return this.http.get<Vehicule[]>(url);
   }
+
 
 }
