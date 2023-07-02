@@ -27,8 +27,6 @@ import {PostDetailsComponent} from './forum/post-details/post-details.component'
 import {ChatPriveComponent} from './forum/chat-prive/chat-prive.component';
 import {UserPostsComponent} from './forum/user-posts/user-posts.component';
 import {ListeVehiculeFrontComponent} from './vehicule/liste-vehicule/liste-vehicules.component';
-import {AjoutVehiculeComponent} from './user/vehiculeBack/ajout-rental-offer/ajout-rental-offer.component';
-import {UpdateVehiculeComponent} from './user/vehiculeBack/update-rental-offer/update-rental-offer.component';
 import {ListeVehiculesComponent} from './user/vehiculeBack/liste-rental-offer/liste-rental-offer.component';
 import {AddReservationComponent} from './reservation/add-reservation/add-reservation.component';
 import {ReservationComponent} from './reservation/reservation.component';
@@ -61,8 +59,8 @@ import {PaiementComponent} from './reservation/paiement/paiement.component';
                         {path: 'listVehiculesVoitures', component: ListeVehiculeVoitureFrontComponent},
                         {path: 'listeReservation/:id/ajout', component: AddReservationComponent },
                         {path: 'listeReservation/:id', component: ReservationComponent },
-                        {path: 'listReservation', component: ListeReservationComponent },
-                         {path: 'calendrier', component: CalendrierComponent },
+                        { path: 'listVehiculesVoitures/:id/ajout', component: ListeVehiculeVoitureFrontComponent },
+                        { path: 'listVehiculesUtilitaires/:id/ajout', component: ListeVehiculeUtilitaireFrontComponent },
                         {path: 'map', component: MapComponent},
                         {path: 'agenceFront', component: AgenceFrontComponent, canActivate: [Auth2Guard]},
                         {path: 'detailAgence/:id', component: AgenceDeteilComponent, canActivate: [Auth2Guard]},
@@ -96,10 +94,11 @@ import {PaiementComponent} from './reservation/paiement/paiement.component';
                     children: [
                         {path: 'agence', component: AgenceComponent},
                         {path: 'complaint', component: ComplaintComponent},
+                        {path: 'calendrier', component: CalendrierComponent },
+                        {path: 'listReservation', component: ListeReservationComponent },
                         {path: '', component: SAdminDashboardBackofficeComponent},
-                        {path: 'AddVehicule', component: AjoutVehiculeComponent },
+                        { path: 'listReservation/:id/ajout', component: ListeReservationComponent },
                         {path: 'listVehicules', component: ListeVehiculeFrontComponent },
-                        {path: 'UpdateVehicule/:idvehicule', component: UpdateVehiculeComponent },
                         {path: 'listVehiculesback', component: ListeVehiculesComponent },
                         {path: 'listVehiculesUtilitaires', component: ListeVehiculeUtilitaireFrontComponent},
                         {path: 'listVehiculesVoitures', component: ListeVehiculeVoitureFrontComponent},

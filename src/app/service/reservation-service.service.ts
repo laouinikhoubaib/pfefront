@@ -1,4 +1,4 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, tap, throwError } from 'rxjs';
 import { UserService } from './user.service';
@@ -16,6 +16,7 @@ export class ReservationServiceService {
   private BASE_URL_ADD = 'http://localhost:8080/SpringMVC/api/reservation/addReservation/';
   private apiUrl = 'http://localhost:8080/SpringMVC/api/reservation/GetAllReservations';
   private apiUrll = 'http://localhost:8080/SpringMVC/api/reservation';
+  private baseUrl = 'http://localhost:8080/api/reservation/facture/';
   constructor(
     private http: HttpClient, private userService: UserService
   ) { }
@@ -49,13 +50,17 @@ export class ReservationServiceService {
   reservationIsValid(datedebut: any, datefin: any): any {
     return this.http.get(`${this.BASE_URL_IS_VALID}/${datedebut}/${datefin}`);
   }
-  calculRevenu(id: number): Observable<number> {
-    return this.http.get<number>(`${this.BASE_URL_REVENU_BY_OFFRE}/${id}`);
+  calculateRevenueForUser(id: any){
+    console.log('gg' , id);
+    return this.http.get(' http://localhost:8080/SpringMVC/api/reservation/revenue/' + id);
   }
 
-  generateQrCode(reservid: number) {
-    const url = `${this.apiUrll}/qrcode/${reservid}`;
-    return this.http.get(url, { responseType: 'text' });
+  getFacture(reservid: number): Observable<HttpResponse<Blob>> {
+    const url = `${this.baseUrl}${reservid}`;
+    return this.http.get(url, {
+      responseType: 'blob',
+      observe: 'response'
+    });
   }
 
 }

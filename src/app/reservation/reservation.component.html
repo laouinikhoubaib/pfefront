@@ -1,13 +1,18 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
 <div class="content">
- <app-revenu-by-offer></app-revenu-by-offer>
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-sm-6 col-xl-3">
+                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                    <i class="fa fa-chart-line fa-3x text-primary"></i>
+                    <div class="ms-3">
+                        <p class="mb-2">Revenue</p>
+                        <h6 class="mb-0">${{revenu}}</h6>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light text-center rounded p-4">
             <div class="card">
@@ -15,39 +20,19 @@
                     <h3 class="mt-3 mb-3"> List des réservations</h3>
                 </div>
             </div>
-            <div style="text-align:right; padding-bottom: 30px;"> <button type="button" (click)="goToAdd()" class="btn btn-dark" style="color: white; font-weight: bold;">
+            <div style="text-align:right; padding-bottom: 30px;"> <button class="table-dark-bg" type="button"(click)="goToAdd()" class="btn btn-dark" style="color: white;background-color: #3092b0; font-weight: bold;">
                 Réserver</button>
             </div>
             <div style="padding: 50px;">
               <div *ngIf="show">
                 <div class="card" id="pdff" #pdf>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
                   <h1>Contrat de location de voiture</h1>
                     <h2>ENTRE LES SOUSSIGNES,</h2>
-                    <br>
-                    <br>
-                    <br>
                     <h3>Date début de contrat  : {{contratDetail?.datedebut}}</h3>
                     <h3>Date fin de contrat : {{contratDetail?.datefin}}</h3>
                     <h3>Nombre de jours : {{contratDetail?.nbjour}}</h3>
                     <h3>Prix : {{contratDetail?.prix}}</h3>
                     <h3>Pour : ............................</h3>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
                     <h4>Appelé ci-après le loueur,
                         ET
                         Appelé ci-après le locataire,
@@ -83,16 +68,6 @@
                         Fait en deux exemplaires originaux remis à chacune des parties,</h4>
                                                                                                         <h4> Fait en deux exemplaires originaux remis à chacune des parties,
                         A …………………………...., le …………………………....</h4>
-
-
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-
                 </div>
                 <div>
                   <button style="margin-top: 10px; margin-bottom: 10px;" (click)="loadPdfff()" class="btn btn-success">Télécharger</button>
@@ -100,7 +75,7 @@
 
               </div>
                 <table class="table">
-                    <thead class="table-dark">
+                    <thead class="table-dark-bg">
                       <tr>
                         <th scope="col">id</th>
                         <th scope="col">Prix</th>
@@ -123,8 +98,9 @@
                           </td>
 
                           <td>
-                          <a class="btn btn-primary" style="margin-left: 5px;" (click)="addpayement(item.reservid)">Payer</a>
+                          <a class="btn btn-primary" style="margin-left: 5px;" (click)="addpayement(item.reservid)"></a>
                           </td>
+
                       </tr>
                     
                     </tbody>
@@ -133,9 +109,6 @@
         </div>
     </div>
 </div>
-<br>
-<br>
-<br>
-<br>
+
 
 

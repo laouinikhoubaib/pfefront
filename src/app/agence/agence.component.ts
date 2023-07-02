@@ -30,6 +30,7 @@ export class AgenceComponent implements OnInit {
   allUsers: Array<Agence> = [];
   latLng;
   event: Agence = new Agence();
+
   constructor( private router: Router, private messageService: MessageService, private service: AgenceService,  private route: ActivatedRoute) {}
 
 

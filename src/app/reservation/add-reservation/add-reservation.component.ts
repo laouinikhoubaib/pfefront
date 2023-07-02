@@ -65,16 +65,17 @@ export class AddReservationComponent implements OnInit {
         });
   }
   addRentalContrat() {
-            this.rentalService.addReservation(this.contract, this.vehiculeId, this.userId).subscribe(
-                (res) => {
-                  console.log('++++++++++++++', res);
-                  this.successNotification();
-                },
-                (error) => {
-                  console.log('Erreur:', error);
-                  this.alertError();
-                }
-            );
+    this.rentalService.addReservation(this.contract, this.vehiculeId, this.userId).subscribe(
+        (res: any) => {
+          const contratId = res.contrat; // Supposons que l'ID de la réservation ajoutée est renvoyé sous la clé 'contrat' dans la réponse
+          console.log('++++++++++++++', contratId);
+          this.successNotification(contratId);
+        },
+        (error) => {
+          console.log('Erreur:', error);
+          this.alertError();
+        }
+    );
   }
   alertError(errorMessage: string = 'Erreur détécté lors de la réservation, veuillez vérifier la disponibilité') {
     Swal.fire({
@@ -83,8 +84,12 @@ export class AddReservationComponent implements OnInit {
       text: errorMessage,
     });
   }
-  successNotification() {
-    Swal.fire('Contrat ajouté avec succés!');
+  successNotification(contratId: number) {
+    Swal.fire('Contrat ajouté avec succès!').then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['listeReservation', contratId]);
+      }
+    });
   }
   validationDate(event: any) {
     var dateAtt = new Date(event.target.value);

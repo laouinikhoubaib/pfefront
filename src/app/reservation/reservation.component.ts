@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {jsPDF} from 'jspdf';
 import html2canvas from 'html2canvas';
 import {ReservationServiceService} from '../service/reservation-service.service';
+import {Reservation} from '../models/reservation';
 
 
 @Component({
@@ -16,6 +17,8 @@ export class ReservationComponent implements OnInit {
   contratDetail: any;
   show: boolean = false;
   revenu: any;
+
+
   @ViewChild('pdf') pdf!: ElementRef;
   constructor(
     private route: ActivatedRoute,
@@ -28,7 +31,7 @@ export class ReservationComponent implements OnInit {
   ngOnInit(): void {
     console.log('*****************************' + this.idVehicule);
     this.getContrat();
-    this.reservationService.calculRevenu(this.idVehicule).subscribe(
+    this.reservationService.calculateRevenueForUser(this.idVehicule).subscribe(
       (response) => {
         this.revenu = response;
         console.log('**********************' + this.revenu);
@@ -81,4 +84,5 @@ export class ReservationComponent implements OnInit {
     console.log('update', idReservation);
     this.router.navigate(['/addpayment', idReservation]);
   }
+
 }
