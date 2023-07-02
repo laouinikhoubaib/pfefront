@@ -127,10 +127,7 @@ import {AddReservationComponent} from './reservation/add-reservation/add-reserva
 import {ListeReservationComponent} from './reservation/liste-reservation/liste-reservation.component';
 import {ReservationComponent} from './reservation/reservation.component';
 import {ListeVehiculeFrontComponent} from './vehicule/liste-vehicule/liste-vehicules.component';
-import {UpdateVehiculeComponent} from './user/vehiculeBack/update-rental-offer/update-rental-offer.component';
-import {RevenuByOfferComponent} from './user/vehiculeBack/revenu-by-offer/revenu-by-offer.component';
 import {ListeVehiculesComponent} from './user/vehiculeBack/liste-rental-offer/liste-rental-offer.component';
-import {AjoutVehiculeComponent} from './user/vehiculeBack/ajout-rental-offer/ajout-rental-offer.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {CalendrierComponent} from './calendrier/calendrier.component';
 import {ScheduleModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService} from '@syncfusion/ej2-angular-schedule';
@@ -140,7 +137,6 @@ import {MapComponent} from './agence/map/map.component';
 import { AgenceFrontComponent } from './agence/agence-front/agence-front.component';
 import { AgenceDeteilComponent } from './agence/agence-deteil/agence-deteil.component';
 import { PaiementComponent } from './reservation/paiement/paiement.component';
-// import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
 
 @NgModule({
     imports: [
@@ -280,10 +276,7 @@ import { PaiementComponent } from './reservation/paiement/paiement.component';
         ListeReservationComponent,
         ReservationComponent,
         ListeVehiculeFrontComponent,
-        UpdateVehiculeComponent,
-        RevenuByOfferComponent,
         ListeVehiculesComponent,
-        AjoutVehiculeComponent,
         CalendrierComponent,
         AgenceFrontComponent,
         AgenceDeteilComponent,

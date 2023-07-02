@@ -1,18 +1,18 @@
 .container {
     padding-top: 50px;
     padding-bottom: 10px;
-    color: #405065;
+    color: #37afd4;
   }
-  
+
   .search-hero {
     max-width: 350px;
     padding-bottom: 50px;
     margin:auto;
   }
-  
+
   .form-control {
     box-shadow: 0 10px 40px 0 #B0C1D9;
-    
+
   }
   .form-control::placeholder  {
     font-family: FontAwesome;
@@ -78,4 +78,54 @@
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0
 }
+.table-dark-bg{
 
+  background-color: #3092b0;
+  color: whitesmoke;
+}
+
+.card {
+  display: block;
+  justify-content: center;
+}
+.center-text {
+  text-align: center;
+}
+.action-buttons {
+  display: none;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  transition: all 0.3s ease;
+}
+
+.action-buttons button {
+  width: 100%;
+  transform: scale(1);
+  transition: all 0.3s ease;
+}
+
+.action-buttons button:hover {
+  transform: scale(1.1);
+}
+.custom-container {
+  /*background-color: #757575;*/
+  max-width: 2000px;
+  margin: auto;
+}
+.custom-containers {
+  /*background-color: #757575;*/
+  max-width: 2000px;
+  margin: auto;
+}
+.custom-container {
+  /*background-color: #757575;*/
+  max-width: 2000px;
+  margin: auto;
+}
+.custom-containers {
+  /*background-color: #757575;*/
+  max-width: 2000px;
+  margin: auto;
+}
