@@ -20,7 +20,7 @@ import {AuthenticationService} from '../../service/authentication.service';
   templateUrl: './liste-reservation.component.html',
   styleUrls: ['./liste-reservation.component.css']
 })
-export class ListeReservationComponent implements OnInit {
+  export class ListeReservationAdminComponent implements OnInit {
 
 
   title = 'Angular Search Using ng2-search-filter';
@@ -182,7 +182,7 @@ export class ListeReservationComponent implements OnInit {
   openDialog(vehiculeReservation: number) {
     this.selectedVehiculeId = vehiculeReservation;
     setTimeout(() => {
-      const url = 'superadmin/listReservation/' + this.selectedVehiculeId + '/ajout';
+      const url = 'admin/listReservation/' + this.selectedVehiculeId + '/ajout';
       this.router.navigateByUrl(url);
     }, 0);
     this.displayDialog = true;
@@ -190,7 +190,7 @@ export class ListeReservationComponent implements OnInit {
   openDialogg(vehiculeReservation: number) {
     this.selectedVehiculeId = vehiculeReservation;
     setTimeout(() => {
-      const url = 'superadmin/listReservation/' + this.selectedVehiculeId + '/ajout';
+      const url = 'admin/listReservation/' + this.selectedVehiculeId + '/ajout';
       this.router.navigateByUrl(url);
     }, 0);
     this.displayDialogg = true;

@@ -85,7 +85,7 @@ export class AddReservationComponent implements OnInit {
     });
   }
   successNotification(contratId: number) {
-    Swal.fire('Contrat ajouté avec succès!').then((result) => {
+    Swal.fire('Réservation ajouté avec succès!').then((result) => {
       if (result.isConfirmed) {
         this.router.navigate(['listeReservation', contratId]);
       }
