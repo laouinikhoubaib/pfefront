@@ -38,6 +38,8 @@ import {MapComponent} from './agence/map/map.component';
 import {AgenceFrontComponent} from './agence/agence-front/agence-front.component';
 import {AgenceDeteilComponent} from './agence/agence-deteil/agence-deteil.component';
 import {PaiementComponent} from './reservation/paiement/paiement.component';
+import {ListeReservationAdminComponent} from './reservation/liste-reservation-admin/liste-reservation.component';
+import {ListeReservationFranchiseAdminComponent} from './reservation/liste-reservation-adminfranchise/liste-reservation.component';
 
 
 
@@ -68,13 +70,16 @@ import {PaiementComponent} from './reservation/paiement/paiement.component';
 
                     ]
                 },
-                {path: 'admin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]},
+                {path: 'admin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} ,
                     children: [
                         {path: '', component: AdminDashboardBackofficeComponent},
                         {path: 'listVehicules', component: ListeVehiculeFrontComponent },
                         {path: 'listVehiculesback', component: ListeVehiculesComponent },
                         {path: 'listVehiculesUtilitaires', component: ListeVehiculeUtilitaireFrontComponent},
                         {path: 'listVehiculesVoitures', component: ListeVehiculeVoitureFrontComponent},
+                        { path: 'listReservation/:id/ajout', component: ListeReservationAdminComponent },
+                        {path: 'calendrier', component: CalendrierComponent },
+                        {path: 'listReservation', component: ListeReservationAdminComponent },
 
 
                     ]
@@ -86,6 +91,9 @@ import {PaiementComponent} from './reservation/paiement/paiement.component';
                         {path: 'listVehiculesback', component: ListeVehiculesComponent },
                         {path: 'listVehiculesUtilitaires', component: ListeVehiculeUtilitaireFrontComponent},
                         {path: 'listVehiculesVoitures', component: ListeVehiculeVoitureFrontComponent},
+                        { path: 'listReservation/:id/ajout', component: ListeReservationFranchiseAdminComponent },
+                        {path: 'calendrier', component: CalendrierComponent },
+                        {path: 'listReservation', component: ListeReservationFranchiseAdminComponent },
 
                     ]
                 },
@@ -129,10 +137,6 @@ import {PaiementComponent} from './reservation/paiement/paiement.component';
                 {path: 'new-password', component: NewPasswordComponent},
                 {path: 'login', component: LoginComponent},
                 {path: '**', redirectTo: '/notfound'},
-                {path: 'listVehicules', component: ListeVehiculeFrontComponent },
-                {path: 'listVehiculesback', component: ListeVehiculesComponent },
-                {path: 'listVehiculesUtilitaires', component: ListeVehiculeUtilitaireFrontComponent},
-                {path: 'listVehiculesVoitures', component: ListeVehiculeVoitureFrontComponent},
             ])
         ],
         exports: [RouterModule]

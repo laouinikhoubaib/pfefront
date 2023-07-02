@@ -137,6 +137,8 @@ import {MapComponent} from './agence/map/map.component';
 import { AgenceFrontComponent } from './agence/agence-front/agence-front.component';
 import { AgenceDeteilComponent } from './agence/agence-deteil/agence-deteil.component';
 import { PaiementComponent } from './reservation/paiement/paiement.component';
+import {ListeReservationAdminComponent} from './reservation/liste-reservation-admin/liste-reservation.component';
+import {ListeReservationFranchiseAdminComponent} from './reservation/liste-reservation-adminfranchise/liste-reservation.component';
 
 @NgModule({
     imports: [
@@ -280,7 +282,9 @@ import { PaiementComponent } from './reservation/paiement/paiement.component';
         CalendrierComponent,
         AgenceFrontComponent,
         AgenceDeteilComponent,
-        PaiementComponent
+        PaiementComponent,
+        ListeReservationAdminComponent,
+        ListeReservationFranchiseAdminComponent
 
     ],
     providers: [
