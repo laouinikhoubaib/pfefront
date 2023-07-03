@@ -184,14 +184,15 @@
                                                     <tbody *ngFor="let item of contrats">
                                                     <tr>
                                                         <td>
-                                                            <a href="javascript:void(0)" class="btn btn-dark" style="margin-left: 210px; background-color: #37afd4 ;text-align:right;font-weight: bold" (click)="generatePDF(item)">
+                                                            <a href="javascript:void(0)" class="btn btn-dark" style="margin-left: 210px; background-color: #37afd4 ;color: white ;text-align:right;font-weight: bold" (click)="generatePDF(item)">
                                                                 Détails<i class="bi bi-download"></i>
                                                             </a>
                                                         </td>
 
                                                         <td>
-                                                            <a class="btn btn-primary" style="margin-left: 5px;" (click)="addpayement(item.reservid)"></a>
+                                                            <button class="btn btn-dark" type="submit"  style="margin-left: 210px; background-color: #37afd4 ; color: white ;text-align:right;font-weight: bold"(click)="onClickTelechargerFacturePDF(reservation.reservid )"> Facture</button>
                                                         </td>
+
 
                                                     </tr>
 

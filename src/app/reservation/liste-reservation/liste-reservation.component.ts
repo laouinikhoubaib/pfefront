@@ -26,7 +26,6 @@ export class ListeReservationComponent implements OnInit {
   title = 'Angular Search Using ng2-search-filter';
   searchText!:any;
   idVehicule: any;
-  reservationId: any;
   offers!: Observable<Reservation[]>;
   list: any;
   POSTS: any;
@@ -46,7 +45,6 @@ export class ListeReservationComponent implements OnInit {
   contratDetail: any;
   show: boolean = false;
   selectedVehiculeId: number;
-  revenus: { [reservationId: number]: number } = {};
   userId: number;
   datedebut!: any;
   datefin!: any;
@@ -292,11 +290,13 @@ export class ListeReservationComponent implements OnInit {
     console.log(this.DateValidStartdateAndEnddate);
   }
 
-  onClickTelechargerFacturePDF(reservationId: number) {
-    this.service.telechargerFacturePDF(reservationId).subscribe(response => {
-      const blob = new Blob([response], { type: 'application/pdf' });
-      const url = URL.createObjectURL(blob);
-      window.open(url);
+  onClickTelechargerFacturePDF(reservid: number) {
+    this.reservations.forEach((reservation) => {
+      this.service.telechargerFacturePDF(reservation.reservid).subscribe(response => {
+        const blob = new Blob([response], {type: 'application/pdf'});
+        const url = URL.createObjectURL(blob);
+        window.open(url);
+      });
     });
   }
 }

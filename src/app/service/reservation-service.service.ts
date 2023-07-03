@@ -16,7 +16,7 @@ export class ReservationServiceService {
   private BASE_URL_ADD = 'http://localhost:8080/SpringMVC/api/reservation/addReservation/';
   private apiUrl = 'http://localhost:8080/SpringMVC/api/reservation/GetAllReservations';
   private apiUrll = 'http://localhost:8080/SpringMVC/api/reservation';
-  readonly delurl = 'http://localhost:8080/SpringMVC/api/reservation/facture/';
+  readonly delurl = 'http://localhost:8080/SpringMVC/api/reservation/facture';
 
   constructor(
     private http: HttpClient, private userService: UserService
@@ -56,9 +56,9 @@ export class ReservationServiceService {
     return this.http.get(' http://localhost:8080/SpringMVC/api/reservation/revenue/' + id);
   }
 
-  telechargerFacturePDF(reservationId: number) {
-    const url = `${this.delurl}${reservationId}`;
-    return this.http.get(url, { responseType: 'arraybuffer' });
+  telechargerFacturePDF(reservid: number): Observable<any> {
+    const url = `${this.delurl}/${reservid}`;
+    return this.http.get(url, { responseType: 'blob' });
   }
 
 }
