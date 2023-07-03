@@ -291,4 +291,11 @@ import {AuthenticationService} from '../../service/authentication.service';
     this.dateIsValid();
     console.log(this.DateValidStartdateAndEnddate);
   }
+  onClickTelechargerFacturePDF(reservationId: number) {
+    this.service.telechargerFacturePDF(reservationId).subscribe(response => {
+      const blob = new Blob([response], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      window.open(url);
+    });
+  }
 }
