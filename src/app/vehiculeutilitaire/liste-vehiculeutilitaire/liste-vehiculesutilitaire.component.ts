@@ -131,10 +131,8 @@ export class ListeVehiculeUtilitaireFrontComponent implements OnInit {
     validationDate(event: any) {
         var dateAtt = new Date(event.target.value);
         this.datedebut = new Date(event.target.value);
-        var datefi = this.datedebut.addDaysToDate(this.nbjour);
-        console.log(datefi);
+        var datefi = new Date(event.target.value);
         var dateStatique = '2043-06-15';
-        console.log(this.datedebut);
         var a = this.datenow.getTime();
         var b = dateAtt.getTime();
         var x = event.target.value;

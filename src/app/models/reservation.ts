@@ -13,6 +13,7 @@ export class Reservation {
    reservationVehicule: any;
    userReservation: any;
    qrcode: string;
+   client: string;
 
 
 }
