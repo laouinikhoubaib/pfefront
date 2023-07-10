@@ -25,7 +25,7 @@
         <button  pButton pRipple label="Obtenir un prix" style="width: 600px" type="submit" class="btn btn-primary" (click)="openDialog(vehicule.vehiculeId)"></button>
       </div>
 
-      <p-dialog  [(visible)]="displayDialog" [modal]="true" [responsive]="true" [style]="{ 'width': '1000px', 'height': '800px' }" >
+      <p-dialog class="custom-dialog" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [style]="{ 'width': '700px', 'height': '950px' }" >
         <section>
           <div class="content">
             <div class="container" style="margin-top: 20px;">
@@ -33,23 +33,28 @@
                 <div >
                   <h3 style="text-align: center;"> Ajouter une nouvelle réservation</h3>
                 </div>
-                <form style="width: 50%; margin-left: auto; margin-right: auto;">
-                  <div class="row">
-                    <div class="col-6">
-                      <label for="">Date début</label>
-                      <input type="datetime-local" name="datedebut" [(ngModel)]="contract.datedebut" required class="form-control">
-                    </div>
-
-                    <div class="col-6">
-                      <label for="">Date fin</label>
-                      <input type="datetime-local" name="datefin" [(ngModel)]="contract.datefin" required class="form-control">
-                    </div>
+                <br>
+                <form style="width: 80%; margin-left: auto; margin-right: auto;">
+                  <div>
+                    <label for="">Date début</label>
+                    <input type="datetime-local" name="datedebut" [(ngModel)]="contract.datedebut"  required class="form-control"style="background-color: #d9edf7">
                   </div>
-
+                  <br>
+                  <div>
+                    <label for="">Date fin</label>
+                    <input type="datetime-local" name="datefin" [(ngModel)]="contract.datefin" required class="form-control" style="background-color: #d9edf7">
+                  </div>
+                  <br>
+                  <div>
+                    <label for="">Nom de client</label>
+                    <input type="text" name="nomclient" [(ngModel)]="contract.client" required class="form-control" style="background-color: #d9edf7">
+                  </div>
+                  <br>
                   <div class="text-center">
                     <button (click)="addRentalContrat()" type="submit" class="btn btn-primary">Confirmer</button>
                   </div>
                 </form>
+
               </div>
             </div>
           </div>
