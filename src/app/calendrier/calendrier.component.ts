@@ -14,7 +14,7 @@ export class CalendrierComponent implements OnInit {
     eventSettings: EventSettingsModel;
 
 
-    public selectedDate: Date = new Date(2023, 5, 14);
+    public selectedDate: Date = new Date();
 
 
     constructor(private reservationService: ReservationServiceService) {

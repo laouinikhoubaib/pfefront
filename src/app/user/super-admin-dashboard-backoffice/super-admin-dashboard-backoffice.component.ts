@@ -65,26 +65,25 @@ export class SAdminDashboardBackofficeComponent implements OnInit {
 
       this.userService.getAllUser().subscribe(users => {
         this.allUsers = users;
+        this.getAgenceNamesForUsers();
       });
-
-      this.userId = +this.route.snapshot.paramMap.get('userId');
-      this.getNomAgence();
 
       this.roles = [Role.USER, Role.ADMIN, Role.USER_FRANCHISE, Role.ADMIN_FRANCHISE, Role.SUPERADMIN];
       this.middleRole = Role.SUPERADMIN;
 
-      this.getAgences();
+    }
+
+  getAgenceNamesForUsers() {
+    this.allUsers.forEach(user => {
+      this.userService.getAgencyNameByUserId(user.userId).subscribe(agencyName => {
+        user.nomAgence = agencyName;
+      });
+    });
     }
   openDialog() {
     this.displayDialog = true;
   }
 
-  getAgences() {
-    this.servicea.getAgences().subscribe(res => {
-      console.log(res);
-      this.listagence = res;
-    });
-  }
   onFileSelcted(event: any){
     console.log(event);
     this.selectedFile = event.target.files[0];
@@ -164,9 +163,5 @@ export class SAdminDashboardBackofficeComponent implements OnInit {
     this.router.navigate([currentUrl]);
   }
 
-  getNomAgence(): void {
-    this.userService.getNomAgence(this.userId)
-        .subscribe(nomAgence => this.nomAgence = nomAgence);
-  }
 
 }

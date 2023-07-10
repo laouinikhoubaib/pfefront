@@ -139,7 +139,7 @@ import { AgenceDeteilComponent } from './agence/agence-deteil/agence-deteil.comp
 import { PaiementComponent } from './reservation/paiement/paiement.component';
 import {ListeReservationAdminComponent} from './reservation/liste-reservation-admin/liste-reservation-admin.component';
 import {ListeReservationFranchiseAdminComponent} from './reservation/liste-reservation-adminfranchise/liste-reservation-adminfranchise.component';
-import {ListeReservationFrontComponent} from './user/liste-reservation-front/liste-reservation.component';
+
 
 @NgModule({
     imports: [
@@ -286,7 +286,7 @@ import {ListeReservationFrontComponent} from './user/liste-reservation-front/lis
         PaiementComponent,
         ListeReservationAdminComponent,
         ListeReservationFranchiseAdminComponent,
-   
+
 
     ],
     providers: [

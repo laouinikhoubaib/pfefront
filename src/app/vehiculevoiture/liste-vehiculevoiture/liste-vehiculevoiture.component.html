@@ -33,31 +33,23 @@
                 <div >
                   <h3 style="text-align: center;"> Ajouter une nouvelle réservation</h3>
                 </div>
-        <form style="width: 50%; margin-left: auto; margin-right: auto;" >
-          <div class="row " >
-            <div class="col-6">
-              <label for="">Date début</label>
-              <input type="date" name="datedebut" (change)="validationDate($event)"  [(ngModel)]="contract.datedebut" required  class="form-control">
-            </div>
+                <form style="width: 50%; margin-left: auto; margin-right: auto;">
+                  <div class="row">
+                    <div class="col-6">
+                      <label for="">Date début</label>
+                      <input type="datetime-local" name="datedebut" [(ngModel)]="contract.datedebut" required class="form-control">
+                    </div>
 
-            <div class="col-6">
-              <label for="">Nombre des jours</label>
-              <input type="number" name="nbjour" (change)="validationnbMonth($event)" [(ngModel)]="contract.nbjour" #nbjour="ngModel"  required class="form-control">
-              <div *ngIf="nbjour.invalid && (nbjour.dirty || nbjour.touched)">
-                <div *ngIf='nbjour.errors?.required'>
-                  <small class="p-invalid" style="color: red;"> ce champs est obligatoire</small>
-                </div>
-              </div>
-              <div *ngIf='nbjour.value<1'>
-                <small class="p-invalid" style="color: red;">Vous devez louer au moin 1 jour</small>
-              </div>
-            </div>
-          </div>
+                    <div class="col-6">
+                      <label for="">Date fin</label>
+                      <input type="datetime-local" name="datefin" [(ngModel)]="contract.datefin" required class="form-control">
+                    </div>
+                  </div>
 
-        <div class="text-center">
-          <button (click)="addRentalContrat()" type="submit" class="btn btn-primary"  >Confirmer</button>
-        </div>
-        </form>
+                  <div class="text-center">
+                    <button (click)="addRentalContrat()" type="submit" class="btn btn-primary">Confirmer</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
