@@ -17,8 +17,8 @@ import {AuthenticationService} from '../../service/authentication.service';
 
 @Component({
   selector: 'app-liste-reservation',
-  templateUrl: './liste-reservation.component.html',
-  styleUrls: ['./liste-reservation.component.css']
+  templateUrl: './liste-reservation-admin.component.html',
+  styleUrls: ['./liste-reservation-admin.component.css']
 })
   export class ListeReservationAdminComponent implements OnInit {
 
@@ -291,11 +291,13 @@ import {AuthenticationService} from '../../service/authentication.service';
     this.dateIsValid();
     console.log(this.DateValidStartdateAndEnddate);
   }
-  onClickTelechargerFacturePDF(reservationId: number) {
-    this.service.telechargerFacturePDF(reservationId).subscribe(response => {
-      const blob = new Blob([response], { type: 'application/pdf' });
-      const url = URL.createObjectURL(blob);
-      window.open(url);
+  onClickTelechargerFacturePDF(reservid: number) {
+    this.reservations.forEach((reservation) => {
+      this.service.telechargerFacturePDF(reservation.reservid).subscribe(response => {
+        const blob = new Blob([response], {type: 'application/pdf'});
+        const url = URL.createObjectURL(blob);
+        window.open(url);
+      });
     });
   }
 }

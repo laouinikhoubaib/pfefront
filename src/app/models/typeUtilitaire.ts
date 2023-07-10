@@ -4,7 +4,7 @@ export enum TypeUtilitaire{
 
 
     voiture_société,
-    utilitaire_3m3,
+    utilitaire_3m3 ,
     utilitaire_4m3,
     utilitaire_6m3,
     utilitaire_7m3,

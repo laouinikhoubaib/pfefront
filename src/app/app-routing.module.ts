@@ -38,8 +38,8 @@ import {MapComponent} from './agence/map/map.component';
 import {AgenceFrontComponent} from './agence/agence-front/agence-front.component';
 import {AgenceDeteilComponent} from './agence/agence-deteil/agence-deteil.component';
 import {PaiementComponent} from './reservation/paiement/paiement.component';
-import {ListeReservationAdminComponent} from './reservation/liste-reservation-admin/liste-reservation.component';
-import {ListeReservationFranchiseAdminComponent} from './reservation/liste-reservation-adminfranchise/liste-reservation.component';
+import {ListeReservationAdminComponent} from './reservation/liste-reservation-admin/liste-reservation-admin.component';
+import {ListeReservationFranchiseAdminComponent} from './reservation/liste-reservation-adminfranchise/liste-reservation-adminfranchise.component';
 
 
 
@@ -67,7 +67,7 @@ import {ListeReservationFranchiseAdminComponent} from './reservation/liste-reser
                         {path: 'agenceFront', component: AgenceFrontComponent, canActivate: [Auth2Guard]},
                         {path: 'detailAgence/:id', component: AgenceDeteilComponent, canActivate: [Auth2Guard]},
                         {path: 'addpayment/:id', component: PaiementComponent},
-
+                        {path: 'calendrier', component: CalendrierComponent },
                     ]
                 },
                 {path: 'admin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} ,
@@ -80,6 +80,7 @@ import {ListeReservationFranchiseAdminComponent} from './reservation/liste-reser
                         { path: 'listReservation/:id/ajout', component: ListeReservationAdminComponent },
                         {path: 'calendrier', component: CalendrierComponent },
                         {path: 'listReservation', component: ListeReservationAdminComponent },
+
 
 
                     ]

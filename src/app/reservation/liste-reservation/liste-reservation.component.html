@@ -1,7 +1,23 @@
 <div class="p-grid">
     <div class="p-col-12">
         <div class="card">
+            <p-toolbar styleClass="p-mb-4">
 
+                <div class="p-col-6 p-md-6 p-xl-3">
+                    <div class="card no-gutter widget-overview-box widget-overview-box-3">
+                            <span class="overview-icon">
+                                <i class="pi pi-user"></i>
+                            </span>
+                        <span class="overview-title">Réservations</span>
+                        <div class="overview-detail">
+                            <div class="p-col-6">
+                                <div class="overview-number">{{reservations.length}}</div>
+                                <div class="overview-subtext">Enregistrés</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </p-toolbar>
 
                 <p-table #dt [value]="reservations" styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
                          styleClass="p-datatable-customers" [rowHover]="true" [rows]="10" [paginator]="true"
