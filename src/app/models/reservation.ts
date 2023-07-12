@@ -1,3 +1,5 @@
+import {ComplaintStatus} from './ComplaintStatus.enum';
+import {ReservationStatusEnum} from './ReservationStatusEnum.enum';
 
 
 export class Reservation {
@@ -14,6 +16,6 @@ export class Reservation {
    userReservation: any;
    qrcode: string;
    client: string;
-
+   reservationStatus!: ReservationStatusEnum;
 
 }

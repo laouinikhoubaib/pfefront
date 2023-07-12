@@ -24,47 +24,11 @@
               <div *ngIf="show">
                 <div class="card" id="pdff" #pdf>
                   <h1>Contrat de location de voiture</h1>
-                    <h2>ENTRE LES SOUSSIGNES,</h2>
+                    <h3>Client : {{contratDetail?.client}}</h3>
                     <h3>Date début de contrat  : {{contratDetail?.datedebut}}</h3>
                     <h3>Date fin de contrat : {{contratDetail?.datefin}}</h3>
                     <h3>Nombre de jours : {{contratDetail?.nbjour}}</h3>
                     <h3>Prix : {{contratDetail?.prix}}</h3>
-                    <h3>Pour : ............................</h3>
-                    <h4>Appelé ci-après le loueur,
-                        ET
-                        Appelé ci-après le locataire,
-                        </h4><h4>IL A ETE CONVENU CE QUI SUIT:
-                            </h4><h4>1.1 - Nature et date d'effet du contrat
-                        Le loueur met à disposition du locataire, un véhicule de marque ………………………….., immatriculé
-                        ………………………….., à titre onéreux et à compter du …………………………..
-                        Kilométrage du véhicule : ………………………….. kms</h4><h4>
-                     1.2 - Etat du véhicule
-                        Lors de la remise du véhicule et lors de sa restitution, un procès-verbal de l'état du véhicule sera établi
-                        entre le locataire et le loueur.
-                        Le véhicule devra être restitué le même état que lors de sa remise. Toutes les détériorations sur le
-                        véhicule constatées sur le PV de sortie seront à la charge du locataire.
-                        Le locataire certifie être en possession du permis l'autorisant à conduire le présent véhicule.</h4>
-                                            <h4> 1.3 - Prix de la location du de la voiture
-                        Les parties s'entendent sur un prix de location ………………………….. euros par jour (calendaires). Ce
-                        prix comprend un forfait de ………………………….. kms pour la durée du contrat.</h4>
-                                                    <h4> 1.4 - Kilométrage supplémentaires
-                        Tout kilomètre réalisé au-delà du forfait indiqué à l’article 1.3 du présent contrat sera facturé au prix de
-                        ………………………….. euros.</h4>
-                                                            <h4> 1.5 - Durée et restitution de la voiture
-                        Le contrat est à durée indéterminée. Il pourra y être mis fin par chacune des parties à tout moment en
-                        adressant un courrier recommandé en respectant un préavis d'un mois.</h4>
-                                                                    <h4>  1.6 - Autres éléments et accessoires
-                        Le locataire prendra en charge l'ensemble des charges afférentes à la mise à disposition du véhicule :</h4>
-                                                                            <h4>- Frais d'entretien du véhicule</h4>
-                                                                                <h4> - Impôts et taxes liés au véhicule</h4>
-                                                                                    <h4> - Les frais d'essence</h4>
-                                                                                        <h4> - L'assurance du véhicule.</h4>
-                                                                                            <h4> 1.7 - Clause en cas de litige</h4>
-                                                                                                <h4>Les parties conviennent expressément que tout litige pouvant naître de l'exécution du présent contrat
-                        relèvera de la compétence du tribunal de commerce de …………………………....
-                        Fait en deux exemplaires originaux remis à chacune des parties,</h4>
-                                                                                                        <h4> Fait en deux exemplaires originaux remis à chacune des parties,
-                        A …………………………...., le …………………………....</h4>
                 </div>
                 <div>
                   <button style="margin-top: 10px; margin-bottom: 10px;" (click)="loadPdfff()" class="btn btn-success">Télécharger</button>
@@ -78,8 +42,11 @@
                         <th scope="col">Prix</th>
                         <th scope="col">Date début</th>
                         <th scope="col">Date fin</th>
+                        <th scope="col">Status de reservation</th>
                         <th scope="col">Détails de contrat</th>
-                          <th scope="col">Paiement</th>
+                          <th scope="col">Aller simple</th>
+                          <th scope="col">Retour simple</th>
+
                       </tr>
                     </thead>
                     <tbody *ngFor="let item of contrats">
@@ -88,16 +55,67 @@
                         <td>{{item.prix}}</td>
                         <td>{{item.datedebut}}</td>
                         <td>{{item.datefin}}</td>
+                          <td>{{item.reservationStatus}}</td>
+
                           <td>
                               <a href="javascript:void(0)" class="btn btn-primary" style="margin-left: 5px;" (click)="generatePDF(item)">
                                   <i class="bi bi-download"></i>
                               </a>
                           </td>
+                          <div>
+                              <a  class="btn btn-primary" style="margin-left: 5px;"  (click)="openDialog(item.reservid)"></a>
+                          </div>
+
+                          <p-dialog header="" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [style]="{ 'width': '600px', 'height': '600px' }">
+                              <section>
+                              <div class="content">
+                                  <div class="container" style="margin-top: 20px;">
+                                      <div class="bg-light text-center rounded p-4">
+                              <div class="text-center">
+                                  <h2>Aller simple</h2>
+                              </div>
+
+                                  <div class="form-group">
+                                      <label for="newStartHour">Heure d'aller réel' :</label>
+                                      <input type="number" class="form-control" id="newStartHour" [(ngModel)]="newStartHour">
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="newStartMinute">Minute d'aller réel' :</label>
+                                      <input type="number" class="form-control" id="newStartMinute" [(ngModel)]="newStartMinute">
+                                  </div>
+                                  <button class="btn btn-primary" (click)="updateReservationTime()">Valider !</button>
+                                      </div>
+                                  </div>
+                              </div>
+                              </section>
+                          </p-dialog>
 
                           <td>
-                          <a class="btn btn-primary" style="margin-left: 5px;" (click)="addpayement(item.reservid)"></a>
+                          <a class="btn btn-primary" style="margin-left: 5px;" (click)="openDialog2(item.reservid)"></a>
                           </td>
+                          <p-dialog header="" [(visible)]="displayDialog2" [modal]="true" [responsive]="true" [style]="{ 'width': '600px', 'height': '600px' }">
+                              <section>
+                                  <div class="content">
+                                      <div class="container" style="margin-top: 20px;">
+                                          <div class="bg-light text-center rounded p-4">
+                                              <div class="text-center">
+                                                  <h2>Retour simple</h2>
+                                              </div>
 
+                                              <div class="form-group">
+                                                  <label for="newEndHour">Heure de retour réel :</label>
+                                                  <input type="number" class="form-control" id="newEndHour" [(ngModel)]="newEndHour">
+                                              </div>
+                                              <div class="form-group">
+                                                  <label for="newEndMinute">Minute de retour réel :</label>
+                                                  <input type="number" class="form-control" id="newEndMinute" [(ngModel)]="newEndMinute">
+                                              </div>
+                                              <button class="btn btn-primary" (click)="updateReservationTimeTermine()">Valider !</button>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </section>
+                          </p-dialog>
                       </tr>
                     
                     </tbody>
