@@ -61,4 +61,27 @@ export class ReservationServiceService {
     return this.http.get(url, { responseType: 'blob' });
   }
 
+  updateReservationTime(reservationId: number, newStartHour: number, newStartMinute: number): Observable<any> {
+    const url = `${this.apiUrll}/encours/${reservationId}/time`;
+    const params = { newStartHour: newStartHour.toString(), newStartMinute: newStartMinute.toString() };
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      responseType: 'text' as 'json'
+    };
+    return this.http.put<any>(url, null, { params, ...httpOptions });
+  }
+
+  updateReservationTimeTermine(reservationId: number, newEndHour: number, newEndMinute: number): Observable<any> {
+    const url = `${this.apiUrll}/termine/${reservationId}/time`;
+    const params = { newEndHour: newEndHour.toString(), newEndMinute: newEndMinute.toString() };
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      responseType: 'text' as 'json'
+    };
+    return this.http.put<any>(url, null, { params, ...httpOptions });
+  }
 }

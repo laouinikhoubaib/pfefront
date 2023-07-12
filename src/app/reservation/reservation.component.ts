@@ -4,6 +4,7 @@ import {jsPDF} from 'jspdf';
 import html2canvas from 'html2canvas';
 import {ReservationServiceService} from '../service/reservation-service.service';
 import {Reservation} from '../models/reservation';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -17,7 +18,14 @@ export class ReservationComponent implements OnInit {
   contratDetail: any;
   show: boolean = false;
   revenu: any;
-
+  displayDialog = false;
+  displayDialog2 = false;
+  errorMessage: string = '';
+  newStartHour: number = 0;
+  newStartMinute: number = 0;
+  newEndHour: number = 0;
+  newEndMinute: number = 0;
+  reservationId: number;
 
   @ViewChild('pdf') pdf!: ElementRef;
   constructor(
@@ -41,6 +49,32 @@ export class ReservationComponent implements OnInit {
       }
     );
    }
+  openDialog(reservationId: number) {
+    this.reservationId = reservationId;
+    this.newStartHour = 0;
+    this.newStartMinute = 0;
+    this.displayDialog = true;
+  }
+
+  openDialog2(reservationId: number) {
+    this.reservationId = reservationId;
+    this.newEndHour = 0;
+    this.newEndMinute = 0;
+    this.displayDialog2 = true;
+  }
+
+  successNotification() {
+    Swal.fire({
+      text: 'Modification faites  avec succès!',
+      showCancelButton: false,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'OK'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload();
+      }
+    });
+  }
   goToAdd(){
     const url = 'listeReservation/' + this.idVehicule + '/ajout';
     this.router.navigateByUrl(url);
@@ -84,5 +118,29 @@ export class ReservationComponent implements OnInit {
     console.log('update', idReservation);
     this.router.navigate(['/addpayment', idReservation]);
   }
+  updateReservationTime() {
+    const newStartHour = this.newStartHour;
+    const newStartMinute = this.newStartMinute;
 
+    this.reservationService.updateReservationTime(this.reservationId, newStartHour, newStartMinute)
+        .subscribe(
+            () => {
+              this.getContrat();
+              this.successNotification();
+            },
+        );
+  }
+
+  updateReservationTimeTermine() {
+    const newEndHour = this.newEndHour;
+    const newEndMinute = this.newEndMinute;
+
+    this.reservationService.updateReservationTimeTermine(this.reservationId, newEndHour, newEndMinute)
+        .subscribe(
+            () => {
+              this.getContrat();
+              this.successNotification();
+            },
+        );
+  }
 }
