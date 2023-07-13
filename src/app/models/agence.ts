@@ -1,6 +1,7 @@
 
 import {TypeAgence} from './typeagence';
 import {User} from './user.model';
+import {Reservation} from './reservation';
 
 
 export class Agence{

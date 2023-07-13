@@ -12,6 +12,7 @@ import {UserService} from '../../service/user.service';
 import {Reservation} from '../../models/reservation';
 import {AuthenticationService} from '../../service/authentication.service';
 import Swal from 'sweetalert2';
+import {Client} from '../../models/client';
 
 
 @Component({
@@ -27,7 +28,6 @@ export class ListeVehiculeVoitureFrontComponent implements OnInit {
   currentUser: User;
   nomAgence: string;
   userId: number;
-
   displayDialog = false;
     contract = new Reservation();
     vehiculeId: number;
@@ -45,6 +45,7 @@ export class ListeVehiculeVoitureFrontComponent implements OnInit {
     DisabledBouton!: boolean;
     nbjour!: any;
     selectedVehiculeId: number;
+    clientNom: string;
 
   constructor(private formBuilder: FormBuilder, private service: VehiculeService, private router: Router,
               private userService: UserService,      private route: ActivatedRoute,
@@ -122,7 +123,11 @@ export class ListeVehiculeVoitureFrontComponent implements OnInit {
     }
 
     addRentalContrat() {
-        this.rentalService.addReservation(this.contract, this.vehiculeId, this.userId).subscribe(
+        const client: Client = new Client();
+        client.nom = this.clientNom;
+        this.contract.client = client;
+
+        this.rentalService.addReservations(this.contract, this.vehiculeId, this.userId, this.clientNom).subscribe(
             (res: any) => {
                 const contratId = res.contrat;
                 this.successNotification(contratId);
