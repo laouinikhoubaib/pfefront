@@ -8,6 +8,7 @@ import {Agence} from '../../models/agence';
 import {AgenceService} from '../../service/agence.service';
 import {Role} from '../../models/role.enum';
 import Swal from 'sweetalert2';
+import {Client} from '../../models/client';
 
 
 @Component({
@@ -37,7 +38,7 @@ export class SAdminDashboardBackofficeComponent implements OnInit {
   userParsed: string = '';
   displayDialog = false;
   listagence: Agence[];
-
+  agenceNom: string;
 
     constructor( private breadcrumbService: BreadcrumbService, private authenticationService: AuthenticationService, private userService: UserService, private router: Router, private route: ActivatedRoute, private servicea: AgenceService) {
     this.breadcrumbService.setItems([
@@ -46,16 +47,6 @@ export class SAdminDashboardBackofficeComponent implements OnInit {
     this.authenticationService.currentUser.subscribe( data => {
         this.currentUser = data;
       });
-    if (this.currentUser == null){
-        this.currentUser = new User();
-        this.currentUser.username = '';
-        this.currentUser.userId = 0;
-        this.currentUser.userId = 0;
-        this.currentUser.password = '';
-        this.currentUser.accessToken = '';
-        this.currentUser.email = '';
-        this.currentUser.refreshToken = '';
-      }
   }
 
     ngOnInit() {
@@ -65,21 +56,17 @@ export class SAdminDashboardBackofficeComponent implements OnInit {
 
       this.userService.getAllUser().subscribe(users => {
         this.allUsers = users;
-        this.getAgenceNamesForUsers();
-      });
 
+      });
       this.roles = [Role.USER, Role.ADMIN, Role.USER_FRANCHISE, Role.ADMIN_FRANCHISE, Role.SUPERADMIN];
       this.middleRole = Role.SUPERADMIN;
 
+      const agence: Agence = new Agence();
+      agence.nom = this.agenceNom;
+      this.user.agencel = agence;
     }
 
-  getAgenceNamesForUsers() {
-    this.allUsers.forEach(user => {
-      this.userService.getAgencyNameByUserId(user.userId).subscribe(agencyName => {
-        user.nomAgence = agencyName;
-      });
-    });
-    }
+
   openDialog() {
     this.displayDialog = true;
   }

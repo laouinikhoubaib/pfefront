@@ -43,6 +43,10 @@ export class ReservationServiceService {
             })
         );
   }
+  addReservations(reservation: Reservation, vehiculeId: number, userId: number, clientNom: string): Observable<number> {
+    const url = `${this.BASE_URL_ADD}${vehiculeId}/${userId}?clientNom=${clientNom}`;
+    return this.http.post<number>(url, reservation);
+  }
   deleteReservation(reservationId: number): Observable<any> {
     const url = `${this.BASE_URL_DELETE}/${reservationId}`;
     return this.http.delete(url, { responseType: 'text' });

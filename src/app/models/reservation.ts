@@ -1,5 +1,6 @@
 import {ComplaintStatus} from './ComplaintStatus.enum';
 import {ReservationStatusEnum} from './ReservationStatusEnum.enum';
+import {Client} from './client';
 
 
 export class Reservation {
@@ -15,7 +16,7 @@ export class Reservation {
    reservationVehicule: any;
    userReservation: any;
    qrcode: string;
-   client: string;
    reservationStatus!: ReservationStatusEnum;
+   client: Client = new Client();
 
 }
