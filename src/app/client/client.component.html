@@ -1,0 +1,123 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<p-dialog class="custom-dialog" [(visible)]="displayDialogclient" [modal]="true" [responsive]="true" [style]="{ 'width': '700px', 'height': '950px' }" >
+    <section>
+        <div class="content">
+            <div class="container" style="margin-top: 20px;">
+                <div class="bg-light text-center rounded p-4">
+                    <div >
+                        <h3 style="text-align: center;"> Ajouter un nouveau client</h3>
+                    </div>
+                    <br>
+                    <form role="form" #f="ngForm" (ngSubmit)="f.form.valid && addClient()">
+
+                        <div class="row justify-space-between ">
+                            <label for="">Spécifier l'agence</label>
+                        </div>
+                        <div class="input-container" >
+                            <select  type="select" id="agence" class="form-select" name="agence" [(ngModel)]="nomAgence" required [style]="{ 'width': '585px', 'height': '40px' }" style="background-color: #d9edf7">
+                                <option value="">Sélectionnez une agence</option>
+                                <option *ngFor="let agence of listagence" [value]="agence.nom">{{ agence.nom }}</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div>
+                            <label for="">Nom de client</label>
+                            <input type="text" name="nom" [(ngModel)]="client.nom"  required class="form-control"style="background-color: #d9edf7">
+                        </div>
+                        <br>
+                        <div>
+                            <label for="">Prénom de client</label>
+                            <input type="text" name="prenom" [(ngModel)]="client.prenom"  required class="form-control"style="background-color: #d9edf7">
+                        </div>
+                        <br>
+                        <div>
+                            <label for="">Adresse actul de client</label>
+                            <input type="text" name="adresse" [(ngModel)]="client.adresse" required class="form-control" style="background-color: #d9edf7">
+                        </div>
+                        <br>
+                        <div>
+                            <label for="">Date de naissance</label>
+                            <input type="date" name="datenaissance" [(ngModel)]="client.datenaissance" required class="form-control" style="background-color: #d9edf7">
+                        </div>
+                        <br>
+                        <div>
+                            <label for="">Lieu de naissance</label>
+                            <input type="text" name="lieunaissance" [(ngModel)]="client.lieunaissance" required class="form-control" style="background-color: #d9edf7">
+                        </div>
+                        <br>
+                        <div>
+                            <label for="">Numéro de téléphone</label>
+                            <input type="text" name="telephone" [(ngModel)]="client.telephone" required class="form-control" style="background-color: #d9edf7">
+                        </div>
+                        <br>
+                        <div>
+                            <label for="">Numéro de permis </label>
+                            <input type="text" name="permis" [(ngModel)]="client.permis" required class="form-control" style="background-color: #d9edf7">
+                        </div>
+                        <br>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg w-100 mb-3 animate__animated animate__fadeInUp" [style]="{ 'width': '550px', 'height': '40px' }">Enregistrer</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</p-dialog>
+<div class="content">
+    <div class="container-fluid pt-4 px-4">
+        <div class="bg-light text-center rounded p-4">
+            <div class="card">
+                <div class="center-text">
+                    <h3 class="mt-3 mb-3"> Liste des clients</h3>
+                </div>
+            </div>
+            <div style="text-align:right; padding-bottom: 30px;">
+                <button pButton pRipple label="Ajouter fiche client" icon="pi pi-plus" class="btn btn-dark" style="color: white;background-color: #3092b0; font-weight: bold;"   class="btn btn-primary" (click)="openDialogclient()"></button>
+            </div>
+
+            <div style="padding: 50px;">
+                <table class="table">
+                    <thead class="table-dark-bg">
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Adresse</th>
+                        <th scope="col">Date de naissance</th>
+                        <th scope="col">Lieu de naissance</th>
+                        <th scope="col">Permis</th>
+                        <th scope="col">Téléphone</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let item of clients">
+                        <td>{{ item.nom }}</td>
+                        <td>{{ item.prenom }}</td>
+                        <td>{{ item.adresse }}</td>
+                        <td>{{ item.datenaissance }}</td>
+                        <td>{{ item.lieunaissance }}</td>
+                        <td>{{ item.permis }}</td>
+                        <td>{{ item.telephone }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
