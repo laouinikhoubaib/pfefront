@@ -40,6 +40,7 @@ import {AgenceDeteilComponent} from './agence/agence-deteil/agence-deteil.compon
 import {PaiementComponent} from './reservation/paiement/paiement.component';
 import {ListeReservationAdminComponent} from './reservation/liste-reservation-admin/liste-reservation-admin.component';
 import {ListeReservationFranchiseAdminComponent} from './reservation/liste-reservation-adminfranchise/liste-reservation-adminfranchise.component';
+import {ClientComponent} from './client/client.component';
 
 
 
@@ -68,6 +69,7 @@ import {ListeReservationFranchiseAdminComponent} from './reservation/liste-reser
                         {path: 'detailAgence/:id', component: AgenceDeteilComponent, canActivate: [Auth2Guard]},
                         {path: 'addpayment/:id', component: PaiementComponent},
                         {path: 'calendrier', component: CalendrierComponent },
+                        {path: 'client', component: ClientComponent }
                     ]
                 },
                 {path: 'admin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} ,

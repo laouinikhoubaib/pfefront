@@ -40,7 +40,7 @@ export class SAdminDashboardBackofficeComponent implements OnInit {
   listagence: Agence[];
   agenceNom: string;
 
-    constructor( private breadcrumbService: BreadcrumbService, private authenticationService: AuthenticationService, private userService: UserService, private router: Router, private route: ActivatedRoute, private servicea: AgenceService) {
+    constructor( private breadcrumbService: BreadcrumbService, private authenticationService: AuthenticationService, private userService: UserService, private router: Router) {
     this.breadcrumbService.setItems([
       {label: 'Dashboard', routerLink: ['/']}
     ]);

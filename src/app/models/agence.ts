@@ -2,6 +2,7 @@
 import {TypeAgence} from './typeagence';
 import {User} from './user.model';
 import {Reservation} from './reservation';
+import {Client} from './client';
 
 
 export class Agence{
@@ -20,5 +21,6 @@ export class Agence{
     lang?: string;
     latitude?: string;
     user: User[];
+    client: Client[];
 
 }

@@ -13,6 +13,7 @@ import {Reservation} from '../../models/reservation';
 import {AuthenticationService} from '../../service/authentication.service';
 import Swal from 'sweetalert2';
 import {Client} from '../../models/client';
+import {ClientService} from '../../service/client.service';
 
 
 @Component({
@@ -46,11 +47,14 @@ export class ListeVehiculeUtilitaireFrontComponent implements OnInit {
     nbjour!: any;
     selectedVehiculeId: number;
     clientNom: string;
+    clients: Client[] = [];
 
     constructor(private formBuilder: FormBuilder, private service: VehiculeService, private router: Router,
-                private userService: UserService,      private route: ActivatedRoute,
+                private userService: UserService,
+                private route: ActivatedRoute,
                 private rentalService: ReservationServiceService,
-                private authService: AuthenticationService) {
+                private authService: AuthenticationService,
+                private clientService: ClientService) {
         this.vehiculeId = this.route.snapshot.params['id'];
         this.authService.currentUser.subscribe(data => {
             this.currentUser = data;
@@ -91,6 +95,8 @@ export class ListeVehiculeUtilitaireFrontComponent implements OnInit {
                 });
             }
         }
+
+        this.findAllClients();
     }
 
     openDialog(vehiculeId: number) {
@@ -175,12 +181,15 @@ export class ListeVehiculeUtilitaireFrontComponent implements OnInit {
         return newDate;
     }
 
-    validationnbMonth(event: any) {
-        var nbjour = event.target.value;
-        this.nbjour = event.target.value;
-        console.log(this.nbjour);
-        this.dateIsValid();
-        console.log(this.DateValidStartdateAndEnddate);
+    findAllClients() {
+        this.clientService.findAllClients().subscribe(
+            (clients: Client[]) => {
+                this.clients = clients;
+            },
+            (error) => {
+                console.error(error);
+            }
+        );
     }
 
 }

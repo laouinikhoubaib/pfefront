@@ -13,6 +13,10 @@ import {Reservation} from '../../models/reservation';
 import {AuthenticationService} from '../../service/authentication.service';
 import Swal from 'sweetalert2';
 import {Client} from '../../models/client';
+import {Role} from '../../models/role.enum';
+import {ClientService} from '../../service/client.service';
+import {Agence} from '../../models/agence';
+import {AgenceService} from '../../service/agence.service';
 
 
 @Component({
@@ -30,6 +34,7 @@ export class ListeVehiculeVoitureFrontComponent implements OnInit {
   userId: number;
   displayDialog = false;
     contract = new Reservation();
+    client = new Client();
     vehiculeId: number;
     today = new Date();
     month = this.today.getMonth();
@@ -46,11 +51,23 @@ export class ListeVehiculeVoitureFrontComponent implements OnInit {
     nbjour!: any;
     selectedVehiculeId: number;
     clientNom: string;
+    displayDialogclient = false;
+    clientParsed: string = '';
+    listagence: Agence[];
+    agenceNom: string;
+    agence: Agence;
+    errorMessage: string = '';
+    clients: Client[] = [];
 
-  constructor(private formBuilder: FormBuilder, private service: VehiculeService, private router: Router,
-              private userService: UserService,      private route: ActivatedRoute,
+  constructor(private formBuilder: FormBuilder,
+              private service: VehiculeService,
+              private router: Router,
+              private userService: UserService,
+              private route: ActivatedRoute,
               private rentalService: ReservationServiceService,
-              private authService: AuthenticationService) {
+              private authService: AuthenticationService,
+              private servicea: AgenceService,
+              private clientService: ClientService) {
       this.vehiculeId = this.route.snapshot.params['id'];
       this.authService.currentUser.subscribe(data => {
           this.currentUser = data;
@@ -81,9 +98,21 @@ export class ListeVehiculeVoitureFrontComponent implements OnInit {
             this.getVehiculesByLocationVoiture();
         });
 
+        this.getAgences();
+        this.findAllClients();
+
     }
 
-    getVehiculesByLocationVoiture(): void {
+    getAgences() {
+        this.servicea.getAgences().subscribe(res => {
+            console.log(res);
+            this.listagence = res;
+        });
+    }
+    openDialogclient() {
+        this.displayDialogclient = true;
+    }
+       getVehiculesByLocationVoiture(): void {
         if (this.currentUser && this.currentUser.agence) {
             this.service.getVoitureVehiculesByCurrentUser().subscribe(vehicules => {
                 this.voitureVehicules = vehicules;
@@ -179,26 +208,37 @@ export class ListeVehiculeVoitureFrontComponent implements OnInit {
             }
         });
     }
-    dateIsValid(): boolean{
-        this.datefin = this.addDaysToDate(this.datedebut, this.nbjour);
-        console.log( '*****' + this.datefin);
-        this.DateValidStartdateAndEnddate = this.rentalService.reservationIsValid(this.datedebut, this.datefin)
-        console.log(this.DateValidStartdateAndEnddate);
-        return this.rentalService.reservationIsValid(this.datedebut, this.datefin);
 
+    addClient(){
+      this.clientParsed = JSON.stringify(this.client);
+      this.clientService.addClient(this.clientParsed, this.nomAgence).subscribe(data => {
+                this.router.navigate(['/']).then(() => {
+                });
+                this.successNotificationt(); },
+                   );
+        this.errorMessage = 'Erreur est survenue  veuillez vérifier';
+    }
+    successNotificationt() {
+        Swal.fire({
+            text: 'Client ajouté avec succès!',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.reload();
+            }
+        });
     }
 
-    addDaysToDate(date: Date, days: number): Date {
-        const newDate = new Date(date);
-        newDate.setDate(date.getDate() + days);
-        return newDate;
-    }
-
-    validationnbMonth(event: any) {
-        var nbjour = event.target.value;
-        this.nbjour = event.target.value;
-        console.log(this.nbjour);
-        this.dateIsValid();
-        console.log(this.DateValidStartdateAndEnddate);
+    findAllClients() {
+        this.clientService.findAllClients().subscribe(
+            (clients: Client[]) => {
+                this.clients = clients;
+            },
+            (error) => {
+                console.error(error);
+            }
+        );
     }
 }
