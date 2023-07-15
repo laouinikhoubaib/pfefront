@@ -11,6 +11,7 @@ export class Vehicule {
   nbrPlaces!: string;
   couleur!: string;
   longueur!: string;
+  modele!: string;
   largeur!: string;
   puissance!: string;
   chargeutile!: string;
