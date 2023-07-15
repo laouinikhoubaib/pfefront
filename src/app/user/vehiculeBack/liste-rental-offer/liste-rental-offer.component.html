@@ -61,6 +61,12 @@
                                     <label for="matricule" class="label">Matricule</label>
                                     <div class="underline"></div>
                                 </div>
+
+                                <div class="input-container">
+                                    <input type="text" id="modele" class="form-control" name="modele" [(ngModel)]="vehicule.modele" #modele="ngModel" required>
+                                    <label for="modele" class="label">Modèle</label>
+                                    <div class="underline"></div>
+                                </div>
                                 <div class="input-container">
                                     <input type="text" id="nbrplaces" class="form-control" name="nbr_places" [(ngModel)]="vehicule.nbrplaces" #nbrplaces="ngModel" required>
                                     <label for="nbrplaces" class="label">Nombre de places</label>
@@ -203,7 +209,7 @@
                 [paginator]="true"
                 [filterDelay]="0"
                 [globalFilterFields]="['matricule', 'nbrplaces', 'couleur', 'longueur', 'largeur', 'puissance',
-                 'typeagence', 'description', 'chargeutile', 'dateajout', 'prix', 'alimentation', 'categorie']">
+                 'typeagence', 'description', 'chargeutile', 'dateajout', 'prix', 'alimentation', 'categorie','modele']">
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
                         <h5 class="p-m-0">Gestion des véhicules</h5>
@@ -217,6 +223,7 @@
                     <tr>
                         <th style="width: 3rem"></th>
                         <th pSortableColumn="matricule">Matricule<p-sortIcon field="matricule"></p-sortIcon></th>
+                        <th pSortableColumn="modele">Modèle<p-sortIcon field="modele"></p-sortIcon></th>
                         <th pSortableColumn="nbrplaces">Nombre de places<p-sortIcon field="nbrplaces"></p-sortIcon></th>
                         <th pSortableColumn="couleur">Couleur<p-sortIcon field="couleur"></p-sortIcon></th>
                         <th pSortableColumn="longueur">Longueur<p-sortIcon field="longueur"></p-sortIcon></th>
@@ -247,6 +254,7 @@
                                  style="vertical-align: middle" class="profil-pic-round"/>
                             {{vehicule.matricule}}
                         </td>
+                        <td>{{ vehicule.modele }}</td>
                         <td>{{ vehicule.nbrplaces }}</td>
                         <td>{{ vehicule.couleur }}</td>
                         <td>{{ vehicule.longueur }}</td>
