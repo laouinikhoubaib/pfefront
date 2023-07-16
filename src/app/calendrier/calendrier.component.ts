@@ -33,9 +33,6 @@ export class CalendrierComponent implements OnInit {
         return reservations.map(reservation => {
 
             const endDateTime = reservation.datefin ? new Date(reservation.datefin) : new Date(reservation.datedebut);
-            // this.selectedDate = new Date(reservation.datedebut);
-            // console.log(reservation.datedebut);
-            // console.log(reservation.datefin);
             return {
                 Id: reservation.reservid,
                 Subject: 'reservation ' + reservation.reservid,
