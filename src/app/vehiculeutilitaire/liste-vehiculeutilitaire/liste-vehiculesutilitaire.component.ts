@@ -46,7 +46,7 @@ export class ListeVehiculeUtilitaireFrontComponent implements OnInit {
     DisabledBouton!: boolean;
     nbjour!: any;
     selectedVehiculeId: number;
-    clientNom: string;
+    clientNPermis: string;
     clients: Client[] = [];
 
     constructor(private formBuilder: FormBuilder, private service: VehiculeService, private router: Router,
@@ -110,10 +110,10 @@ export class ListeVehiculeUtilitaireFrontComponent implements OnInit {
 
     addRentalContrat() {
         const client: Client = new Client();
-        client.nom = this.clientNom;
+        client.permis = this.clientNPermis;
         this.contract.client = client;
 
-        this.rentalService.addReservations(this.contract, this.vehiculeId, this.userId, this.clientNom).subscribe(
+        this.rentalService.addReservations(this.contract, this.vehiculeId, this.userId, this.clientNPermis).subscribe(
             (res: any) => {
                 const contratId = res.contrat;
                 this.successNotification(contratId);
