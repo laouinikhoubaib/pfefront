@@ -1,8 +1,26 @@
 <div class="container">
     <div class="container">
-        <ejs-schedule height="850"
-                      [selectedDate]='selectedDate'
-                      [eventSettings]="eventSettings">
+        <ejs-schedule height="850" [selectedDate]='selectedDate' [eventSettings]="eventSettings" (eventClick)="onReservationClick($event)">
         </ejs-schedule>
     </div>
 </div>
+
+<div *ngIf="isDialogVisible" class="dialog-overlay">
+    <div #dialogContainer class="dialog-content">
+        <h2>Détails de la réservation {{ selectedReservation?.reservid }} :</h2>
+        <p>Date début: {{ selectedReservation?.datedebut }}</p>
+        <p>Date fin: {{ selectedReservation?.datefin }}</p>
+        <p>Nombre de jours: {{ selectedReservation?.nbjour }}</p>
+        <p>Status de réservation: {{ selectedReservation?.reservationStatus}}</p>
+        <p>Véhicule: {{ selectedReservation?.vehiculeReservation}}</p>
+        <p>Client: {{ selectedReservation?.client}}</p>
+        <p>Prix: {{ selectedReservation?.prix }}</p>
+        <button (click)="closeDialog()">Fermer</button>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
