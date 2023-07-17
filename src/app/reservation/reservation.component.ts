@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./reservation.component.css']
 })
 export class ReservationComponent implements OnInit {
+
   idVehicule: any;
   contrats: any;
   contratDetail: any;
@@ -37,12 +38,10 @@ export class ReservationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('*****************************' + this.idVehicule);
     this.getContrat();
     this.reservationService.calculateRevenueForUser(this.idVehicule).subscribe(
       (response) => {
         this.revenu = response;
-        console.log('**********************' + this.revenu);
       },
       (error) => {
         console.error(error);
@@ -114,10 +113,15 @@ export class ReservationComponent implements OnInit {
       }
     });
   }
+
+
+
   addpayement(idReservation: any) {
     console.log('update', idReservation);
     this.router.navigate(['/addpayment', idReservation]);
   }
+
+
   updateReservationTime() {
     const newStartHour = this.newStartHour;
     const newStartMinute = this.newStartMinute;

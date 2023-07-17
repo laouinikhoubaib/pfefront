@@ -18,5 +18,6 @@ export class Reservation {
    qrcode: string;
    reservationStatus!: ReservationStatusEnum;
    client: Client = new Client();
+   clientName: string;
 
 }
