@@ -19,5 +19,15 @@ export class Reservation {
    reservationStatus!: ReservationStatusEnum;
    client: Client = new Client();
    clientName: string;
+   clientPermis: string;
+   clientSurname: string;
+
+   matricule: string;
+   categorie: string;
+   modele: string;
+   nbrplaces: string;
+   chargeutile: string;
+
+   username: string;
 
 }
