@@ -30,6 +30,7 @@
         "@syncfusion/ej2-angular-schedule": "^18.4.39",
         "@syncfusion/ej2-material-theme": "~18.4.39",
         "chart.js": "2.7.3",
+        "html2pdf.js": "^0.10.1",
         "jspdf": "^2.5.1",
         "leaflet": "^1.7.1",
         "ng2-search-filter": "^0.5.1",

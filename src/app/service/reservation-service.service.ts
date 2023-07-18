@@ -17,6 +17,7 @@ export class ReservationServiceService {
   private apiUrl = 'http://localhost:8080/SpringMVC/api/reservation/GetAllReservations';
   private apiUrll = 'http://localhost:8080/SpringMVC/api/reservation';
   readonly delurl = 'http://localhost:8080/SpringMVC/api/reservation/facture';
+  readonly delurll = 'http://localhost:8080/SpringMVC/api/reservation/contrat';
 
   constructor(
     private http: HttpClient, private userService: UserService
@@ -24,15 +25,6 @@ export class ReservationServiceService {
 
   getReservation(): Observable<Reservation[]>{
     return this.http.get('http://localhost:8080/SpringMVC/api/reservation/GetAllReservations');
-  }
-
-
-  getContratById(id: any){
-    console.log('gg' , id);
-    return this.http.get('http://localhost:8080/SpringMVC/api/reservation/getReservation/'+id)
-  }
-  getUsersFinContrat(){
-    return this.http.get('http://localhost:8080/SpringMVC/api/reservation/GetUsersFinContrat')
   }
 
   addReservation(reservation: Reservation, vehiculeId: number, userId: number): Observable<Reservation> {
@@ -62,6 +54,11 @@ export class ReservationServiceService {
 
   telechargerFacturePDF(reservid: number): Observable<any> {
     const url = `${this.delurl}/${reservid}`;
+    return this.http.get(url, { responseType: 'blob' });
+  }
+
+  telechargerContratPDF(reservid: number): Observable<any> {
+    const url = `${this.delurll}/${reservid}`;
     return this.http.get(url, { responseType: 'blob' });
   }
 

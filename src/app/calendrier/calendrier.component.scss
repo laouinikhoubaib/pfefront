@@ -7,11 +7,12 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 105%;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
+  max-height: 970px;
 }
 
 .dialog-content {
@@ -19,7 +20,8 @@
   padding: 20px;
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  max-width: 550px;
+  max-width: 709px;
+  max-height: 850px;
   width: 90%;
 
   h2 {
@@ -46,4 +48,24 @@
   button:hover {
     background-color: #0056b3;
   }
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+  margin-top: 20px;
+
+}
+th, td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+th {
+  background-color: #f7f7f7;
+  font-weight: bold;
+}
+.table-dark-bg{
+  background-color: #959ea9;
+  color: black;
 }
