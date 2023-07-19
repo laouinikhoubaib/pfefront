@@ -108,7 +108,6 @@ export class ListeVehiculeUtilitaireFrontComponent implements OnInit {
         this.displayDialog = true;
     }
 
-
     addRentalContrat() {
         const client: Client = new Client();
         client.permis = this.clientNPermis;
@@ -166,20 +165,6 @@ export class ListeVehiculeUtilitaireFrontComponent implements OnInit {
                 this.DisabledBouton = true;
             }
         });
-    }
-    dateIsValid(): boolean{
-        this.datefin = this.addDaysToDate(this.datedebut, this.nbjour);
-        console.log( '*****' + this.datefin);
-        this.DateValidStartdateAndEnddate = this.rentalService.reservationIsValid(this.datedebut, this.datefin)
-        console.log(this.DateValidStartdateAndEnddate);
-        return this.rentalService.reservationIsValid(this.datedebut, this.datefin);
-
-    }
-
-    addDaysToDate(date: Date, days: number): Date {
-        const newDate = new Date(date);
-        newDate.setDate(date.getDate() + days);
-        return newDate;
     }
 
     findAllClients() {

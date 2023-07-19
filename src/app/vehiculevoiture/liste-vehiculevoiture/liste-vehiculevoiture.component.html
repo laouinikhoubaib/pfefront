@@ -21,21 +21,19 @@
         <img style="width: 290px; height: 200px; cursor: pointer;" src="assets/img/vehicule/{{ vehicule.picture }}" alt="Image Size 100x100" (click)="getVehiculesByLocationVoiture()">
       </div>
       <h5 class="center-text">
-        {{ vehicule.typeVoiture === 'mini_bus' ? 'Location voiture mini bus'
-              : vehicule.typeVoiture === 'economique' ? 'Location voiture économique'
+        {{ vehicule.typeVoiture === 'mini_bus' ? 'Location voiture mini bus' : vehicule.typeVoiture === 'economique' ? 'Location voiture économique'
               : vehicule.typeVoiture === 'citadine' ? 'Location voiture citadine'
-                              : vehicule.typeVoiture=== 'affaire' ? 'Location voiture affaire'
-                      : vehicule.typeVoiture=== 'affaireplus' ? 'Location voiture affaire+'
-                              : vehicule.typeVoiture=== 'confort' ? 'Location voiture confort'
-                                      : vehicule.typeVoiture=== 'confortplus' ? 'Location voiture confort+'
-                                              : vehicule.typeVoiture=== 'berline' ? 'Location voiture berline'
-                                                      : vehicule.typeVoiture=== 'berlineplus' ? 'Location voiture berline+'
-                                                              : vehicule.typeVoiture=== 'septplaces' ? 'Location voiture 7 places'
-                                                                      : vehicule.typeVoiture=== 'septplaces' ? 'Location voiture 7 places'
-                                                                              : vehicule.typeVoiture=== 'mini_bus_prestige' ? 'Location voiture mini bus prestige'
-                                                                                      : vehicule.typeVoiture=== 'tendance' ? 'Location voiture tendance'
-                                                                                              : vehicule.typeVoiture=== 'prestige' ? 'Location voiture prestige'
-                                                                                                      : vehicule.typeVoiture=== 'Classe_G' ? 'Location 4x4 Mercedes Classe G': vehicule.typeVoiture}}
+                      : vehicule.typeVoiture === 'affaire' ? 'Location voiture affaire'
+                              : vehicule.typeVoiture === 'affaireplus' ? 'Location voiture affaire+'
+                                      : vehicule.typeVoiture === 'confort' ? 'Location voiture confort'
+                                              : vehicule.typeVoiture === 'confortplus' ? 'Location voiture confort+'
+                                                      : vehicule.typeVoiture === 'berline' ? 'Location voiture berline'
+                                                              : vehicule.typeVoiture === 'berlineplus' ? 'Location voiture berline+'
+                                                                      : vehicule.typeVoiture === 'septplaces' ? 'Location voiture 7 places'
+                                                                              : vehicule.typeVoiture === 'mini_bus_prestige' ? 'Location voiture mini bus prestige'
+                                                                                      : vehicule.typeVoiture === 'tendance' ? 'Location voiture tendance'
+                                                                                              : vehicule.typeVoiture === 'prestige' ? 'Location voiture prestige'
+                                                                                                      : vehicule.typeVoiture === 'Classe_G' ? 'Location 4x4 Mercedes Classe G': vehicule.typeVoiture}}
       </h5>
       <p class="center-text">{{ vehicule.description }}</p>
       <div>
