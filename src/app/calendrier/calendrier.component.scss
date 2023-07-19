@@ -69,3 +69,32 @@ th {
   background-color: #959ea9;
   color: black;
 }
+.max-height-vh-850 {
+  max-height: 850px;
+}
+.max-height-vh-850 {
+  max-height: 850px;
+}
+
+.max-width-vh-50 {
+  max-width: 150%;
+}
+
+.max-width-vh-100 {
+  max-width: 100%;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.vehicle-item:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  transition: box-shadow 0.2s ease-in-out;
+}
+.vehicle-item {
+  width: 370px;
+}

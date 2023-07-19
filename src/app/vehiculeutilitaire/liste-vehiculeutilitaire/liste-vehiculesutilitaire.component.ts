@@ -108,6 +108,7 @@ export class ListeVehiculeUtilitaireFrontComponent implements OnInit {
         this.displayDialog = true;
     }
 
+
     addRentalContrat() {
         const client: Client = new Client();
         client.permis = this.clientNPermis;

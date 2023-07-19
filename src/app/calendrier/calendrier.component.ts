@@ -1,10 +1,12 @@
 import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { EventSettingsModel } from '@syncfusion/ej2-angular-schedule';
+import {EventClickArgs, EventSettingsModel, ScheduleComponent} from '@syncfusion/ej2-angular-schedule';
 import { Reservation } from '../models/reservation';
 import { ReservationServiceService } from '../service/reservation-service.service';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 import Swal from 'sweetalert2';
+import {Vehicule} from '../models/vehicule';
+import {VehiculeService} from '../service/vehicule.service';
 
 @Component({
     selector: 'app-reservation-calendar',
@@ -14,6 +16,7 @@ import Swal from 'sweetalert2';
 export class CalendrierComponent implements OnInit {
     @ViewChild('dialogTemplate', { static: true }) dialogTemplate!: TemplateRef<any>;
     @ViewChild('dialogContainer', { static: true }) dialogContainer!: ElementRef;
+    @ViewChild('ejSchedule') public scheduleObj: ScheduleComponent;
 
     eventSettings: EventSettingsModel;
     public selectedDate: Date = new Date();
@@ -30,17 +33,56 @@ export class CalendrierComponent implements OnInit {
     idVehicule: any;
     displayDialog = false;
     displayDialog2 = false;
+    public vehicles: Vehicule[];
+    searchQuery: string = '';
+    filteredVehicles: Vehicule[] = [];
 
-    constructor(private reservationService: ReservationServiceService) { }
+    constructor(private reservationService: ReservationServiceService,
+    private vehiculeService: VehiculeService) { }
 
     ngOnInit(): void {
         this.reservationService.getReservation().subscribe(reservations => {
             this.reservations = reservations;
             this.eventSettings = { dataSource: this.ReservationsCalendar() };
         });
-        this.getContrat();
+        this.vehiculeService.getAllVehicules().subscribe(
+            (vehicles: Vehicule[]) => {
+                this.vehicles = vehicles;
+                this.filteredVehicles = vehicles;
+            },
+            error => {
+                console.log('Erreur de trouver vehicles:', error);
+            }
+        );
+        this.vehiculeService.getAllVehicules().subscribe((vehicles: Vehicule[]) => {
+            this.vehicles = vehicles;
+        });
+
+    this.getContrat();
+    }
+    onSearchQueryChanged() {
+        this.updateFilteredVehicles();
+    }
+    updateFilteredVehicles() {
+        if (!this.searchQuery) {
+            this.filteredVehicles = this.vehicles;
+            return;
+        }
+
+        this.filteredVehicles = this.vehicles.filter(vehicle =>
+            vehicle.matricule?.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+            vehicle.modele?.toLowerCase().includes(this.searchQuery.toLowerCase())
+        );
     }
 
+    redirectToReservation(vehiculeId: any): void {
+        const reservation = this.reservations.find((r) => r.vehiculeReservation === vehiculeId);
+
+        if (reservation) {
+            const reservationDate = new Date(reservation.datedebut);
+            this.scheduleObj.selectedDate = reservationDate;
+        }
+    }
     ReservationsCalendar(): object[] {
         return this.reservations.map(reservation => {
             const endDateTime = reservation.datefin ? new Date(reservation.datefin) : new Date(reservation.datedebut);
@@ -53,13 +95,17 @@ export class CalendrierComponent implements OnInit {
         });
     }
 
-    onReservationClick(args: any): void {
-        args.cancel = true;
-        this.selectedReservationId = args.event.Id;
+    onReservationClick(args: EventClickArgs): void {
+        const eventObj = args.event as { [key: string]: Object };
+        this.selectedReservationId = eventObj.Id as number;
         this.selectedReservation = this.reservations.find(reservation => reservation.reservid === this.selectedReservationId) || null;
-        console.log(this.selectedReservation);
         this.isDialogVisible = true;
+        if (this.selectedReservation) {
+            const reservationDate = new Date(this.selectedReservation.datedebut);
+            this.scheduleObj.selectedDate = reservationDate;
+        }
     }
+
 
     showContractImage(): void {
         const op = {

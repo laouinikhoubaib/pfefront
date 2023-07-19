@@ -1,7 +1,38 @@
 <div class="container">
-    <div class="container">
-        <ejs-schedule height="850" [selectedDate]='selectedDate' [eventSettings]="eventSettings" (eventClick)="onReservationClick($event)">
-        </ejs-schedule>
+    <div class="row">
+        <div class="col-md-4" style="margin-left: -300px;">
+            <div class="card max-height-vh-850 overflow-auto mb-5 mb-lg-0">
+                <div class="card-body text-center">
+                    <h3>Liste des Véhicules</h3>
+                    <input type="text" [(ngModel)]="searchQuery" (input)="updateFilteredVehicles()" placeholder="chercher une véhicule" class="form-control mb-2" />
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <ul class="list-unstyled">
+                                <li *ngFor="let vehicle of filteredVehicles" (click)="redirectToReservation(vehicle.vehiculeId)" class="vehicle-item" style="cursor: pointer;">
+                                    <div class="p-2 border mb-2">
+                                        {{ vehicle.matricule }} - {{ vehicle.modele }}
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="container mt-3">
+                <ejs-schedule
+                    #ejSchedule
+                    height="850"
+                    width="1400"
+                    style="margin-left: -10px;"
+                    [selectedDate]="selectedDate"
+                    [eventSettings]="eventSettings"
+                    (eventClick)="onReservationClick($event)"
+                ></ejs-schedule>
+            </div>
+        </div>
     </div>
 </div>
 
