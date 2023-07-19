@@ -30,4 +30,6 @@ export class Reservation {
 
    username: string;
 
+   vehiculeId: number;
+
 }

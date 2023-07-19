@@ -27,7 +27,7 @@ export class AppMenuComponent implements OnInit {
                 label: 'Sections', icon: 'pi pi-fw pi-star', routerLink: ['/uikit'],
                 items: [
                     {label: 'Réservations', icon: 'pi pi-fw pi-id-card', routerLink: ['listReservation']},
-                    {label: 'Calendrier', icon: 'pi pi-fw pi-calendar', routerLink: ['calendrier']},
+                    // {label: 'Calendrier', icon: 'pi pi-fw pi-calendar', routerLink: ['calendrier']},
                     {label: 'Gestion des véhicules', icon: 'pi pi-fw pi-file', routerLink: ['listVehiculesback']},
                     {label: 'Agences', icon: 'pi pi-exclamation-circle', routerLink: ['agence']},
                     {label: 'Réclamations', icon: 'pi pi-exclamation-triangle', routerLink: ['complaint']}
