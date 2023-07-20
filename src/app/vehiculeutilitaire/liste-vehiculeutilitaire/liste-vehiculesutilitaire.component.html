@@ -19,7 +19,27 @@
         <div class="image-container">
           <img style="width: 290px; height: 200px; cursor: pointer;" src="assets/img/vehicule/{{ vehicule.picture }}" alt="Image Size 100x100" (click)="getVehiculesByLocationUtilitaire()">
         </div>
-        <h5 class="center-text">{{ vehicule.typeUtilitaire }}</h5>
+        <h5 class="center-text">{{ vehicule.typeUtilitaire === 'voiture_société' ? 'Location voiture société'
+                : vehicule.typeUtilitaire=== 'utilitaire_3m3' ? 'Location utilitaire 3m3'
+                        : vehicule.typeUtilitaire=== 'utilitaire_4m3' ? 'Location utilitaire 4m3'
+                                : vehicule.typeUtilitaire=== 'utilitaire_6m3' ? 'Location utilitaire 6m3'
+                                        : vehicule.typeUtilitaire=== 'utilitaire_7m3' ? 'Location utilitaire 7m3'
+                                                : vehicule.typeUtilitaire=== 'utilitaire_8m3' ? 'Location utilitaire 8m3'
+                                                        : vehicule.typeUtilitaire=== 'utilitaire_12m3' ? 'Location utilitaire 12m3'
+                                                                : vehicule.typeUtilitaire=== 'utilitaire_15m3' ? 'Location utilitaire 15m3'
+                                                                        : vehicule.typeUtilitaire=== 'utilitaire_20m3' ? 'Location utilitaire 20m3'
+                                                                                : vehicule.typeUtilitaire=== 'utilitaire_20m3_avec_hayon' ? 'Location utilitaire 20m3 avec hayon'
+                                                                                        : vehicule.typeUtilitaire=== 'utilitaire_25m3' ? 'Location utilitaire 25m3'
+                                                                                                : vehicule.typeUtilitaire=== 'utilitaire_30m3' ? 'Location utilitaire 30m3'
+                                                                                                        : vehicule.typeUtilitaire=== 'poids_lourd' ? 'Location poids lourd'
+                                                                                                                : vehicule.typeUtilitaire=== 'benne_basculante' ? 'Location benne basculante'
+                                                                                                                        : vehicule.typeUtilitaire=== 'camion_benne_paysagiste' ? 'Location camion benne paysagiste'
+                                                                                                                                : vehicule.typeUtilitaire=== 'camion_plateau_ridelles' ? 'Location camion plateau ridelles'
+                                                                                                                                        : vehicule.typeUtilitaire=== 'camion_pupitre' ? 'Location camion pupitre'
+                                                                                                                                                : vehicule.typeUtilitaire=== 'camion_plateau' ? 'Location camion plateau'
+                                                                                                                                                        : vehicule.typeUtilitaire=== 'remorque_porte_voiture' ? 'Location remorque porte voiture'
+                                                                                                                                                                : vehicule.typeUtilitaire=== 'remorque_porte_moto_ou_quad' ? 'Location remorque porte moto ou quad': vehicule.typeUtilitaire}}
+        </h5>
         <p class="center-text">{{ vehicule.description }}</p>
         <div>
           <button  pButton pRipple label="Obtenir un prix" style="width: 600px" type="submit" class="btn btn-primary" (click)="openDialog(vehicule.vehiculeId)"></button>

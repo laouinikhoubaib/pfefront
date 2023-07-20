@@ -71,16 +71,15 @@
         </div>
     </section>
 </p-dialog>
+
 <div class="content">
     <div class="container-fluid pt-4 px-4">
-        <div class="bg-light text-center rounded p-4">
+
             <div class="card">
-                <div class="center-text">
-                    <h3 class="mt-3 mb-3"> Liste des clients</h3>
-                </div>
+                    <h3 style="text-align:center; padding-bottom: 30px;"> Liste des clients</h3>
             </div>
             <div style="text-align:right; padding-bottom: 30px;">
-                <button pButton pRipple label="Ajouter fiche client" icon="pi pi-plus" class="btn btn-dark" style="color: white;background-color: #3092b0; font-weight: bold;"   class="btn btn-primary" (click)="openDialogclient()"></button>
+                <button pButton pRipple label="Ajouter fiche client"  class="btn btn-dark" style="color: white;background-color: #3092b0; font-weight: bold;"   class="btn btn-primary" (click)="openDialogclient()"></button>
             </div>
 
             <div style="padding: 50px;">
@@ -94,6 +93,7 @@
                         <th scope="col">Lieu de naissance</th>
                         <th scope="col">Permis</th>
                         <th scope="col">Téléphone</th>
+                        <th scope="col">Status</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -105,11 +105,12 @@
                         <td>{{ item.lieunaissance }}</td>
                         <td>{{ item.permis }}</td>
                         <td>{{ item.telephone }}</td>
+                        <td>status</td>
+
                     </tr>
                     </tbody>
                 </table>
             </div>
-        </div>
     </div>
 </div>
 <br>

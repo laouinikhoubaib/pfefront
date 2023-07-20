@@ -9,6 +9,7 @@ import {AgenceService} from '../../service/agence.service';
 import {Role} from '../../models/role.enum';
 import Swal from 'sweetalert2';
 import {Client} from '../../models/client';
+import {Reservation} from '../../models/reservation';
 
 
 @Component({
@@ -38,7 +39,7 @@ export class SAdminDashboardBackofficeComponent implements OnInit {
   userParsed: string = '';
   displayDialog = false;
   listagence: Agence[];
-  agenceNom: string;
+
 
     constructor( private breadcrumbService: BreadcrumbService, private authenticationService: AuthenticationService, private userService: UserService, private router: Router) {
     this.breadcrumbService.setItems([
@@ -61,9 +62,6 @@ export class SAdminDashboardBackofficeComponent implements OnInit {
       this.roles = [Role.USER, Role.ADMIN, Role.USER_FRANCHISE, Role.ADMIN_FRANCHISE, Role.SUPERADMIN];
       this.middleRole = Role.SUPERADMIN;
 
-      const agence: Agence = new Agence();
-      agence.nom = this.agenceNom;
-      this.user.agencel = agence;
     }
 
 

@@ -87,20 +87,24 @@
                             </li>
 
                             <li class="nav-item dropdown dropdown-hover mx-2">
-                                <a role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuBlocks" data-bs-toggle="dropdown" aria-expanded="false"  routerLink="/client">
-                                    <i class="material-icons opacity-6 me-2 text-md">person</i>
-                                    Clients
-
+                                <a role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuBlocks" data-bs-toggle="dropdown" aria-expanded="false" routerLink="/listReservationFront">
+                                    <i class="material-icons opacity-6 me-2 text-md">computer</i>
+                                    Réservations
                                 </a>
                             </li>
-
                             <li class="nav-item dropdown dropdown-hover mx-2">
                                 <a role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuBlocks" data-bs-toggle="dropdown" aria-expanded="false" routerLink="/calendrier">
                                     <i class="material-icons opacity-6 me-2 text-md">date_range</i>
                                     Calendrier
                                 </a>
                             </li>
+                            <li class="nav-item dropdown dropdown-hover mx-2">
+                                <a role="button" class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuBlocks" data-bs-toggle="dropdown" aria-expanded="false"  routerLink="/client">
+                                    <i class="material-icons opacity-6 me-2 text-md">person</i>
+                                    Clients
 
+                                </a>
+                            </li>
                             <li class="nav-item dropdown dropdown-hover mx-2" *ngIf="!currentUser?.userId">
                                 <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center"
                                    (click)="redirectTo()" routerLinkActive="active" >

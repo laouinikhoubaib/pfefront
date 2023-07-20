@@ -28,19 +28,15 @@ import {ChatPriveComponent} from './forum/chat-prive/chat-prive.component';
 import {UserPostsComponent} from './forum/user-posts/user-posts.component';
 import {ListeVehiculeFrontComponent} from './vehicule/liste-vehicule/liste-vehicules.component';
 import {ListeVehiculesComponent} from './user/vehiculeBack/liste-rental-offer/liste-rental-offer.component';
-import {AddReservationComponent} from './reservation/add-reservation/add-reservation.component';
 import {ReservationComponent} from './reservation/reservation.component';
 import {ListeReservationComponent} from './reservation/liste-reservation/liste-reservation.component';
 import {CalendrierComponent} from './calendrier/calendrier.component';
 import {ListeVehiculeUtilitaireFrontComponent} from './vehiculeutilitaire/liste-vehiculeutilitaire/liste-vehiculesutilitaire.component';
 import {ListeVehiculeVoitureFrontComponent} from './vehiculevoiture/liste-vehiculevoiture/liste-vehiculevoiture.component';
-import {MapComponent} from './agence/map/map.component';
-import {AgenceFrontComponent} from './agence/agence-front/agence-front.component';
-import {AgenceDeteilComponent} from './agence/agence-deteil/agence-deteil.component';
-import {PaiementComponent} from './reservation/paiement/paiement.component';
 import {ListeReservationAdminComponent} from './reservation/liste-reservation-admin/liste-reservation-admin.component';
 import {ListeReservationFranchiseAdminComponent} from './reservation/liste-reservation-adminfranchise/liste-reservation-adminfranchise.component';
 import {ClientComponent} from './client/client.component';
+import {ReservationfrontComponent} from './reservationfront/reservationfront.component';
 
 
 
@@ -60,16 +56,12 @@ import {ClientComponent} from './client/client.component';
                         {path: 'listVehicules', component: ListeVehiculeFrontComponent },
                         {path: 'listVehiculesUtilitaires', component: ListeVehiculeUtilitaireFrontComponent},
                         {path: 'listVehiculesVoitures', component: ListeVehiculeVoitureFrontComponent},
-                        {path: 'listeReservation/:id/ajout', component: AddReservationComponent },
                         {path: 'listeReservation/:id', component: ReservationComponent },
                         { path: 'listVehiculesVoitures/:id/ajout', component: ListeVehiculeVoitureFrontComponent },
                         { path: 'listVehiculesUtilitaires/:id/ajout', component: ListeVehiculeUtilitaireFrontComponent },
-                        {path: 'map', component: MapComponent},
-                        {path: 'agenceFront', component: AgenceFrontComponent, canActivate: [Auth2Guard]},
-                        {path: 'detailAgence/:id', component: AgenceDeteilComponent, canActivate: [Auth2Guard]},
-                        {path: 'addpayment/:id', component: PaiementComponent},
                         {path: 'calendrier', component: CalendrierComponent },
-                        {path: 'client', component: ClientComponent }
+                        {path: 'client', component: ClientComponent },
+                        {path: 'listReservationFront', component: ReservationfrontComponent }
                     ]
                 },
                 {path: 'admin', component: AppMainComponent, canActivate: [AuthGuard], data: {roles: [Role.ADMIN]} ,

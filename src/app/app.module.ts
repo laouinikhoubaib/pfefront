@@ -123,7 +123,6 @@ import {PostDetailsComponent} from './forum/post-details/post-details.component'
 import {UserPostsComponent} from './forum/user-posts/user-posts.component';
 import {ForumComponent} from './forum/forum.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import {AddReservationComponent} from './reservation/add-reservation/add-reservation.component';
 import {ListeReservationComponent} from './reservation/liste-reservation/liste-reservation.component';
 import {ReservationComponent} from './reservation/reservation.component';
 import {ListeVehiculeFrontComponent} from './vehicule/liste-vehicule/liste-vehicules.component';
@@ -133,13 +132,10 @@ import {CalendrierComponent} from './calendrier/calendrier.component';
 import {ScheduleModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService} from '@syncfusion/ej2-angular-schedule';
 import {ListeVehiculeUtilitaireFrontComponent} from './vehiculeutilitaire/liste-vehiculeutilitaire/liste-vehiculesutilitaire.component';
 import {ListeVehiculeVoitureFrontComponent} from './vehiculevoiture/liste-vehiculevoiture/liste-vehiculevoiture.component';
-import {MapComponent} from './agence/map/map.component';
-import { AgenceFrontComponent } from './agence/agence-front/agence-front.component';
-import { AgenceDeteilComponent } from './agence/agence-deteil/agence-deteil.component';
-import { PaiementComponent } from './reservation/paiement/paiement.component';
 import {ListeReservationAdminComponent} from './reservation/liste-reservation-admin/liste-reservation-admin.component';
 import {ListeReservationFranchiseAdminComponent} from './reservation/liste-reservation-adminfranchise/liste-reservation-adminfranchise.component';
 import { ClientComponent } from './client/client.component';
+import { ReservationfrontComponent } from './reservationfront/reservationfront.component';
 
 
 @NgModule({
@@ -258,7 +254,6 @@ import { ClientComponent } from './client/client.component';
         ListeVehiculeUtilitaireFrontComponent,
         ListeVehiculeVoitureFrontComponent,
         HomeComponent,
-        MapComponent,
         NavbarComponent,
         FrontFooterComponent,
         FrontLandingComponent,
@@ -276,18 +271,15 @@ import { ClientComponent } from './client/client.component';
         PostDetailsComponent,
         UserPostsComponent,
         ForumComponent,
-        AddReservationComponent,
         ListeReservationComponent,
         ReservationComponent,
         ListeVehiculeFrontComponent,
         ListeVehiculesComponent,
         CalendrierComponent,
-        AgenceFrontComponent,
-        AgenceDeteilComponent,
-        PaiementComponent,
         ListeReservationAdminComponent,
         ListeReservationFranchiseAdminComponent,
         ClientComponent,
+        ReservationfrontComponent,
 
 
     ],
