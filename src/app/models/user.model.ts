@@ -18,6 +18,6 @@ export class User {
     agence?: Agence;
     nomAgence?: string;
     complaint: Complaint[];
-    agencel: Agence = new Agence();
+    agenceNom: string;
 
 }

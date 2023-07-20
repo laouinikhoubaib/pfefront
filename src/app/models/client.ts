@@ -13,6 +13,5 @@ export class Client {
     telephone: number;
     clientReservationReservations: Reservation[];
     agence: Agence;
-    agencel: Agence = new Agence();
     nomAgence?: string;
 }
