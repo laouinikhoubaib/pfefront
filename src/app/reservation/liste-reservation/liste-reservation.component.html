@@ -38,22 +38,20 @@
                         <tr>
                             <th style="width: 4rem">
                             </th>
-                            <th pSortableColumn="reservid">ID <p-sortIcon field="reservid"></p-sortIcon></th>
                             <th pSortableColumn="datedebut">Date début <p-sortIcon field="datedebut"></p-sortIcon></th>
                             <th pSortableColumn="datefin">Date fin<p-sortIcon field="datefin"></p-sortIcon></th>
                             <th pSortableColumn="nbjour">Nombre de jours<p-sortIcon field="nbjour"></p-sortIcon></th>
                             <th pSortableColumn="prix">Prix<p-sortIcon field="prix"></p-sortIcon></th>
+                            <th pSortableColumn="prix">Details(revenues)<p-sortIcon field="prix"></p-sortIcon></th>
+                            <th pSortableColumn="contrat">Contrat<p-sortIcon field="contrat"></p-sortIcon></th>
+                            <th pSortableColumn="facture">Facture<p-sortIcon field="facture"></p-sortIcon></th>
                             <th pSortableColumn="prix">Annulation<p-sortIcon field="prix"></p-sortIcon></th>
-                            <th pSortableColumn="prix">Details<p-sortIcon field="prix"></p-sortIcon></th>
                         </tr>
                     </ng-template>
 
                     <ng-template pTemplate="body" let-reservation>
                         <tr>
                             <td>
-                            </td>
-                            <td><span class="p-column-title"></span>
-                                {{reservation.reservid}}
                             </td>
                             <td><span class="p-column-title"></span>
                                 {{reservation.datedebut}}
@@ -67,16 +65,20 @@
                             <td><span class="p-column-title"></span>
                                 {{reservation.prix}}
                             </td>
-                            <td >
-                                    <button pButton pRipple icon="pi pi-trash" (click)="deleteReservation(reservation.reservid)" type="button" class="p-button-rounded p-button-danger"></button>
-                            </td>
-
                             <td>
-                                <button pButton pRipple icon="pi pi-bookmark" class="p-button-rounded p-button-secondary"
-                                        (click)="openDialog(reservation.vehiculeReservation)"></button>
+                                <i class="material-icons opacity-6 me-2 text-md" (click)="openDialog(reservation.vehiculeReservation)">remove_red_eye</i>
+                            </td>
+                            <td>
+                                <a class="material-icons opacity-6 me-2 text-md" (click)="onClickTelechargerContratPDF(reservation.reservid )" >content_paste</a>
+                            </td>
+                            <td>
+                                <i class="material-icons opacity-6 me-2 text-md" (click)="onClickTelechargerFacturePDF(reservation.reservid )">insert_drive_file</i>
+                            </td>
+                            <td >
+                                <button pButton pRipple icon="pi pi-trash" (click)="deleteReservation(reservation.reservid)" type="button" class="p-button-rounded p-button-danger"></button>
                             </td>
                         </tr>
-                            <p-dialog header="Détails de réservation" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [style]="{ 'width': '1000px', 'height': '450px' }">
+                            <p-dialog header="Revenues pour cette véhicule" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [style]="{ 'width': '600px', 'height': '280px' }">
                                 <div class="content">
                                     <div class="card">
                                         <div class="container-fluid pt-4 px-4">
@@ -90,51 +92,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="container-fluid pt-4 px-4">
-                                        <div class="bg-light text-center rounded p-4">
-                                             <div style="padding: 50px;">
-                                                <div *ngIf="show">
-                                                    <div class="card" id="pdff" #pdf>
-                                                        <h1>Contrat de location de voiture</h1>
-                                                        <h2>ENTRE LES SOUSSIGNES,</h2>
-                                                        <h3>Date début de contrat  : {{contratDetail?.datedebut}}</h3>
-                                                        <h3>Date fin de contrat : {{contratDetail?.datefin}}</h3>
-                                                        <h3>Nombre de jours : {{contratDetail?.nbjour}}</h3>
-                                                        <h3>Prix : {{contratDetail?.prix}}</h3>
-                                                        <h3>Pour : ............................</h3>
-                                                    </div>
-                                                    <div>
-                                                        <button style="color: white;background-color: rgb(0, 255, 0); font-weight: bold;" (click)="loadPdfff()" class="btn btn-success">Télécharger</button>
-                                                    </div>
-
-                                                </div>
-                                                <table class="table">
-                                                    <thead class="table-dark-bg">
-                                                    <tr>
-                                                        <th scope="col">Détails de contrat</th>
-                                                        <th scope="col">Facture</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody *ngFor="let item of contrats">
-                                                    <tr>
-                                                        <td>
-                                                            <a href="javascript:void(0)" class="btn btn-dark" style="margin-left: 210px; background-color: #37afd4 ;color: white ;text-align:right;font-weight: bold" (click)="generatePDF(item)">
-                                                                Détails<i class="bi bi-download"></i>
-                                                            </a>
-                                                        </td>
-
-                                                        <td>
-                                                            <button class="btn btn-dark" type="submit"  style="margin-left: 210px; background-color: #37afd4 ; color: white ;text-align:right;font-weight: bold"(click)="onClickTelechargerFacturePDF(reservation.reservid)"> Facture</button>
-
-                                                        </td>
-
-                                                    </tr>
-
-                                                    </tbody>
-                                                </table>
                                             </div>
                                         </div>
                                     </div>

@@ -5,6 +5,7 @@ import {AgenceService} from '../service/agence.service';
 import {ClientService} from '../service/client.service';
 import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
+import {Reservation} from '../models/reservation';
 
 @Component({
   selector: 'app-client',
@@ -22,6 +23,9 @@ export class ClientComponent implements OnInit {
   errorMessage: string = '';
   nomAgence: string;
   clients: Client[] = [];
+  filteredClients: Client  [] = [];
+  public clientss: Client[];
+  searchQuery: string = '';
 
   constructor(private servicea: AgenceService,
               private clientService: ClientService,
@@ -67,10 +71,27 @@ export class ClientComponent implements OnInit {
     this.clientService.findAllClients().subscribe(
         (clients: Client[]) => {
           this.clients = clients;
+          this.filteredClients = clients;
         },
         (error) => {
           console.error(error);
         }
+    );
+  }
+
+  onSearchQueryChanged() {
+    this.updateFilteredVehicles();
+  }
+  updateFilteredVehicles() {
+    if (!this.searchQuery) {
+      this.filteredClients = this.clients;
+      return;
+    }
+
+    this.filteredClients = this.clients.filter(client =>
+        client.nom?.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        client.prenom?.toLowerCase().includes(this.searchQuery.toLowerCase())
+
     );
   }
 }
