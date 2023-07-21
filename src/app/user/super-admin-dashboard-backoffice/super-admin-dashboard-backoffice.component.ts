@@ -57,7 +57,6 @@ export class SAdminDashboardBackofficeComponent implements OnInit {
 
       this.userService.getAllUser().subscribe(users => {
         this.allUsers = users;
-
       });
       this.roles = [Role.USER, Role.ADMIN, Role.USER_FRANCHISE, Role.ADMIN_FRANCHISE, Role.SUPERADMIN];
       this.middleRole = Role.SUPERADMIN;
