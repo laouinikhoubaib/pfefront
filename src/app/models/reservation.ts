@@ -11,11 +11,8 @@ export class Reservation {
    nbjour: any;
    prix: any;
    state!: string;
-   paiementRese: Number;
    vehiculeReservation: any;
    reservationVehicule: any;
-   userReservation: any;
-   qrcode: string;
    reservationStatus!: ReservationStatusEnum;
    client: Client = new Client();
    clientName: string;

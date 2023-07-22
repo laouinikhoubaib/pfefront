@@ -7,12 +7,13 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 105%;
-  background-color: rgba(0, 0, 0, 0.5);
+  height: 150%;
+  background-color: rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
-  max-height: 970px;
+  max-height: 980px;
+
 }
 
 .dialog-content {
@@ -20,8 +21,8 @@
   padding: 20px;
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  max-width: 709px;
-  max-height: 850px;
+  max-width: 745px;
+  max-height: 950px;
   width: 90%;
 
   h2 {
@@ -97,4 +98,7 @@ th {
 }
 .vehicle-item {
   width: 370px;
+}
+#closeButton {
+  cursor: pointer;
 }

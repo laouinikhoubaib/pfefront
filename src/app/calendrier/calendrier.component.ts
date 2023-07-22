@@ -7,6 +7,7 @@ import { jsPDF } from 'jspdf';
 import Swal from 'sweetalert2';
 import {Vehicule} from '../models/vehicule';
 import {VehiculeService} from '../service/vehicule.service';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
     selector: 'app-reservation-calendar',
@@ -36,9 +37,17 @@ export class CalendrierComponent implements OnInit {
     public vehicles: Vehicule[];
     searchQuery: string = '';
     filteredVehicles: Vehicule[] = [];
+    timeForm: FormGroup;
 
-    constructor(private reservationService: ReservationServiceService,
-    private vehiculeService: VehiculeService) { }
+    constructor(private formBuilder: FormBuilder,private reservationService: ReservationServiceService,
+    private vehiculeService: VehiculeService) {
+        this.timeForm = this.formBuilder.group({
+            newStartTime: ''
+        });
+        this.timeForm = this.formBuilder.group({
+            newEndTime: ''
+        });
+    }
 
     ngOnInit(): void {
         this.reservationService.getReservation().subscribe(reservations => {
@@ -162,10 +171,9 @@ export class CalendrierComponent implements OnInit {
     }
 
     updateReservationTime() {
-        const newStartHour = this.newStartHour;
-        const newStartMinute = this.newStartMinute;
-
-        this.reservationService.updateReservationTime(this.reservationId, newStartHour, newStartMinute)
+        const newStartTime: string = this.timeForm.get('newStartTime').value;
+        const [hours, minutes] = newStartTime.split(':');
+        this.reservationService.updateReservationTime(this.reservationId, parseInt(hours), parseInt(minutes))
             .subscribe(
                 () => {
                     this.getContrat();
@@ -173,7 +181,6 @@ export class CalendrierComponent implements OnInit {
                 },
             );
     }
-
     openDialog(reservationId: number) {
         this.reservationId = reservationId;
         this.newStartHour = 0;
@@ -182,10 +189,9 @@ export class CalendrierComponent implements OnInit {
     }
 
     updateReservationTimeTermine() {
-        const newEndHour = this.newEndHour;
-        const newEndMinute = this.newEndMinute;
-
-        this.reservationService.updateReservationTimeTermine(this.reservationId, newEndHour, newEndMinute)
+        const newEndTime: string = this.timeForm.get('newEndTime').value;
+        const [hours, minutes] = newEndTime.split(':');
+        this.reservationService.updateReservationTimeTermine(this.reservationId, parseInt(hours), parseInt(minutes))
             .subscribe(
                 () => {
                     this.getContrat();
