@@ -56,9 +56,6 @@ import {ReservationfrontComponent} from './reservationfront/reservationfront.com
                         {path: 'listVehicules', component: ListeVehiculeFrontComponent },
                         {path: 'listVehiculesUtilitaires', component: ListeVehiculeUtilitaireFrontComponent},
                         {path: 'listVehiculesVoitures', component: ListeVehiculeVoitureFrontComponent},
-                        {path: 'listeReservation/:id', component: ReservationComponent },
-                        { path: 'listVehiculesVoitures/:id/ajout', component: ListeVehiculeVoitureFrontComponent },
-                        { path: 'listVehiculesUtilitaires/:id/ajout', component: ListeVehiculeUtilitaireFrontComponent },
                         {path: 'calendrier', component: CalendrierComponent },
                         {path: 'client', component: ClientComponent },
                         {path: 'listReservationFront', component: ReservationfrontComponent }
@@ -71,7 +68,6 @@ import {ReservationfrontComponent} from './reservationfront/reservationfront.com
                         {path: 'listVehiculesback', component: ListeVehiculesComponent },
                         {path: 'listVehiculesUtilitaires', component: ListeVehiculeUtilitaireFrontComponent},
                         {path: 'listVehiculesVoitures', component: ListeVehiculeVoitureFrontComponent},
-                        { path: 'listReservation/:id/ajout', component: ListeReservationAdminComponent },
                         {path: 'calendrier', component: CalendrierComponent },
                         {path: 'listReservation', component: ListeReservationAdminComponent },
 
@@ -100,7 +96,6 @@ import {ReservationfrontComponent} from './reservationfront/reservationfront.com
                         {path: 'calendrier', component: CalendrierComponent },
                         {path: 'listReservation', component: ListeReservationComponent },
                         {path: '', component: SAdminDashboardBackofficeComponent},
-                        { path: 'listReservation/:id/ajout', component: ListeReservationComponent },
                         {path: 'listVehicules', component: ListeVehiculeFrontComponent },
                         {path: 'listVehiculesback', component: ListeVehiculesComponent },
                         {path: 'listVehiculesUtilitaires', component: ListeVehiculeUtilitaireFrontComponent},

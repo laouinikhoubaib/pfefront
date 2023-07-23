@@ -84,9 +84,8 @@
                 <div style="text-align:right">
                     <button pButton pRipple label="Ajouter fiche client"  class="btn btn-dark" style="color: white;background-color: #3092b0; font-weight: bold;"   class="btn btn-primary" (click)="openDialogclient()"></button>
                 </div>
-
-                <input type="text" [(ngModel)]="searchQuery" (input)="updateFilteredVehicles()" placeholder="chercher un client" class="form-control mb-2" style="background-color: #d9edf7; color:grey;text-align: center; width: 400px"/>
-<br>
+                <input type="text" [(ngModel)]="searchQuery" (input)="updateFilteredVehicles()" placeholder="chercher un client" name="search" class="form-control mb-2" style="background-color: #d9edf7; color:grey;text-align: center; width: 400px" />
+                <br>
                 <table class="table">
                     <thead class="table-dark-bg">
                     <tr>

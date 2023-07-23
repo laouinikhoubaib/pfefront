@@ -42,11 +42,10 @@ export class CalendrierComponent implements OnInit {
     constructor(private formBuilder: FormBuilder,private reservationService: ReservationServiceService,
     private vehiculeService: VehiculeService) {
         this.timeForm = this.formBuilder.group({
-            newStartTime: ''
-        });
-        this.timeForm = this.formBuilder.group({
+            newStartTime: '',
             newEndTime: ''
         });
+
     }
 
     ngOnInit(): void {

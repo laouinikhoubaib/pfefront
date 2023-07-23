@@ -26,31 +26,18 @@ import {AgenceService} from '../../service/agence.service';
 })
 export class ListeVehiculeVoitureFrontComponent implements OnInit {
 
-  title = 'Angular Search Using ng2-search-filter';
-  searchText!: any;
-  voitureVehicules: Vehicule[] = [];
-  currentUser: User;
-  nomAgence: string;
-  userId: number;
-  displayDialog = false;
+    searchText!: any;
+    voitureVehicules: Vehicule[] = [];
+    currentUser: User;
+    nomAgence: string;
+    userId: number;
+    displayDialog = false;
     contract = new Reservation();
     client = new Client();
     vehiculeId: number;
-    today = new Date();
-    month = this.today.getMonth();
-    year = this.today.getFullYear();
-    isValidd: any;
     list: any;
-    datenow = new Date();
-    dateValid: boolean = true;
-    datedebut!: any;
-    datefi!: any;
-    datefin!: any;
-    DateValidStartdateAndEnddate: boolean = true;
-    DisabledBouton!: boolean;
-    nbjour!: any;
     selectedVehiculeId: number;
-    clientNPermis: string;
+    clientNom: string;
     displayDialogclient = false;
     clientParsed: string = '';
     listagence: Agence[];
@@ -58,6 +45,10 @@ export class ListeVehiculeVoitureFrontComponent implements OnInit {
     agence: Agence;
     errorMessage: string = '';
     clients: Client[] = [];
+    filteredClients: Client  [] = [];
+    searchQuery: string = '';
+    selectedClient: Client;
+
 
   constructor(private formBuilder: FormBuilder,
               private service: VehiculeService,
@@ -124,39 +115,16 @@ export class ListeVehiculeVoitureFrontComponent implements OnInit {
         }
     }
 
-
-
-  disponile(data: any) {
-    console.log(data.vehiculeId);
-    this.service.getDisponible(data.vehiculeId).subscribe(
-        (isAvailable) => {
-          if (isAvailable) {
-            alert('Le véhicule est disponible');
-          } else {
-            alert('Le véhicule n\'est pas disponible');
-          }
-        },
-        (error) => {
-          console.log('Erreur de serveur lors de la vérification de disponibilité:', error);
-          alert('Erreur de serveur lors de la vérification de disponibilité');
-        }
-    );
-  }
     openDialog(vehiculeId: number) {
-        this.selectedVehiculeId = vehiculeId;
-        setTimeout(() => {
-            const url = 'listVehiculesVoitures/' + this.selectedVehiculeId + '/ajout';
-            this.router.navigateByUrl(url);
-        }, 0);
+        this.vehiculeId = vehiculeId;
         this.displayDialog = true;
     }
-
     addRentalContrat() {
         const client: Client = new Client();
-        client.permis = this.clientNPermis;
+        client.nom = this.clientNom;
         this.contract.client = client;
 
-        this.rentalService.addReservations(this.contract, this.vehiculeId, this.userId, this.clientNPermis).subscribe(
+        this.rentalService.addReservations(this.contract, this.vehiculeId, this.userId, this.clientNom).subscribe(
             (res: any) => {
                 const contratId = res.contrat;
                 this.successNotification(contratId);
@@ -176,35 +144,7 @@ export class ListeVehiculeVoitureFrontComponent implements OnInit {
     successNotification(contratId: number) {
         Swal.fire('Réservation ajouté avec succès!').then((result) => {
             if (result.isConfirmed) {
-                this.router.navigate(['listeReservation', contratId]);
-            }
-        });
-    }
-    validationDate(event: any) {
-        var dateAtt = new Date(event.target.value);
-        this.datedebut = new Date(event.target.value);
-        var datefi = new Date(event.target.value);
-        var dateStatique = '2043-06-15';
-        var a = this.datenow.getTime();
-        var b = dateAtt.getTime();
-        var x = event.target.value;
-        var y = dateStatique;
-        this.validation(x, dateStatique);
-        console.log(a);
-        console.log(b);
-        if (b > a) {
-            this.dateValid = false;
-        } else {
-            this.dateValid = true;
-        }
-    }
-    validation(startdatee: any, enddatee: any){
-        this.rentalService.reservationIsValid(startdatee, enddatee).subscribe((res: any) => {
-            console.log('*******' + res);
-            if (res == true){
-                this.DisabledBouton = false;
-            }else {
-                this.DisabledBouton = true;
+                this.router.navigate(['/listReservationFront']);
             }
         });
     }
@@ -235,10 +175,32 @@ export class ListeVehiculeVoitureFrontComponent implements OnInit {
         this.clientService.findAllClients().subscribe(
             (clients: Client[]) => {
                 this.clients = clients;
+                this.filteredClients = clients;
             },
             (error) => {
                 console.error(error);
             }
         );
     }
+
+    onSearchQueryChanged() {
+        this.updateFilteredVehicles();
+    }
+    updateFilteredVehicles() {
+        if (!this.searchQuery) {
+            this.filteredClients = this.clients;
+            return;
+        }
+
+        this.filteredClients = this.clients.filter(client =>
+            client.nom?.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+            client.prenom?.toLowerCase().includes(this.searchQuery.toLowerCase())
+        );
+    }
+    selectClient(client: Client) {
+        this.selectedClient = client;
+        this.clientNom = `${client.nom}`;
+        this.displayDialogclient = false;
+    }
+
 }

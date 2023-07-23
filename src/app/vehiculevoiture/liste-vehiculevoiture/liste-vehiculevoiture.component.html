@@ -37,10 +37,11 @@
       </h5>
       <p class="center-text">{{ vehicule.description }}</p>
       <div>
-        <button  pButton pRipple label="Obtenir un prix" style="width: 600px" type="submit" class="btn btn-primary" (click)="openDialog(vehicule.vehiculeId)"></button>
+        <button pButton pRipple label="Obtenir un prix" style="width: 600px" type="submit" class="btn btn-primary" (click)="openDialog(vehicule.vehiculeId)"></button>
+
       </div>
 
-      <p-dialog class="custom-dialog" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [style]="{ 'width': '700px', 'height': '950px' }" >
+      <p-dialog class="custom-dialog"  [(visible)]="displayDialog" [modal]="true" [responsive]="true" [style]="{ 'width': '700px', 'height': '950px' }" >
         <section>
           <div class="content">
             <div class="container" style="margin-top: 20px;">
@@ -60,14 +61,53 @@
                     <input type="datetime-local" name="datefin" [(ngModel)]="contract.datefin" required class="form-control" style="background-color: #d9edf7">
                   </div>
                   <br>
-                  <label for="">Permis de client</label>
-                  <select type="select" class="form-select" id="client" name="client" [(ngModel)]="clientNPermis"  style="background-color: #d9edf7">
-                    <option value="">Sélectionner un permis de client</option>
-                    <option *ngFor="let client of clients" [value]="client.permis">{{ client.permis }}</option>
-                  </select>
+                  <div>
+                    <label for="">Client</label>
+                    <input type="text" name="clientNom" [(ngModel)]="clientNom" required class="form-control" style="background-color: #d9edf7">
+                  </div>
                   <br>
+                  <button pButton pRipple label="Veuillez choisir le client"  class="btn btn-dark" style="color: white;background-color: #3092b0; font-weight: bold; width:475px;"   class="btn btn-primary" (click)="openDialogclient()"></button>
+                  <br>
+
+
+                    <div *ngIf="displayDialogclient" class="custom-dialog-overlay">
+                      <div class="custom-dialog-container">
+                    <section>
+                      <div class="content">
+                        <div class="input-container">
+                          <input type="text" [(ngModel)]="searchQuery" (input)="updateFilteredVehicles()" name="search" placeholder="chercher un client" class="form-control mb-2 input-with-margin" style="background-color: #d9edf7; color:grey; text-align: center; width: 400px;" />
+                        </div>
+                        <table class="table">
+                      <thead class="table-dark-bg">
+                      <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Adresse</th>
+                        <th scope="col">Date de naissance</th>
+                        <th scope="col">Lieu de naissance</th>
+                        <th scope="col">Permis</th>
+                        <th scope="col">Téléphone</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let item of filteredClients" (click)="selectClient(item)" [ngClass]="{ 'selected-row': selectedClient === item }">
+                        <td>{{ item.nom }}</td>
+                        <td>{{ item.prenom }}</td>
+                        <td>{{ item.adresse }}</td>
+                        <td>{{ item.datenaissance }}</td>
+                        <td>{{ item.lieunaissance }}</td>
+                        <td>{{ item.permis }}</td>
+                        <td>{{ item.telephone }}</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                      </div>
+                      </section>
+                      </div>
+                    </div>
+
                   <div class="text-center">
-                    <button (click)="addRentalContrat()" type="submit" class="btn btn-primary">Confirmer</button>
+                    <button (click)="addRentalContrat()" type="submit" class="btn btn-primary"style="background-color: limegreen; width:470px;">Confirmer</button>
                   </div>
                 </form>
 

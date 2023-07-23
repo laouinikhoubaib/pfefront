@@ -105,5 +105,54 @@
         opacity: 0;
     }
 }
+.table-dark-bg{
 
+    background-color: #3092b0;
+    color: white;
+}
 
+.input-container {
+    display: flex;
+    align-items: center;
+}
+
+.input-with-margin {
+    margin-left: 30px;
+}
+
+.btn-with-margin {
+    margin-left: 1050px;
+}
+
+.selected-row {
+    background-color: #3092b0;
+    color: white;
+    cursor: pointer;
+}
+tr:hover {
+    background-color: #3092b0;
+    color: white;
+    cursor: pointer;
+}
+
+.custom-dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
+}
+
+.custom-dialog-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1700px;
+    height: 300px;
+    background-color: white;
+    z-index: 9999;
+    border-radius: 5px;
+    padding: 20px;
+}
