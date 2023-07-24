@@ -8,6 +8,8 @@ import Swal from 'sweetalert2';
 import {Vehicule} from '../models/vehicule';
 import {VehiculeService} from '../service/vehicule.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {ReservationStatusEnum} from '../models/ReservationStatusEnum.enum';
 
 @Component({
     selector: 'app-reservation-calendar',
@@ -68,6 +70,7 @@ export class CalendrierComponent implements OnInit {
 
     this.getContrat();
     }
+
     onSearchQueryChanged() {
         this.updateFilteredVehicles();
     }
@@ -91,16 +94,54 @@ export class CalendrierComponent implements OnInit {
             this.scheduleObj.selectedDate = reservationDate;
         }
     }
+
     ReservationsCalendar(): object[] {
-        return this.reservations.map(reservation => {
+        return this.reservations.map((reservation) => {
             const endDateTime = reservation.datefin ? new Date(reservation.datefin) : new Date(reservation.datedebut);
             return {
                 Id: reservation.reservid,
                 Subject: 'reservation ' + reservation.reservid,
                 StartTime: new Date(reservation.datedebut),
                 EndTime: new Date(endDateTime),
+                IsAnnule: reservation.reservationStatus === ReservationStatusEnum.annule,
+                IsConfirmme: reservation.reservationStatus === ReservationStatusEnum.confirme,
+                IsTermine: reservation.reservationStatus === ReservationStatusEnum.termine,
+                IsEncours: reservation.reservationStatus === ReservationStatusEnum.encours,
             };
         });
+    }
+    onEventRendered(args: any): void {
+        if (args.data.IsAnnule) {
+            const eventElement = args.element as HTMLElement;
+            eventElement.style.backgroundColor = 'red';
+            eventElement.style.borderColor = 'red';
+            eventElement.style.color = 'white';
+
+        }
+
+        if (args.data.IsConfirmme) {
+            const eventElement = args.element as HTMLElement;
+            eventElement.style.backgroundColor = 'green';
+            eventElement.style.borderColor = 'green';
+            eventElement.style.color = 'white';
+
+        }
+
+        if (args.data.IsTermine) {
+            const eventElement = args.element as HTMLElement;
+            eventElement.style.backgroundColor = 'grey';
+            eventElement.style.borderColor = 'grey';
+            eventElement.style.color = 'white';
+
+        }
+
+        if (args.data.IsEncours) {
+            const eventElement = args.element as HTMLElement;
+            eventElement.style.backgroundColor = 'orange';
+            eventElement.style.borderColor = 'orange';
+            eventElement.style.color = 'white';
+
+        }
     }
 
     onReservationClick(args: EventClickArgs): void {
@@ -234,9 +275,20 @@ export class CalendrierComponent implements OnInit {
         });
     }
 
+
+    onClickTelechargerAnnulationFacturePDF(reservid: number) {
+        this.reservations.forEach((reservation) => {
+            this.reservationService.telechargerAnnulationPDF(reservation.reservid).subscribe(response => {
+                const blob = new Blob([response], {type: 'application/pdf'});
+                const url = URL.createObjectURL(blob);
+                window.open(url);
+            });
+        });
+    }
+
     deleteReservation(reservationId: number): void {
         if (confirm('Êtes-vous sûr de vouloir annuler cette réservation?')) {
-            this.reservationService.deleteReservation(reservationId).subscribe(
+            this.reservationService.annulerReservation(reservationId).subscribe(
                 () => {
                     window.location.reload();
                 },
@@ -256,4 +308,6 @@ export class CalendrierComponent implements OnInit {
             });
         });
     }
+
+
 }

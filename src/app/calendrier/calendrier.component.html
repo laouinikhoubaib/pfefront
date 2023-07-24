@@ -1,5 +1,24 @@
 <div class="container">
-    <div class="row">
+    <div class="reservation-frame">
+        <div class="reservation-info">
+            <div class="confirmed-reservation">
+                <span class="reservation-color"></span> Réservations Confirmées
+            </div>
+
+            <div class="cours-reservation">
+                <span class="reservation-color"></span> Réservations En cours
+            </div>
+
+            <div class="termine-reservation">
+                <span class="reservation-color"></span> Réservations Terminées
+            </div>
+
+            <div class="cancelled-reservation">
+                <span class="reservation-color"></span> Réservations Annulées
+            </div>
+        </div>
+    </div>
+       <div class="row">
         <div class="col-md-4" style="margin-left: -300px;">
             <div class="card max-height-vh-850 overflow-auto mb-5 mb-lg-0">
                 <div class="card-body text-center">
@@ -30,6 +49,7 @@
                     [selectedDate]="selectedDate"
                     [eventSettings]="eventSettings"
                     (eventClick)="onReservationClick($event)"
+                    (eventRendered)="onEventRendered($event)"
                 ></ejs-schedule>
             </div>
         </div>
@@ -39,7 +59,7 @@
 <div *ngIf="isDialogVisible" class="dialog-overlay">
     <div #dialogContainer class="dialog-content">
         <div>
-            <i id="closeButton" class="material-icons opacity-6 me-2 text-md" (click)="closeDialog()">cancel</i>
+            <i id="closeButton" class="material-icons opacity-6 me-2 text-md close-button" (click)="closeDialog()">cancel</i>
         </div>
 
         <h2 style="font-size: 20pt; font-weight: bold;  text-align: center; background-color: #4395cc; color: #fff; width: 100%;">Contrat {{ selectedReservation?.reservid }}</h2>

@@ -20,7 +20,7 @@
   padding: 20px;
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  max-width: 709px;
+  max-width: 742px;
   max-height: 850px;
   width: 90%;
 
@@ -43,6 +43,9 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+  }
+  .close-button {
+    cursor: pointer;
   }
 
   button:hover {
@@ -97,4 +100,45 @@ th {
 }
 .vehicle-item {
   width: 370px;
+}
+.reservation-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.reservation-info .reservation-color {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+
+.cancelled-reservation .reservation-color {
+  background-color: red;
+}
+
+.confirmed-reservation .reservation-color {
+  background-color: green;
+}
+
+.cours-reservation .reservation-color {
+  background-color: orange;
+}
+
+.termine-reservation .reservation-color {
+  background-color: grey;
+}
+
+.reservation-frame {
+  border: 0.1px solid #d7d9e1;
+  padding: 10px;
+  background-color: #d9edf7;
+  color: #0d1226;
+  margin-left: 150px;
+  margin-right: -275px;
+  margin-top: 20px;
+
 }

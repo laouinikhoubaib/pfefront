@@ -15,9 +15,11 @@ export class ReservationServiceService {
   private BASE_URL_GET_BY_ID = 'http://localhost:8080/SpringMVC/api/reservation/getRentalContract';
   private BASE_URL_ADD = 'http://localhost:8080/SpringMVC/api/reservation/addReservation/';
   private apiUrl = 'http://localhost:8080/SpringMVC/api/reservation/GetAllReservations';
-  private apiUrll = 'http://localhost:8080/SpringMVC/api/reservation';
+  private apiUrll = 'http://localhost:8080/SpringMVC/api/reservation/GetAllReservations';
+  private apiUrlll = 'http://localhost:8080/SpringMVC/api/reservation';
   readonly delurl = 'http://localhost:8080/SpringMVC/api/reservation/facture';
   readonly delurll = 'http://localhost:8080/SpringMVC/api/reservation/contrat';
+  readonly delurlll = 'http://localhost:8080/SpringMVC/api/reservation/factureannulation';
 
   constructor(
     private http: HttpClient, private userService: UserService
@@ -62,6 +64,11 @@ export class ReservationServiceService {
     return this.http.get(url, { responseType: 'blob' });
   }
 
+  telechargerAnnulationPDF(reservid: number): Observable<any> {
+    const url = `${this.delurlll}/${reservid}`;
+    return this.http.get(url, { responseType: 'blob' });
+  }
+
   updateReservationTime(reservationId: number, newStartHour: number, newStartMinute: number): Observable<any> {
     const url = `${this.apiUrll}/encours/${reservationId}/time`;
     const params = { newStartHour: newStartHour.toString(), newStartMinute: newStartMinute.toString() };
@@ -84,5 +91,10 @@ export class ReservationServiceService {
       responseType: 'text' as 'json'
     };
     return this.http.put<any>(url, null, { params, ...httpOptions });
+  }
+
+  annulerReservation(reservationId: number): Observable<string> {
+    const url = `${this.apiUrlll}/${reservationId}/annuler`;
+    return this.http.post<string>(url, {});
   }
 }
