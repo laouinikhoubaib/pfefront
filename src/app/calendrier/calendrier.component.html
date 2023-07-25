@@ -10,7 +10,7 @@
             </div>
 
             <div class="termine-reservation">
-                <span class="reservation-color"></span> Réservations Terminées
+                <span class="reservation-color"></span> Réservations Fermées
             </div>
 
             <div class="cancelled-reservation">
@@ -114,9 +114,9 @@
             <div>
 
         <div>
-            <button style="background-color: #5eb762; margin-right: 10px;" (click)="openDialog(selectedReservation.reservid)">Faire le départ
-                <i class="material-icons opacity-6 me-2 text-md">arrow_forward</i></button>
-
+            <button *ngIf="selectedReservation?.reservationStatus !== 'annule' && selectedReservation?.reservationStatus !== 'encours' && selectedReservation?.reservationStatus !== 'termine'" style="background-color: #5eb762; margin-right: 10px;" (click)="openDialog(selectedReservation.reservid)">Faire le départ
+                <i class="material-icons opacity-6 me-2 text-md">arrow_forward</i>
+            </button>
             <p-dialog header="" [(visible)]="displayDialog" [modal]="true" [responsive]="true" [style]="{ 'width': '600px', 'height': '400px' }">
                 <section>
                     <div class="content">
@@ -135,8 +135,9 @@
                 </section>
             </p-dialog>
 
-            <button style="background-color: #7986CB; margin-right: 10px;" (click)="openDialog2(selectedReservation.reservid)">Faire le retour
-                <i class="material-icons opacity-6 me-2 text-md">arrow_back</i></button>
+            <button *ngIf="selectedReservation?.reservationStatus === 'encours'" style="background-color: #7986CB; margin-right: 10px;" (click)="openDialog2(selectedReservation.reservid)">Faire le retour
+                <i class="material-icons opacity-6 me-2 text-md">arrow_back</i>
+            </button>
             <p-dialog header="" [(visible)]="displayDialog2" [modal]="true" [responsive]="true" [style]="{ 'width': '600px', 'height': '400px' }">
                 <section>
                     <div class="content">
@@ -159,11 +160,13 @@
             <button style="background-color: #e74c3c;margin-right: 10px;" (click)="onClickTelechargerContratPDF(selectedReservation.reservid )" >
                 <i class="material-icons opacity-6 me-2 text-md">picture_as_pdf</i></button>
 
-            <button style="background-color: #ffc261;margin-right: 10px;" (click)="onClickTelechargerFacturePDF(selectedReservation.reservid )">
-                <i class="material-icons opacity-6 me-2 text-md">insert_drive_file</i>Facture</button>
+            <button *ngIf="selectedReservation?.reservationStatus === 'annule' || selectedReservation?.reservationStatus === 'termine'" style="background-color: #ffc261;margin-right: 10px;" (click)="selectedReservation?.reservationStatus === 'annule' ? onClickTelechargerAnnulationFacturePDF(selectedReservation.reservid) : onClickTelechargerFacturePDF(selectedReservation.reservid)">
+                <i class="material-icons opacity-6 me-2 text-md">insert_drive_file</i>Facture
+            </button>
 
-            <button style="background-color: #e74c3c;margin-right: 10px;" (click)="deleteReservation(selectedReservation.reservid)">
-                <i class="material-icons opacity-6 me-2 text-md">clear</i>Annuler Contrat</button>
+            <button *ngIf="selectedReservation?.reservationStatus !== 'annule' && selectedReservation?.reservationStatus !== 'termine'" style="background-color: #e74c3c;margin-right: 10px;" (click)="deleteReservation(selectedReservation.reservid)">
+                <i class="material-icons opacity-6 me-2 text-md">clear</i>Annuler Contrat
+            </button>
 
         </div>
 </div>
